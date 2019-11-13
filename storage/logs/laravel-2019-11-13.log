@@ -1,0 +1,24 @@
+[2019-11-13 11:13:23] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\laragon\\www\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 11:13:33] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\laragon\\www\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 11:13:36] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\laragon\\www\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 11:15:16] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\laragon\\www\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 11:16:34] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\laragon\\www\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 11:16:58] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\laragon\\www\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
