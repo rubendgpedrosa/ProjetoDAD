@@ -15,7 +15,23 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter);
+
+import Categories from './components/category/category'
+
+Vue.component('category', Categories);
+const routes = [
+    {
+        path: '/categories', component:Categories
+    }
+];
+
+const router = new VueRouter({routes});
 
 const app = new Vue({
-    el: '#app'
-});
+    el: '#app',
+    router
+    }
+);
