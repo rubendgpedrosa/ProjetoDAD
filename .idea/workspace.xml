@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/users/addUser.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/users/login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/master.blade.php SEGURANCA" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/users/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/user.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/users/userList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/userList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/AuthorizedClients.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/Clients.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/PersonalAccessTokens.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +89,7 @@
       <workItem from="1573604317580" duration="2567000" />
       <workItem from="1573658323553" duration="2958000" />
       <workItem from="1573726542777" duration="1833000" />
-      <workItem from="1573738870239" duration="1859000" />
+      <workItem from="1573738870239" duration="2107000" />
     </task>
     <task id="LOCAL-00001" summary="Category Model, Controller, Route API">
       <created>1573578346429</created>
@@ -120,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573650021665</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Commit Segurança">
+      <created>1573742260795</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573742260795</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,7 +145,8 @@
     <MESSAGE value="Components Category and List, Master.blade" />
     <MESSAGE value="Atualizei para ficar igual ao do zé, no changes made" />
     <MESSAGE value="List user completa, display de imagem correta." />
-    <option name="LAST_COMMIT_MESSAGE" value="List user completa, display de imagem correta." />
+    <MESSAGE value="Commit Segurança" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit Segurança" />
   </component>
   <component name="WindowStateProjectService">
     <state x="393" y="6" key="CommitChangelistDialog2" />
