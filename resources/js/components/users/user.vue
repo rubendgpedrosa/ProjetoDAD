@@ -4,8 +4,9 @@
                 <h1>{{ title }}</h1>
 
             </div>
-            <button type="button" class="btn btn-primary">Adicionar Utilizador</button>
-            <usersList :users="users"/>
+            <button type="button" class="btn btn-primary" v-on:click="addingUser=true">Adicionar Utilizador</button>
+            <usersList v-if="addingUser===false" :users="users"/>
+            <addUser :adding-user="addingUser" @cancel-edit="cancelEdit" v-if="addingUser===true"/>
 
             <div class="alert alert-success" v-if="showSuccess">
                 <button type="button" class="close-btn" v-on:click="showSuccess=false">&times;</button>
@@ -14,7 +15,8 @@
         </div>
 </template>
 <script>
-    import UserList from './userList'
+    import AddUser from './addUser';
+    import UserList from './userList';
 
     export default {
         data: function () {
@@ -23,16 +25,23 @@
                 showFailure: false,
                 successMessage: '',
                 failMessage: '',
+                addingUser: false,
                 currentUser: null,
-                users: []}
+            users: []}
         }, methods: {
+           cancelEdit:function()
+            {
+              //  console.log("YO");
+                this.addingUser=false;
+            },
             getUsers: function () {
                 axios.get('api/users')
                     .then(response=>{this.users = response.data.data});
             }
         },
         components: {
-            "usersList":UserList
+            "usersList":UserList,
+            "addUser":AddUser
         },
         mounted() {
             this.getUsers();

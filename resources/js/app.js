@@ -18,6 +18,8 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
+import Login from './components/users/login';
+Vue.component('login',Login);
 import Users from './components/users/user';
 Vue.component('user',Users);
 import Categories from './components/category/category';
@@ -28,6 +30,9 @@ const routes = [
     },
     {
         path: '/users',component:Users
+    },
+    {
+        path:'/',component:Login
     }
 ];
 

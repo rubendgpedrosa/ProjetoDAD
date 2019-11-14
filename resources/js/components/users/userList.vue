@@ -5,12 +5,15 @@
             return{
                 currentUser: {}
             }
+        },
+        methods:{
+
         }
-        //type – ("u", "o", "a") type of user – "u" = platform user (owners of the virtual wallets); "o" = operator; "a" = administrator;
     }
 </script>
 <template>
     <div>
+
     <table class="table table-striped">
         <thead>
         <tr>
