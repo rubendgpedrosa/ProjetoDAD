@@ -22,11 +22,11 @@ Vue.use(VueRouter);
 Vue.component('wallets', require('./components/wallets/wallet.vue').default);
 
 const routes = [
-    //temp route
     { path: '/wallet/:id', component: Wallets }
 ];
 
 const router = new VueRouter({
+    //mode: 'history',
     routes: routes
 });
 

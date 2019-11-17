@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Database\Eloquent\Model;
 
 class Wallet extends Model
 {
-     public function toArray($request){
-        return [
-            'id' => $this->id,
-            'email' => $this->email,
-            'balance' => $this->balance,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
-        ];
-     }
+    protected $table = 'wallets';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'id', 'email', 'balance', 'created_at', 'updated_at'
+    ];
 }
