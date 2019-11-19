@@ -20,7 +20,20 @@ import Wallets from './components/wallets/wallet.vue';
 
 Vue.use(VueRouter);
 Vue.component('wallets', require('./components/wallets/wallet.vue').default);
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue').default
+);
 
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue').default
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue').default
+);
 
 import Login from './components/users/login';
 Vue.component('login',Login);
@@ -36,9 +49,9 @@ const routes = [
     {
         path: '/users',component:Users
     },
-    {
-        path:'/',component:Login
-    }
+   // {
+ //       path:'/',component:Login
+  //  }
 ];
 
 const router = new VueRouter({routes});

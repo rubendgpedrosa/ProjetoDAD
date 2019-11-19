@@ -36,3 +36,5 @@ Route::delete('users/{id}', 'UserControllerAPI@destroy');
 
 //wallet
 Route::get('wallets/{id}', 'WalletController@show');
+//Movements
+Route::get('movements','MovementControllerAPI@index');

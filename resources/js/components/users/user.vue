@@ -2,7 +2,6 @@
         <div>
             <div class="jumbotron">
                 <h1>{{ title }}</h1>
-
             </div>
             <button type="button" class="btn btn-primary" v-on:click="addingUser=true">Adicionar Utilizador</button>
             <usersList v-if="addingUser===false" :users="users"/>
