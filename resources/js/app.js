@@ -9,23 +9,49 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import VueRouter from 'vue-router';
+import Wallets from './components/wallets/wallet.vue';
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import VueRouter from 'vue-router';
-
 Vue.use(VueRouter);
+Vue.component('wallets', require('./components/wallets/wallet.vue').default);
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue').default
+);
 
-import Categories from './components/category/category'
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue').default
+);
 
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue').default
+);
+
+import Login from './components/users/login';
+Vue.component('login',Login);
+import Users from './components/users/user';
+Vue.component('user',Users);
+import Categories from './components/category/category';
 Vue.component('category', Categories);
 const routes = [
+    { path: '/wallet/:id', component: Wallets },
     {
         path: '/categories', component:Categories
-    }
+    },
+    {
+        path: '/users',component:Users
+    },
+   // {
+ //       path:'/',component:Login
+  //  }
 ];
 
 const router = new VueRouter({routes});

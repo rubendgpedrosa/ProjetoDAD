@@ -9,7 +9,7 @@
         <title>@yield('title')</title>
         @yield('extrastyles')
         <!-- Latest compiled and minified CSS & JS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/style.css">
         </head>
 
@@ -17,9 +17,7 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Wallet</a>
     <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link">Sign</a>
-        </li>
+<passport-authorized-clients></passport-authorized-clients>
     </ul>
 </nav>
 <div class="container-fluid" id="app">
@@ -27,6 +25,7 @@
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
             <ul class="nav flex-column">
+                <li><router-link to="/">Login</router-link> </li>
                 <li><router-link to="/users">Users</router-link></li>
                 <li><router-link to="/categories">Categories</router-link></li>
             </ul>
