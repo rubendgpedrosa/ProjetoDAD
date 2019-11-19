@@ -26,9 +26,13 @@ Route::get('categories/{id}', 'CategoryControllerAPI@show');
 Route::post('categories', 'CategoryControllerAPI@store');
 Route::put('categories', 'CategoryControllerAPI@update');
 Route::delete('categories', 'CategoryControllerAPI@destroy');
+
 //Users
 Route::get('users', 'UserControllerAPI@index');
 Route::get('users/{id}', 'UserControllerAPI@show');
 Route::post('users', 'UserControllerAPI@store');
 Route::put('users/{id}', 'UserControllerAPI@update');
 Route::delete('users/{id}', 'UserControllerAPI@destroy');
+
+//wallet
+Route::get('wallets/{id}', 'WalletController@show');
