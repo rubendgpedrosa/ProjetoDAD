@@ -1838,10 +1838,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var _props$name$props$dat;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -1879,17 +1875,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = (_props$name$props$dat = {
-  props: [],
-  name: 'Wallet'
-}, _defineProperty(_props$name$props$dat, "props", []), _defineProperty(_props$name$props$dat, "data", function data() {
-  return {
-    title: 'YadaYada',
-    type: 'school',
-    category: 'fuel',
-    date: '11-11-2019'
-  };
-}), _props$name$props$dat);
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['balance', 'created_at', 'updated_at', 'id', 'email'],
+  name: 'Wallet',
+  data: function data() {
+    return {
+      title: 'YadaYada',
+      type: 'school',
+      category: 'fuel',
+      date: '11-11-2019'
+    };
+  }
+});
 
 /***/ }),
 
@@ -19514,13 +19516,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", [
     _vm._m(0),
-    _vm._v("\n    Movements: " + _vm._s(_vm.title) + "\n    "),
-    _vm._m(1)
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _vm._m(1),
+      _vm._v("\n        Movements: " + _vm._s(_vm.title) + "\n        "),
+      _vm._m(2)
+    ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { "background-color": "#0C9A9A" } }, [
+      _c("h4", {}, [_vm._v("E-Wallet")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -34647,7 +34661,7 @@ var routes = [{
   component: _components_wallets_wallet_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  //mode: 'history',
+  mode: 'history',
   routes: routes
 });
 var app = new Vue({

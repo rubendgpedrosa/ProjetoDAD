@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class WalletController extends Controller
 {
-    public function show(){
-        return WalletResource::all();
+    public function getWallets() {
+        $wallets = Wallet::all();
+        return response()->json($wallets);
     }
 }

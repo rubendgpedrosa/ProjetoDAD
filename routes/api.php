@@ -32,4 +32,4 @@ Route::put('users/{id}', 'UserControllerAPI@update');
 Route::delete('users/{id}', 'UserControllerAPI@destroy');
 
 //wallet
-Route::get('wallets/{id}', 'WalletController@show');
+Route::get('wallets', 'WalletController@getWallets');
