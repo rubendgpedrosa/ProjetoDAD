@@ -25,12 +25,18 @@ class LoginControllerAPI extends Controller
             'exceptions'=> false,
             ]);
 
-            $errorCode = $response->getStatusCode();
-            if($errorCode=='200'){
-                return json_decode((string) $response->getBody(), true);
-            }else{
-                return response()->json(
-                ['msg'=>'User credentials are invalid'], $errorCode);
-            }
+        $errorCode = $response->getStatusCode();
+        if($errorCode=='200'){
+            return json_decode((string) $response->getBody(), true);
+        }else{
+            return response()->json(
+            ['msg'=>'User credentials are invalid'], $errorCode);
+        }
+    }
+
+    public function logout(){
+        \Auth::guard('api')->user()->token()->revoke();
+        \Auth::guard('api')->user()->token()->delete();
+        return response()->json(['msg'=>'Token revoked'], 200);
     }
 }

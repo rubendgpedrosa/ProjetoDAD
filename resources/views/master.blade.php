@@ -14,13 +14,30 @@
         </head>
 
 <body>
-    <div class="container" id="app">
-    <router-link to="/">Login</router-link>
-    <router-link to="/users">Users</router-link>
-    <router-link to="/categories">Categories</router-link>
-    <router-view></router-view>
-
-    </div>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Wallet</a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link">Sign</a>
+        </li>
+    </ul>
+</nav>
+<div class="container-fluid" id="app">
+<div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+                 <li><router-link to="/">Login</router-link> </li>
+                <li><router-link to="/users">Users</router-link></li>
+                <li><router-link to="/categories">Categories</router-link></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container">
+        <router-view></router-view>
+    </main>
+</div>
+</div>
 
     @yield('pagescript')
 </body>
