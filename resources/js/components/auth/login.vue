@@ -13,7 +13,10 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email"required autocomplete="email" autofocus v-model="email">
+                                    <input id="email"  type="email" class="form-control" name="email"required autocomplete="email" autofocus v-model="email">
+
+
+                                </div>
 
                                 </div>
                             </div>
@@ -22,7 +25,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password" v-model="password">
+                                    <input id="password" value="123" type="password" class="form-control" name="password" required autocomplete="current-password" v-model="password">
                                 </div>
                             </div>
 
@@ -57,8 +60,8 @@
 export default {
     data:function(){
         return{
-            email:"",
-            password:""
+            email:"admin1@mail.pt",
+            password:"123"
         }
     },
     methods:{
@@ -70,8 +73,8 @@ export default {
                 'email':email.value,
                 'password' :password.value
             }).then(response=>{
-
-                localStorage.userToken= response
+               sessionStorage.setItem('tokenAuth',Object.values(response.data)[2].toString())
+                axios.defaults.headers.common.Authorization = "Bearer " +sessionStorage.getItem('tokenAuth');
             }).catch(error=>{
                 console.log(error)
             })

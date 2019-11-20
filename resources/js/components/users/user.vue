@@ -14,6 +14,7 @@
     </div>
 </template>
 <script>
+
     import UserList from './userList'
     export default {
         data: function () {
@@ -26,6 +27,7 @@
                 users: []}
         }, methods: {
             getUsers: function () {
+
                 axios.get('api/users')
                     .then(response=>{this.users = response.data.data});
             }
