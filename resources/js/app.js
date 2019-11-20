@@ -20,6 +20,8 @@ import Wallets from './components/wallets/wallet.vue';
 
 Vue.use(VueRouter);
 Vue.component('wallets', require('./components/wallets/wallet.vue').default);
+import Login from './components/auth/login';
+Vue.component('login',Login);
 Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue').default
@@ -35,23 +37,22 @@ Vue.component(
     require('./components/passport/PersonalAccessTokens.vue').default
 );
 
-import Login from './components/users/login';
-Vue.component('login',Login);
+
 import Users from './components/users/user';
 Vue.component('user',Users);
 import Categories from './components/category/category';
 Vue.component('category', Categories);
 const routes = [
-    { path: '/wallet/:id', component: Wallets },
     {
         path: '/categories', component:Categories
     },
     {
         path: '/users',component:Users
-    },
-   // {
- //       path:'/',component:Login
-  //  }
+    },{
+        path:'/',component:Login
+    }
+
+
 ];
 
 const router = new VueRouter({routes});
