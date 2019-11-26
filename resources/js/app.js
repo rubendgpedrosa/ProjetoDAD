@@ -4,14 +4,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import VueRouter from 'vue-router';
-import vuetify from "../plugins/vuetify";
-import Wallets from './components/wallets/wallet.vue';
-import Login from './components/auth/login';
-import Home from './components/home';
-import Users from './components/users/user';
-import Categories from './components/category/category';
-
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -22,18 +14,24 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.use(VueRouter);
-Vue.component('wallets', Wallets);
-Vue.component('home',Home);
-Vue.component('login',Login);
-Vue.component('passport-clients', require('./components/passport/Clients.vue').default);
-Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue').default);
+import Categories from './components/category/category';
+import VueRouter from 'vue-router';
+import vuetify from "../plugins/vuetify";
+import Wallets from './components/wallets/wallet.vue';
+import Login from './components/auth/login';
+import Users from './components/users/user';
+import Home from './components/home';
+
 Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue').default);
-Vue.component('user',Users);
+Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue').default);
+Vue.component('passport-clients', require('./components/passport/Clients.vue').default);
 Vue.component('category', Categories);
-Vue.component('passport-clients', require('./components/passport/Clients.vue').default);
-Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue').default);
-Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue').default);
+Vue.component('wallets', Wallets);
+Vue.component('login',Login);
+Vue.component('user',Users);
+Vue.component('home',Home);
+
+Vue.use(VueRouter);
 
 const routes = [
     {
