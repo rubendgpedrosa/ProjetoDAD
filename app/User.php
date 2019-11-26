@@ -11,13 +11,19 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
     protected $table = 'users';
+
+    public function Wallet(){
+    return $this->hasOne('App\Wallet');
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','type','active','photo','nif'
     ];
 
     /**
