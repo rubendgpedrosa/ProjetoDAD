@@ -1,11 +1,13 @@
 s<template>
     <div>
+        <div class="jumbotron">
+            <h1>{{ title }}</h1>
+        </div>
         <table class="table table-striped">
             <tbody>
             <tr>
-                <td>Virtual Wallet: </td>
-                <td>Current Balance: </td>
-                <td>€€</td>
+                <td>Virtual Wallet: {{ wallet.email }} </td>
+                <td>Current Balance: {{ wallet.balance }} € </td>
             </tr>
             </tbody>
         </table>
@@ -13,16 +15,21 @@ s<template>
 </template>
 
 <script>
+    //this.$route.params.id
     export default{
-        props:['balance', 'created_at', 'updated_at', 'id', 'email'],
         name: 'Wallet',
         data: function() {
             return {
-                title: 'YadaYada',
-                type: 'school',
-                category: 'fuel',
-                date: '11-11-2019',
+                title: 'Wallet Information',
+                wallet: ''
             }
+        },methods:{
+            getWallet: function() {
+                axios.get(`/api/wallet/${this.$route.params.id}`).then(response => (this.wallet = response.data))
+            }
+        },
+        mounted () {
+            this.getWallet();
         }
     }
 
