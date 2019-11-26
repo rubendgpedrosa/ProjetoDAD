@@ -25,13 +25,13 @@
         props:['categories'],
         data: function (){
             return{
-                currentCategory: null
+                currentCategory: {}
             }
         },
         methods: {
             editCategory(category){
                 this.currentCategory = category;
-                this.$emit('edit-category', "Edit Category",category);
+                this.$emit('edit-category', category);
             }
         }
     }

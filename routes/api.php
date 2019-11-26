@@ -17,9 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/*Route::post('login', 'LoginControllerAPI@login');
+Route::post('login', 'LoginControllerAPI@login')->name('login');
 Route::middleware('auth:api')->post('logout', 'LoginControllerAPI@logout');
-*/
+
+Route::middleware('auth:api')->get('teste', function () {return response()->json(['msg'=>'Só um teste'], 200);});
+
 //Category
 Route::get('categories', 'CategoryControllerAPI@index');
 Route::get('categories/{id}', 'CategoryControllerAPI@show');
@@ -32,3 +34,10 @@ Route::get('users/{id}', 'UserControllerAPI@show');
 Route::post('users', 'UserControllerAPI@store');
 Route::put('users/{id}', 'UserControllerAPI@update');
 Route::delete('users/{id}', 'UserControllerAPI@destroy');
+
+//Movement
+Route::get('movements', 'MovementsControllerAPI@index');
+Route::get('movements/{id}', 'MovementsControllerAPI@show');
+//Route::post('categories', 'CategoryControllerAPI@store');
+//Route::put('categories', 'CategoryControllerAPI@update');
+//Route::delete('categories', 'CategoryControllerAPI@destroy');
