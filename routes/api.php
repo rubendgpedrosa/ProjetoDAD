@@ -34,6 +34,10 @@ Route::post('users', 'UserControllerAPI@store');
 Route::put('users/{id}', 'UserControllerAPI@update');
 Route::delete('users/{id}', 'UserControllerAPI@destroy');
 
+//wallet
+Route::get('wallets/', 'WalletControllerAPI@index');
+Route::get('wallet/{id}', 'WalletControllerAPI@show');
+
 
 //Movements
 Route::get('movements','MovementControllerAPI@index');
