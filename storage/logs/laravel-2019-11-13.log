@@ -1,0 +1,350 @@
+[2019-11-13 12:08:44] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:08:48] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:09:16] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:09:29] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:09:29] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:09:43] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:11:00] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:11:06] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:11:41] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:13:18] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:13:36] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:13:41] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:15:32] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:15:37] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:17:47] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:18:20] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:18:52] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:19:16] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:19:57] local.ERROR: Namespace declaration statement has to be the very first statement or after any declare call in the script {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Namespace declaration statement has to be the very first statement or after any declare call in the script at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php:3)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 12:21:47] local.ERROR: syntax error, unexpected ';', expecting function (T_FUNCTION) or const (T_CONST) {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ';', expecting function (T_FUNCTION) or const (T_CONST) at C:\\Projects\\ProjetoDAD\\app\\Category.php:23)
+[stacktrace]
+#0 C:\\Projects\\ProjetoDAD\\vendor\\composer\\ClassLoader.php(322): Composer\\Autoload\\includeFile('C:\\\\Projects\\\\Pro...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Category')
+#2 C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\CategoryControllerAPI.php(20): spl_autoload_call('App\\\\Category')
+#3 [internal function]: App\\Http\\Controllers\\CategoryControllerAPI->index()
+#4 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): call_user_func_array(Array, Array)
+#5 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('index', Array)
+#6 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\CategoryControllerAPI), 'index')
+#7 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(176): Illuminate\\Routing\\Route->runController()
+#8 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(680): Illuminate\\Routing\\Route->run()
+#9 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#10 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#11 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#12 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#13 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#14 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#15 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(682): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#16 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(657): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#17 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(623): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#18 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(612): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#19 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#20 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#21 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#22 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#23 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#24 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 C:\\Projects\\ProjetoDAD\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#33 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#34 C:\\Projects\\ProjetoDAD\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#35 {main}
+"} 
+[2019-11-13 22:33:32] local.ERROR: The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed. {"exception":"[object] (Laravel\\Passport\\Exceptions\\OAuthServerException(code: 3): The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed. at C:\\Projects\\ProjetoDAD\\vendor\\laravel\\passport\\src\\Http\\Controllers\\HandlesOAuthErrors.php:26)
+[stacktrace]
+#0 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\passport\\src\\Http\\Controllers\\AccessTokenController.php(65): Laravel\\Passport\\Http\\Controllers\\AccessTokenController->withErrorHandling(Object(Closure))
+#1 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(48): Laravel\\Passport\\Http\\Controllers\\AccessTokenController->issueToken(Object(Zend\\Diactoros\\ServerRequest))
+#2 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Laravel\\Passport\\Http\\Controllers\\AccessTokenController), 'issueToken')
+#3 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(176): Illuminate\\Routing\\Route->runController()
+#4 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(680): Illuminate\\Routing\\Route->run()
+#5 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#6 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#8 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#9 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(682): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#10 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(657): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#11 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(623): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#12 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(612): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#13 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#14 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#15 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#19 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#21 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#22 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#23 C:\\Projects\\ProjetoDAD\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#24 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#27 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#28 C:\\Projects\\ProjetoDAD\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#29 {main}
+
+[previous exception] [object] (League\\OAuth2\\Server\\Exception\\OAuthServerException(code: 3): The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed. at C:\\Projects\\ProjetoDAD\\vendor\\league\\oauth2-server\\src\\Exception\\OAuthServerException.php:142)
+[stacktrace]
+#0 C:\\Projects\\ProjetoDAD\\vendor\\league\\oauth2-server\\src\\Grant\\PasswordGrant.php(88): League\\OAuth2\\Server\\Exception\\OAuthServerException::invalidRequest('username')
+#1 C:\\Projects\\ProjetoDAD\\vendor\\league\\oauth2-server\\src\\Grant\\PasswordGrant.php(54): League\\OAuth2\\Server\\Grant\\PasswordGrant->validateUser(Object(Zend\\Diactoros\\ServerRequest), Object(Laravel\\Passport\\Bridge\\Client))
+#2 C:\\Projects\\ProjetoDAD\\vendor\\league\\oauth2-server\\src\\AuthorizationServer.php(198): League\\OAuth2\\Server\\Grant\\PasswordGrant->respondToAccessTokenRequest(Object(Zend\\Diactoros\\ServerRequest), Object(League\\OAuth2\\Server\\ResponseTypes\\BearerTokenResponse), Object(DateInterval))
+#3 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\passport\\src\\Http\\Controllers\\AccessTokenController.php(63): League\\OAuth2\\Server\\AuthorizationServer->respondToAccessTokenRequest(Object(Zend\\Diactoros\\ServerRequest), Object(Zend\\Diactoros\\Response))
+#4 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\passport\\src\\Http\\Controllers\\HandlesOAuthErrors.php(24): Laravel\\Passport\\Http\\Controllers\\AccessTokenController->Laravel\\Passport\\Http\\Controllers\\{closure}()
+#5 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\passport\\src\\Http\\Controllers\\AccessTokenController.php(65): Laravel\\Passport\\Http\\Controllers\\AccessTokenController->withErrorHandling(Object(Closure))
+#6 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(48): Laravel\\Passport\\Http\\Controllers\\AccessTokenController->issueToken(Object(Zend\\Diactoros\\ServerRequest))
+#7 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Laravel\\Passport\\Http\\Controllers\\AccessTokenController), 'issueToken')
+#8 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(176): Illuminate\\Routing\\Route->runController()
+#9 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(680): Illuminate\\Routing\\Route->run()
+#10 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#11 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#12 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#13 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(682): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#15 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(657): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#16 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(623): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#17 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(612): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#18 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#19 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#21 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#22 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 C:\\Projects\\ProjetoDAD\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#32 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#33 C:\\Projects\\ProjetoDAD\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#34 {main}
+"} 
+[2019-11-13 22:34:28] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:35:11] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:35:27] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:35:37] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:35:51] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:35:59] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:36:07] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:38:19] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:40:00] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:40:13] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:40:55] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:40:56] local.ERROR: Undefined variable: resquest {"exception":"[object] (ErrorException(code: 0): Undefined variable: resquest at C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\LoginControllerAPI.php:27)
+[stacktrace]
+#0 C:\\Projects\\ProjetoDAD\\app\\Http\\Controllers\\LoginControllerAPI.php(27): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined varia...', 'C:\\\\Projects\\\\Pro...', 27, Array)
+#1 [internal function]: App\\Http\\Controllers\\LoginControllerAPI->login(Object(Illuminate\\Http\\Request))
+#2 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): call_user_func_array(Array, Array)
+#3 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('login', Array)
+#4 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\LoginControllerAPI), 'login')
+#5 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(176): Illuminate\\Routing\\Route->runController()
+#6 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(680): Illuminate\\Routing\\Route->run()
+#7 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#8 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#9 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#10 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#11 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#12 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#13 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(682): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#14 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(657): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#15 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(623): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#16 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(612): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#17 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#18 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#19 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#21 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#22 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#23 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#24 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 C:\\Projects\\ProjetoDAD\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#31 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#32 C:\\Projects\\ProjetoDAD\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#33 {main}
+"} 
+[2019-11-13 22:41:24] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:45:36] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:45:46] local.ERROR: Trait 'Larevel\Passport\HasApiTokens' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Trait 'Larevel\\Passport\\HasApiTokens' not found at C:\\Projects\\ProjetoDAD\\app\\User.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2019-11-13 22:49:47] local.ERROR: The provided authorization grant (e.g., authorization code, resource owner credentials) or refresh token is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client. {"exception":"[object] (Laravel\\Passport\\Exceptions\\OAuthServerException(code: 10): The provided authorization grant (e.g., authorization code, resource owner credentials) or refresh token is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client. at C:\\Projects\\ProjetoDAD\\vendor\\laravel\\passport\\src\\Http\\Controllers\\HandlesOAuthErrors.php:26)
+[stacktrace]
+#0 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\passport\\src\\Http\\Controllers\\AccessTokenController.php(65): Laravel\\Passport\\Http\\Controllers\\AccessTokenController->withErrorHandling(Object(Closure))
+#1 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(48): Laravel\\Passport\\Http\\Controllers\\AccessTokenController->issueToken(Object(Zend\\Diactoros\\ServerRequest))
+#2 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Laravel\\Passport\\Http\\Controllers\\AccessTokenController), 'issueToken')
+#3 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(176): Illuminate\\Routing\\Route->runController()
+#4 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(680): Illuminate\\Routing\\Route->run()
+#5 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#6 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#8 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#9 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(682): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#10 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(657): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#11 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(623): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#12 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(612): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#13 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#14 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#15 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#19 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#21 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#22 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#23 C:\\Projects\\ProjetoDAD\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#24 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#27 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#28 C:\\Projects\\ProjetoDAD\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#29 {main}
+
+[previous exception] [object] (League\\OAuth2\\Server\\Exception\\OAuthServerException(code: 10): The provided authorization grant (e.g., authorization code, resource owner credentials) or refresh token is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client. at C:\\Projects\\ProjetoDAD\\vendor\\league\\oauth2-server\\src\\Exception\\OAuthServerException.php:263)
+[stacktrace]
+#0 C:\\Projects\\ProjetoDAD\\vendor\\league\\oauth2-server\\src\\Grant\\PasswordGrant.php(107): League\\OAuth2\\Server\\Exception\\OAuthServerException::invalidGrant()
+#1 C:\\Projects\\ProjetoDAD\\vendor\\league\\oauth2-server\\src\\Grant\\PasswordGrant.php(54): League\\OAuth2\\Server\\Grant\\PasswordGrant->validateUser(Object(Zend\\Diactoros\\ServerRequest), Object(Laravel\\Passport\\Bridge\\Client))
+#2 C:\\Projects\\ProjetoDAD\\vendor\\league\\oauth2-server\\src\\AuthorizationServer.php(198): League\\OAuth2\\Server\\Grant\\PasswordGrant->respondToAccessTokenRequest(Object(Zend\\Diactoros\\ServerRequest), Object(League\\OAuth2\\Server\\ResponseTypes\\BearerTokenResponse), Object(DateInterval))
+#3 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\passport\\src\\Http\\Controllers\\AccessTokenController.php(63): League\\OAuth2\\Server\\AuthorizationServer->respondToAccessTokenRequest(Object(Zend\\Diactoros\\ServerRequest), Object(Zend\\Diactoros\\Response))
+#4 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\passport\\src\\Http\\Controllers\\HandlesOAuthErrors.php(24): Laravel\\Passport\\Http\\Controllers\\AccessTokenController->Laravel\\Passport\\Http\\Controllers\\{closure}()
+#5 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\passport\\src\\Http\\Controllers\\AccessTokenController.php(65): Laravel\\Passport\\Http\\Controllers\\AccessTokenController->withErrorHandling(Object(Closure))
+#6 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(48): Laravel\\Passport\\Http\\Controllers\\AccessTokenController->issueToken(Object(Zend\\Diactoros\\ServerRequest))
+#7 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Laravel\\Passport\\Http\\Controllers\\AccessTokenController), 'issueToken')
+#8 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(176): Illuminate\\Routing\\Route->runController()
+#9 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(680): Illuminate\\Routing\\Route->run()
+#10 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#11 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#12 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#13 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(682): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#15 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(657): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#16 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(623): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#17 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(612): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#18 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(176): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#19 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#21 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#22 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 C:\\Projects\\ProjetoDAD\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#32 C:\\Projects\\ProjetoDAD\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#33 C:\\Projects\\ProjetoDAD\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#34 {main}
+"} 

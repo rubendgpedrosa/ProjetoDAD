@@ -9,8 +9,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import VueRouter from 'vue-router';
-import Wallets from './components/wallets/wallet.vue';
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -18,20 +17,29 @@ import Wallets from './components/wallets/wallet.vue';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import VueRouter from 'vue-router';
+import Wallets from './components/wallets/wallet';
+import Categories from './components/category/category'
+
+Vue.component('wallets', Wallets);
+Vue.component('category', Categories);
+
+
 Vue.use(VueRouter);
-Vue.component('wallets', require('./components/wallets/wallet.vue').default);
 
 const routes = [
-    { path: '/wallet/:id', component: Wallets }
+    {
+        path: '/categories', component:Categories
+    },
+    {
+        path: '/wallet/:id', component: Wallets
+    }
 ];
 
-const router = new VueRouter({
-    mode: 'history',
-    routes: routes
-});
+const router = new VueRouter({routes});
 
 
 const app = new Vue({
     el: '#app',
-    router
+    router:router,
 });
