@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="253f2d8b-fdb1-4b6d-bec8-b1ccd23f1618" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/home.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/plugins/vuetify.js" afterDir="false" />
+    <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/storage/logs/laravel-2019-11-26.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WalletControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WalletControllerAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/master.blade.php SEGURANCA" beforeDir="false" afterPath="$PROJECT_DIR$/resources/master.blade.php SEGURANCA" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vue/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vue/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/facade/ignition/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/facade/ignition/webpack.config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

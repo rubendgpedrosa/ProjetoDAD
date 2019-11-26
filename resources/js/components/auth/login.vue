@@ -70,7 +70,7 @@ export default {
                 'email':email.value,
                 'password' :password.value
             }).then(response=>{
-               sessionStorage.setItem('tokenAuth',Object.values(response.data)[2].toString())
+               sessionStorage.setItem('tokenAuth',Object.values(response.data)[2].toString());
                 axios.defaults.headers.common.Authorization = "Bearer " +sessionStorage.getItem('tokenAuth');
             }).catch(error=>{
                 console.log(error)
