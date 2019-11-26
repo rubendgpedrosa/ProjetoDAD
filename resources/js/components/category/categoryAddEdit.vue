@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="type">Type:</label>
             <select class="form-control" id="type" name="type" >
-                <option v-for="type in types" v-bind:value="type.type"> {{ type.type }} </option>
+                <option v-for="type in types" v-bind:value="type.type" v-model="currentCategory.type"> {{ type.type }} </option>
             </select>
         </div>
 
@@ -27,7 +27,7 @@
     export default {
         props:{
             title:{type :String, required: true},
-            currentCategory: {type: Object, required: false}
+            currentCategory: {type: Object, required: true}
         },
         data: function () {
             return {
@@ -36,7 +36,7 @@
         },
         methods:{
             save: function () {
-                //this.$emit('save', this.category);
+                this.$emit('save-category', this.currentCategory);
             },
             cancel: function () {
                 this.$emit('cancel-category');
