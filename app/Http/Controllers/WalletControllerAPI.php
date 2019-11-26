@@ -3,14 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Wallet as WalletResource;
+use App\Wallet;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
-class WalletController extends Controller
+class WalletControllerAPI extends Controller
 {
-    public function getWallets() {
-        $wallets = Wallet::all();
-        return response()->json($wallets);
+    public function index() {
+        return Wallet::all();
+    }
+
+    public function create(){
+
+    }
+
+    public function destroy(){
+
+    }
+
+    public function edit(){
+
+    }
+
+    public function store(){
+
+    }
+
+    public function show($id){
+        //retrieve a specific wallet associated to a specific key, in this case, email is the key given.
+        return Wallet::where('id', $id)->first();
+    }
+
+    public function update(){
+
     }
 }
