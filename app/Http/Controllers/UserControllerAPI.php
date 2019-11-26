@@ -16,18 +16,14 @@ class UserControllerAPI extends Controller
 {
     public function index(Request $request)
     {
+
         if ($request->has('page')) {
             return UserResource::collection(User::paginate(5));
         } else {
             return UserResource::collection(User::all());
         }
 
-        /*Caso não se pretenda fazer uso de Eloquent API Resources (https://laravel.com/docs/5.5/eloquent-resources), é possível implementar com esta abordagem:
-        if ($request->has('page')) {
-            return User::with('department')->paginate(5);;
-        } else {
-            return User::with('department')->get();;
-        }*/
+
     }
 
     public function show($id)
