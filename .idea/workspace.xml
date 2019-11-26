@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="253f2d8b-fdb1-4b6d-bec8-b1ccd23f1618" name="Default Changelist" comment="Segurança AUTH">
-      <change afterPath="$PROJECT_DIR$/storage/logs/laravel-2019-11-19.log" afterDir="false" />
+    <list default="true" id="253f2d8b-fdb1-4b6d-bec8-b1ccd23f1618" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/home.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/plugins/vuetify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginControllerAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WalletControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WalletControllerAPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/passport/src/Passport.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Passport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/master.blade.php SEGURANCA" beforeDir="false" afterPath="$PROJECT_DIR$/resources/master.blade.php SEGURANCA" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vue/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vue/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/facade/ignition/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/facade/ignition/webpack.config.js" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +39,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
   </component>
   <component name="ProjectId" id="1THphyW30ffKuJPZG7XkcQcyQzJ" />
   <component name="ProjectLevelVcsManager">
@@ -62,9 +62,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\ProjetoDAD\resources" />
       <recent name="C:\Projects\ProjetoDAD\resources\views" />
       <recent name="C:\laragon\www\ProjetoDAD\DAD\resources\js" />
     </key>
@@ -86,7 +88,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="" />
+      <changelist id="253f2d8b-fdb1-4b6d-bec8-b1ccd23f1618" name="Default Changelist" comment="" />
       <created>1573126997983</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -95,6 +97,13 @@
       <workItem from="1573571845850" duration="365000" />
       <workItem from="1573572635631" duration="117000" />
       <workItem from="1573604317580" duration="2567000" />
+      <workItem from="1574242531323" duration="5436000" />
+      <workItem from="1574264879024" duration="1700000" />
+      <workItem from="1574272047720" duration="2639000" />
+      <workItem from="1574276396537" duration="1413000" />
+      <workItem from="1574328464903" duration="4051000" />
+      <workItem from="1574338675806" duration="1708000" />
+      <workItem from="1574781639201" duration="267000" />
     </task>
     <task id="LOCAL-00001" summary="Category Model, Controller, Route API">
       <created>1573578346429</created>
@@ -103,7 +112,28 @@
       <option name="project" value="LOCAL" />
       <updated>1573578346429</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Maybe">
+      <created>1574182779662</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574182779662</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Login Kinda working">
+      <created>1574247512111</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574247512111</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Login com proteção de rotas acabado">
+      <created>1574277264556</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574277264556</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,7 +157,10 @@
     <option name="SHOW_UNVERSIONED_FILES_WHILE_COMMIT" value="false" />
     <MESSAGE value="Category Model, Controller, Route API" />
     <MESSAGE value="Components Category and List, Master.blade" />
-    <option name="LAST_COMMIT_MESSAGE" value="Components Category and List, Master.blade" />
+    <MESSAGE value="Maybe" />
+    <MESSAGE value="Login Kinda working" />
+    <MESSAGE value="Login com proteção de rotas acabado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login com proteção de rotas acabado" />
   </component>
   <component name="WindowStateProjectService">
     <state x="393" y="6" key="CommitChangelistDialog2" />

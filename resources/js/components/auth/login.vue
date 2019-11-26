@@ -66,9 +66,6 @@ export default {
     },
     methods:{
         login:function(){
-            console.log(
-                'Email: '+email.value+"\npassword: "+password.value
-            );
             axios.post('/api/login',{
                 'email':email.value,
                 'password' :password.value

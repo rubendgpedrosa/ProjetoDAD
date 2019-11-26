@@ -12,4 +12,6 @@ class WalletController extends Controller
     public function show(){
         return WalletResource::all();
     }
+    public function countWallets(){
+    }
 }

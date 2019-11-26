@@ -1,15 +1,16 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+
 require('./bootstrap');
 
 window.Vue = require('vue');
 
 import VueRouter from 'vue-router';
+import vuetify from "../plugins/vuetify";
 import Wallets from './components/wallets/wallet.vue';
 
 /**
@@ -19,9 +20,13 @@ import Wallets from './components/wallets/wallet.vue';
  */
 
 Vue.use(VueRouter);
+
+
 Vue.component('wallets', require('./components/wallets/wallet.vue').default);
 import Login from './components/auth/login';
 Vue.component('login',Login);
+import Home from './components/home';
+Vue.component('home',Home);
 Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue').default
@@ -50,6 +55,8 @@ const routes = [
         path: '/users',component:Users
     },{
         path:'/',component:Login
+    },{
+        path:'/home',component:Home
     }
 
 
@@ -61,6 +68,7 @@ const app = new Vue({
 
     el: '#app',
     router,
+    vuetify
 
     }
 );
