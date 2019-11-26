@@ -27,6 +27,7 @@
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
             <ul class="nav flex-column">
+                <li><router-link to="/movements">Movements</router-link></li>
                 <li><router-link to="/users">Users</router-link></li>
                 <li><router-link to="/categories">Categories</router-link></li>
             </ul>

@@ -24,7 +24,6 @@ import Categories from './components/category/category'
 Vue.component('wallets', Wallets);
 Vue.component('category', Categories);
 
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -33,7 +32,7 @@ const routes = [
     },
     {
         path: '/wallet/:id', component: Wallets
-    }
+    },
 ];
 
 const router = new VueRouter({routes});
@@ -41,5 +40,5 @@ const router = new VueRouter({routes});
 
 const app = new Vue({
     el: '#app',
-    router:router,
+    router
 });
