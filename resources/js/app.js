@@ -4,14 +4,17 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import VueRouter from 'vue-router';
+import vuetify from "../plugins/vuetify";
+import Wallets from './components/wallets/wallet.vue';
+import Login from './components/auth/login';
+import Home from './components/home';
+import Users from './components/users/user';
+import Categories from './components/category/category';
 
 require('./bootstrap');
 
 window.Vue = require('vue');
-
-import VueRouter from 'vue-router';
-import vuetify from "../plugins/vuetify";
-import Wallets from './components/wallets/wallet.vue';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -20,33 +23,18 @@ import Wallets from './components/wallets/wallet.vue';
  */
 
 Vue.use(VueRouter);
-
-
-Vue.component('wallets', require('./components/wallets/wallet.vue').default);
-import Login from './components/auth/login';
-Vue.component('login',Login);
-import Home from './components/home';
+Vue.component('wallets', Wallets);
 Vue.component('home',Home);
-Vue.component(
-    'passport-clients',
-    require('./components/passport/Clients.vue').default
-);
-
-Vue.component(
-    'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue').default
-);
-
-Vue.component(
-    'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue').default
-);
-
-
-import Users from './components/users/user';
+Vue.component('login',Login);
+Vue.component('passport-clients', require('./components/passport/Clients.vue').default);
+Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue').default);
+Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue').default);
 Vue.component('user',Users);
-import Categories from './components/category/category';
 Vue.component('category', Categories);
+Vue.component('passport-clients', require('./components/passport/Clients.vue').default);
+Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue').default);
+Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue').default);
+
 const routes = [
     {
         path: '/categories', component:Categories
@@ -57,25 +45,11 @@ const routes = [
         path:'/',component:Login
     },{
         path:'/home',component:Home
+    },
+    {
+        path: '/wallet/:id', component: Wallets
     }
-
-
 ];
-
-Vue.component(
-    'passport-clients',
-    require('./components/passport/Clients.vue').default
-);
-
-Vue.component(
-    'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue').default
-);
-
-Vue.component(
-    'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue').default
-);
 
 const router = new VueRouter({routes});
 
