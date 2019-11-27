@@ -3163,12 +3163,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 //this.$route.params.id
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Wallet',
   data: function data() {
     return {
-      title: 'Wallet Information',
+      title: 'My Wallet',
       wallet: ''
     };
   },
@@ -43099,21 +43105,32 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("table", { staticClass: "table table-striped" }, [
+      _vm._m(0),
+      _vm._v(" "),
       _c("tbody", [
         _c("tr", [
-          _c("td", [
-            _vm._v("Virtual Wallet: " + _vm._s(_vm.wallet.email) + " ")
-          ]),
+          _c("td", [_vm._v(" " + _vm._s(_vm.wallet.email) + " ")]),
           _vm._v(" "),
-          _c("td", [
-            _vm._v("Current Balance: " + _vm._s(_vm.wallet.balance) + " € ")
-          ])
+          _c("td", [_vm._v(" " + _vm._s(_vm.wallet.balance) + " € ")])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Wallet Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Current Balance")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

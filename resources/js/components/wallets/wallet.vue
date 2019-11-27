@@ -4,10 +4,16 @@ s<template>
             <h1>{{ title }}</h1>
         </div>
         <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Wallet Email</th>
+                <th>Current Balance</th>
+            </tr>
+            </thead>
             <tbody>
             <tr>
-                <td>Virtual Wallet: {{ wallet.email }} </td>
-                <td>Current Balance: {{ wallet.balance }} € </td>
+                <td> {{ wallet.email }} </td>
+                <td> {{ wallet.balance }} € </td>
             </tr>
             </tbody>
         </table>
@@ -20,7 +26,7 @@ s<template>
         name: 'Wallet',
         data: function() {
             return {
-                title: 'Wallet Information',
+                title: 'My Wallet',
                 wallet: ''
             }
         },methods:{
