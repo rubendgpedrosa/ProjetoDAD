@@ -42,8 +42,8 @@ Route::get('movements/{id}', 'MovementsControllerAPI@show');
 //Route::put('categories', 'CategoryControllerAPI@update');
 //Route::delete('categories', 'CategoryControllerAPI@destroy');
 
-//wallet
+//Wallet
 Route::post('wallet/create', 'WalletControllerAPI@store');
 Route::get('wallet/{id}', 'WalletControllerAPI@show');
-Route::post('wallet/registerIncome', 'WalletControllerAPI@edit');
+Route::put('wallet/registerIncome', 'WalletControllerAPI@registerIncome');
 
