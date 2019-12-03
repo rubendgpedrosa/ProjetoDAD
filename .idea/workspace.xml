@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="Components Category Add_Edit, Login and Logout Config but disabled">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="Restoring wallet files final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WalletControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WalletControllerAPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +13,9 @@
   </component>
   <component name="EditorConfigPreviewManager">
     <editorConfig file="$PROJECT_DIR$/DAD/.editorconfig" previewFile="$PROJECT_DIR$/DAD/resources/js/vue.js" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="ProjetoDAD" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -41,7 +45,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/laragon/www/05_Laravel_Vue_Updated_Base" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -51,6 +55,9 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Projects\ProjetoDAD\resources\views" />
       <recent name="C:\laragon\www\ProjetoDAD\DAD\resources\js" />
@@ -86,6 +93,9 @@
       <workItem from="1573916072983" duration="679000" />
       <workItem from="1574176223149" duration="14882000" />
       <workItem from="1574781514790" duration="6268000" />
+      <workItem from="1574796841617" duration="1043000" />
+      <workItem from="1574800902801" duration="9341000" />
+      <workItem from="1574940548454" duration="47000" />
     </task>
     <task id="LOCAL-00001" summary="Category Model, Controller, Route API">
       <created>1573578346429</created>
@@ -122,7 +132,28 @@
       <option name="project" value="LOCAL" />
       <updated>1574788334418</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Wallet restored">
+      <created>1574797488474</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574797488474</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Restoring wallet files">
+      <created>1574801431073</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1574801431073</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Restoring wallet files final">
+      <created>1574859456561</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1574859456561</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,13 +191,21 @@
     <MESSAGE value="Components Category Add_Edit, Login and Logout Config but disabled" />
     <MESSAGE value="MovementsControllerAPI" />
     <MESSAGE value="Update gitignore, Delete Logs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update gitignore, Delete Logs" />
+    <MESSAGE value="Wallet restored" />
+    <MESSAGE value="Restoring wallet files" />
+    <MESSAGE value="Restoring wallet files final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Restoring wallet files final" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="393" y="6" key="CommitChangelistDialog2" timestamp="1574788333556">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="696" y="349" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1574797073084">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="696" y="349" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1574797073084" />
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1574941172799">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="393" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1574788333556" />
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1574941172799" />
     <state x="147" y="64" width="1228" height="688" key="DiffContextDialog" timestamp="1574205928205">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -175,6 +214,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1574205870816" />
+    <state width="1899" height="290" key="GridCell.Tab.0.bottom" timestamp="1574796912375">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="290" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1574796912375" />
+    <state width="1899" height="290" key="GridCell.Tab.0.center" timestamp="1574796912375">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="290" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1574796912375" />
+    <state width="1899" height="290" key="GridCell.Tab.0.left" timestamp="1574796912375">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="290" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1574796912375" />
+    <state width="1899" height="290" key="GridCell.Tab.0.right" timestamp="1574796912375">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="290" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1574796912375" />
     <state x="0" y="158" key="IDE.errors.dialog" timestamp="1573606382261">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -183,10 +238,15 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="481" y="128" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1573578420425" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1574788336284">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1574859459184">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1574788336284" />
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1574859459184" />
+    <state x="617" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1574862552343">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="617" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1574862552343" />
     <state x="569" y="203" key="git4idea.merge.GitMergeDialog" timestamp="1574787680589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -195,6 +255,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="473" y="203" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1574788390105" />
+    <state x="623" y="248" key="run.anything.popup" timestamp="1574801455985">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1574801455985" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1573604925537">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
