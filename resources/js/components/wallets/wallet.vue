@@ -17,13 +17,18 @@ s<template>
             </tr>
             </tbody>
         </table>
+        <movement-list v-bind:wallet="wallet" v-bind:id="this.$route.params.id"></movement-list>
     </div>
 </template>
 
 <script>
     //this.$route.params.id
+
+    import MovementList from "../movement/movementList";
+
     export default{
         name: 'Wallet',
+        components: {MovementList},
         data: function() {
             return {
                 title: 'My Wallet',
@@ -31,12 +36,19 @@ s<template>
             }
         },methods:{
             getWallet: function() {
-                axios.get(`/api/wallet/${this.$route.params.id}`).then(response => (this.wallet = response.data))
+                axios.get(`/api/wallet/${this.$route.params.id}`).then(response => (this.wallet = response.data));
             }
         },
         mounted () {
             this.getWallet();
         }
+        //Websockets!!!
+        /*,
+        watch: {
+            wallet: function () {
+                this.getWallet();
+            }
+        }*/
     }
 
 </script>

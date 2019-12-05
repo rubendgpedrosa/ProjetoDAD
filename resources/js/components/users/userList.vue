@@ -27,7 +27,7 @@
         </thead>
         <tbody>
         <tr v-for="user in users" :key="user.id">
-          <td ><img :src="`./storage/fotos/${user.photo}`"> </td>
+          <td ><img :src="`./storage/fotos/${user.photo}`" class="img-circle" style="max-width:70px;"> </td>
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td v-if="user.type==='o'">Operator</td>

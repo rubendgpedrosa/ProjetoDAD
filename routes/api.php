@@ -25,9 +25,10 @@ Route::middleware('auth:api')->get('teste', function () {return response()->json
 //Category
 Route::get('categories', 'CategoryControllerAPI@index');
 Route::get('categories/{id}', 'CategoryControllerAPI@show');
-Route::post('categories', 'CategoryControllerAPI@store');
+Route::post('categories', 'CategoryControllerAPI@   store');
 Route::put('categories', 'CategoryControllerAPI@update');
 Route::delete('categories', 'CategoryControllerAPI@destroy');
+
 //Users
 Route::get('users', 'UserControllerAPI@index');
 Route::get('users/{id}', 'UserControllerAPI@show');

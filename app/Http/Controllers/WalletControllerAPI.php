@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Wallet;
 use App\Movement;
+use App\Http\Controllers\MovementsControllersAPI;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +16,7 @@ class WalletControllerAPI extends Controller
     }
 
     public function destroy(Request $request){
+
     }
 
     public function edit(){
@@ -28,22 +30,26 @@ class WalletControllerAPI extends Controller
         $validatedData = $request->validate([
             'email' => 'required|email',
             'balance' => 'required|Integer|min:0.01|max:5000',
-            'type' => 'required|in:c,bt,mb',
+            //'type' => 'required|in:c,bt,mb',
             'source' => 'in:cash,bank transfer'
             //'IBAN' => 'required|'
         ]);
         $wallet = Wallet::find($validatedData['email']);
-        $movement = new Movement;
-        $movement->start_balance = $validatedData['balance'];
-        $movement->wallet_id = $wallet->id;
+        $movement = new Movement();
+        $movement = app('App\Http\Controllers\MovementsControllerAPI')->store($request, $wallet);
         $wallet->balance += $validatedData['balance'];
-        $movement->end_balance = $validatedData['balance'];
         $wallet->save();
-        return response()->json($wallet);
+        return $movement;
     }
 
     public function store(User $user){
         $wallet = new Wallet();
+        $validatedData = $request->validate([
+            'email' => 'required|email',
+            'balance' => 'required|Integer|min:0.01|max:5000',
+            'type' => 'required|in:c,bt,mb',
+            'source' => 'in:cash,bank transfer'
+        ]);
         $wallet ->fill($request->all());
         //$wallet.balance = 0;
         $wallet->save();
