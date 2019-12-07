@@ -7,7 +7,6 @@ use Laravel\Passport\HasApiTokens;
 
 class Wallet extends Model
 {
-
     protected $table = 'wallets';
     protected $primaryKey = 'email';
     public $incrementing = false;
@@ -20,5 +19,4 @@ class Wallet extends Model
         'created_at',
         'updated_at',
     ];
-
 }

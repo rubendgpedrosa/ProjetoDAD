@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="Operator API income registration semi done.">
+    <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="Us">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/homepage/homepage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryControllerAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MovementControllerAPI.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WalletControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WalletControllerAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Movement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Movement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Wallet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Wallet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/movement/movementList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/movement/movementList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/users/userList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/userList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/users/addUser.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/users/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/user.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/wallets/wallet.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/wallets/wallet.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -125,7 +130,12 @@
       <workItem from="1575467009012" duration="1001000" />
       <workItem from="1575481527584" duration="533000" />
       <workItem from="1575496955787" duration="7812000" />
-      <workItem from="1575539180197" duration="5923000" />
+      <workItem from="1575539180197" duration="6138000" />
+      <workItem from="1575547871239" duration="1969000" />
+      <workItem from="1575568967783" duration="2657000" />
+      <workItem from="1575625352890" duration="464000" />
+      <workItem from="1575658336650" duration="2978000" />
+      <workItem from="1575730581569" duration="16381000" />
     </task>
     <task id="LOCAL-00001" summary="Category Model, Controller, Route API">
       <created>1573578346429</created>
@@ -190,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574941676697</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Deposit API with wallet update and movement creating. Listing for movements in &quot;My Wallet&quot; missing pagination.">
+      <created>1575545188548</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1575545188549</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,18 +249,19 @@
     <MESSAGE value="Restoring wallet files" />
     <MESSAGE value="Restoring wallet files final" />
     <MESSAGE value="Operator API income registration semi done." />
-    <option name="LAST_COMMIT_MESSAGE" value="Operator API income registration semi done." />
+    <MESSAGE value="Deposit API with wallet update and movement creating. Listing for movements in &quot;My Wallet&quot; missing pagination." />
+    <option name="LAST_COMMIT_MESSAGE" value="Deposit API with wallet update and movement creating. Listing for movements in &quot;My Wallet&quot; missing pagination." />
   </component>
   <component name="WindowStateProjectService">
     <state x="696" y="349" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1574797073084">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="696" y="349" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1574797073084" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1575545136923">
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1575747229176">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="393" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1574788333556" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1575545136923" />
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1575747229176" />
     <state x="147" y="64" width="1228" height="688" key="DiffContextDialog" timestamp="1574205928205">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -276,19 +294,19 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="481" y="128" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1573578420425" />
-    <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1574941678689">
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1575545191828">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1574788336284" />
-    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1574941678689" />
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1575545191828" />
     <state x="617" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1574862552343">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="617" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1574862552343" />
-    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575386746289">
+    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575736515321">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1575386746289" />
+    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1575736515321" />
     <state x="569" y="203" key="git4idea.merge.GitMergeDialog" timestamp="1574787680589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -301,10 +319,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1574801455985" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1575231553612">
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1575740881417">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1573604925537" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1575231553612" />
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1575740881417" />
   </component>
 </project>

@@ -4,7 +4,6 @@
             <h1>{{ title }}</h1>
 
         </div>
-        <button type="button" class="btn btn-primary">Adicionar Utilizador</button>
         <usersList :users="users"/>
 
         <div class="alert alert-success" v-if="showSuccess">

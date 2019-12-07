@@ -17,7 +17,7 @@ s<template>
             </tr>
             </tbody>
         </table>
-        <movement-list v-bind:wallet="wallet" v-bind:id="this.$route.params.id"></movement-list>
+        <movement-list></movement-list>
     </div>
 </template>
 

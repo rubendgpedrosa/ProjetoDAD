@@ -1,0 +1,97 @@
+<template>
+    <div>
+        <div>
+            <form>
+                <div class="form-group">
+                    <label for="inputFullName">Full Name</label>
+                    <input type="text" class="form-control" id="inputFullName" aria-describedby="fullNameHelp" required placeholder="Enter Full Name" v-model="newUser.name">
+                    <small id="nameHelp" class="form-text text-muted">Full name can only contain letters and spaces.</small>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">Email Address</label>
+                    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" required placeholder="Enter email" v-model="newUser.email">
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" minlength="3" class="form-control" id="inputPassword" placeholder="Password" required v-model.lazy="newUser.password">
+                        <small id="passwordHelp" class="form-text text-muted">Password must have 3 or more characters.</small>
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputPasswordConfirm"> Confirm Password</label>
+                        <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Confirm Password" required v-model.lazy="confirmed_password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputNIF">NIF</label>
+                    <input type="number" class="form-control" id="inputNIF" aria-describedby="nifHelp" placeholder="Enter NIF" v-model.number="newUser.nif">
+                </div>
+                <div class="form-group">
+                    <label for="inputImage">Profile Picture</label>
+                    <div v-if="newUser.photoURL.length === 0" >
+                        <input type="file" accept="image/*" @change="imageUpload" id="inputImage" aria-describedby="imageHelp">
+                    </div>
+                    <div v-else class="container">
+                        <button type="button" class="close" aria-label="Close" v-on:click="clickPhotograph">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <img style="width:20%" :src="newUser.photoURL"/>
+                    </div>
+                    <small id="imageHelp" class="form-text text-muted">Upload an optional photograph.</small>
+                </div>
+                <button v-on:click.prevent="submitUser()" type="submit" class="btn btn-primary">Submit</button>
+                <button v-on:click.prevent="cancelUser()" class="btn btn-danger">Cancel</button>
+            </form>
+        </div>
+    </div>
+</template>
+
+<script>
+    import FormData from 'form-data'
+
+    export default {
+        data: function(){
+            return{
+                newUser: {
+                    name: '',
+                    email: '',
+                    password: '',
+                    type: 'u',
+                    photo: '',
+                    photoURL: '',
+                    nif: '',
+                },
+                confirmed_password: '',
+            }
+        },
+        methods:{
+            cancelUser:function() {
+                console.log('Registering canceled');
+                this.$emit('cancel-edit', this.clickedButton);
+            },
+            submitUser:function(){
+                axios.post("api/users", this.newUser)
+                    .then(response => console.log(response.status), console.log(this.newUser))
+                    .catch(error => console.log(error.message));
+            },
+            imageUpload:function(photo){
+                const file = photo.target.files[0];
+                this.photo = file;
+                this.newUser.photoURL = URL.createObjectURL(file);
+                var formData = new FormData();
+                formData.append('inputImage', this.newUser.photo);
+            },
+            clickPhotograph:function(){
+                this.photo = '';
+                this.newUser.photoURL = '';
+            },
+            showToDelete:function(){
+
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>

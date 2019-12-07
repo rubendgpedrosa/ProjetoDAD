@@ -31,6 +31,7 @@
                 return {
                     movements: {},
                     categories: [],
+                    filterSettings: [],
                 }
         }, methods: {
             getMovements: function () {
@@ -56,6 +57,17 @@
         mounted() {
             this.getMovements();
             this.getCategory();
+        },
+        computed: {
+            filteredMovements (){
+                if(this.filterSettings){
+                    return this.resources.filter((item)=>{
+                        return item.title.startsWith(this.searchQuery);
+                    })
+                }else{
+                    return this.resources;
+                }
+            }
         }
     }
 </script>

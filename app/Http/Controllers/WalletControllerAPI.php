@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class WalletControllerAPI extends Controller
 {
     public function index() {
-        return Wallet::all();
+        return response()->json((Wallet::all())->count());
     }
 
     public function destroy(Request $request){
@@ -31,6 +31,7 @@ class WalletControllerAPI extends Controller
             'email' => 'required|email',
             'balance' => 'required|Integer|min:0.01|max:5000',
             //'type' => 'required|in:c,bt,mb',
+            //'source_description' => 'required|String',
             'source' => 'in:cash,bank transfer'
             //'IBAN' => 'required|'
         ]);
@@ -46,12 +47,9 @@ class WalletControllerAPI extends Controller
         $wallet = new Wallet();
         $validatedData = $request->validate([
             'email' => 'required|email',
-            'balance' => 'required|Integer|min:0.01|max:5000',
-            'type' => 'required|in:c,bt,mb',
-            'source' => 'in:cash,bank transfer'
+            'id' => 'required|Integer',
         ]);
         $wallet ->fill($request->all());
-        //$wallet.balance = 0;
         $wallet->save();
         return response()->json(new Wallet($wallet), 201);
     }
