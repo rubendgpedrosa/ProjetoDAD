@@ -38,7 +38,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary" v-on:click="login()">
@@ -67,13 +66,12 @@ export default {
                 'email':email.value,
                 'password' :password.value
             }).then(response=>{
+                console.log(response.data);
                sessionStorage.setItem('tokenAuth',Object.values(response.data)[2].toString());
                 axios.defaults.headers.common.Authorization = "Bearer " +sessionStorage.getItem('tokenAuth');
             }).catch(error=>{
                 console.log(error)
             })
-
-
 }
 
     }

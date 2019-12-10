@@ -94,11 +94,11 @@
                 this.newData.category_id = this.movementClicked.category_id;
                 this.newData.description = this.movementClicked.description;
                 this.newData.id = this.movementClicked.id;
-                console.log(this.newData);
                 axios.put('/api/movements', this.newData)
                     .then(response=>{
                         if(response.status === 200){
                             this.toggleEditMovement();
+                            this.movementClicked.category_string = this.categories.find(category => category.id === this.movementClicked.category_id).name;
                         }
                     })
                     .catch(error=>{console.log(error.message)});
