@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-define('SERVER_URL', 'http://projetodad.test/');
+define('SERVER_URL', env('SERVER_URL'));
 define('CLIENT_ID', '2');
 define('CLIENT_SECRET',env('CLIENT_SECRET'));
 
