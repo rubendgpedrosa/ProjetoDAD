@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <div class = jumbotron>
             <h1>LOGIN</h1>
         </div>
@@ -14,8 +14,6 @@
 
                                 <div class="col-md-6">
                                     <input id="email"  type="email" class="form-control" name="email"required autocomplete="email" autofocus v-model="email">
-
-
                                 </div>
 
                                 </div>

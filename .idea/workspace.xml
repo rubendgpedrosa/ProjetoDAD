@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="Us">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/homepage/homepage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" afterDir="false" />
+    <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/expense/registerExpense.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/movement/movementInformation.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WalletControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WalletControllerAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Wallet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Wallet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/category/categoryList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/category/categoryList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/homepage/homepage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/homepage/homepage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/movement/movementList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/movement/movementList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/users/addUser.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/users/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/user.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/users/userList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/userList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/wallets/wallet.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/wallets/wallet.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
@@ -69,12 +74,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/js/components/expense" />
       <recent name="C:\Projects\ProjetoDAD\resources\views" />
       <recent name="C:\laragon\www\ProjetoDAD\DAD\resources\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -135,7 +141,16 @@
       <workItem from="1575568967783" duration="2657000" />
       <workItem from="1575625352890" duration="464000" />
       <workItem from="1575658336650" duration="2978000" />
-      <workItem from="1575730581569" duration="16381000" />
+      <workItem from="1575730581569" duration="16440000" />
+      <workItem from="1575764779067" duration="143000" />
+      <workItem from="1575804969647" duration="10134000" />
+      <workItem from="1575834840096" duration="2000" />
+      <workItem from="1575847085751" duration="915000" />
+      <workItem from="1575848135670" duration="4771000" />
+      <workItem from="1575883915329" duration="8439000" />
+      <workItem from="1575896274253" duration="4964000" />
+      <workItem from="1575917336084" duration="7094000" />
+      <workItem from="1575990844499" duration="272000" />
     </task>
     <task id="LOCAL-00001" summary="Category Model, Controller, Route API">
       <created>1573578346429</created>
@@ -207,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575545188549</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="User creation and homepage.">
+      <created>1575747304950</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1575747304950</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,18 +272,19 @@
     <MESSAGE value="Restoring wallet files final" />
     <MESSAGE value="Operator API income registration semi done." />
     <MESSAGE value="Deposit API with wallet update and movement creating. Listing for movements in &quot;My Wallet&quot; missing pagination." />
-    <option name="LAST_COMMIT_MESSAGE" value="Deposit API with wallet update and movement creating. Listing for movements in &quot;My Wallet&quot; missing pagination." />
+    <MESSAGE value="User creation and homepage." />
+    <option name="LAST_COMMIT_MESSAGE" value="User creation and homepage." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="696" y="349" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1574797073084">
+    <state x="696" y="349" width="554" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1575918216925">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="696" y="349" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1574797073084" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1575747229176">
+    <state x="696" y="349" width="554" height="383" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1575918216925" />
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1575747304446">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="393" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1574788333556" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1575747229176" />
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1575747304445" />
     <state x="147" y="64" width="1228" height="688" key="DiffContextDialog" timestamp="1574205928205">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -294,11 +317,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="481" y="128" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1573578420425" />
-    <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1575545191828">
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1575921688490">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1574788336284" />
-    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1575545191828" />
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1575921688490" />
     <state x="617" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1574862552343">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -315,14 +338,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="473" y="203" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1574788390105" />
-    <state x="623" y="248" key="run.anything.popup" timestamp="1574801455985">
+    <state x="623" y="248" key="run.anything.popup" timestamp="1575852767853">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1574801455985" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1575740881417">
+    <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1575852767853" />
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1575902409116">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1573604925537" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1575740881417" />
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1575902409116" />
   </component>
 </project>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Wallet;
 use App\Movement;
+use App\User;
 use App\Http\Controllers\MovementsControllersAPI;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -43,15 +44,12 @@ class WalletControllerAPI extends Controller
         return $movement;
     }
 
-    public function store(User $user){
+    public function store(Request $request){
         $wallet = new Wallet();
-        $validatedData = $request->validate([
-            'email' => 'required|email',
-            'id' => 'required|Integer',
-        ]);
-        $wallet ->fill($request->all());
+        $user = User::where('email', $request->email)->first();
+        $wallet->email = $user['email'];
+        $wallet->id = $user['id'];
         $wallet->save();
-        return response()->json(new Wallet($wallet), 201);
     }
 
     public function show($id){

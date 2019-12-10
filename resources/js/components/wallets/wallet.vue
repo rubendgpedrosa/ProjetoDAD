@@ -3,7 +3,7 @@ s<template>
         <div class="jumbotron">
             <h1>{{ title }}</h1>
         </div>
-        <table class="table table-striped">
+        <table class="table table-hover table-borderless">
             <thead>
             <tr>
                 <th>Wallet Email</th>
@@ -15,6 +15,7 @@ s<template>
                 <td> {{ wallet.email }} </td>
                 <td> {{ wallet.balance }} € </td>
             </tr>
+            <tr><td></td><td></td></tr>
             </tbody>
         </table>
         <movement-list></movement-list>
@@ -22,8 +23,6 @@ s<template>
 </template>
 
 <script>
-    //this.$route.params.id
-
     import MovementList from "../movement/movementList";
 
     export default{
@@ -36,19 +35,12 @@ s<template>
             }
         },methods:{
             getWallet: function() {
-                axios.get(`/api/wallet/${this.$route.params.id}`).then(response => (this.wallet = response.data));
+                axios.get(`/api/wallets/${this.$route.params.id}`).then(response => (this.wallet = response.data));
             }
         },
         mounted () {
             this.getWallet();
         }
-        //Websockets!!!
-        /*,
-        watch: {
-            wallet: function () {
-                this.getWallet();
-            }
-        }*/
     }
 
 </script>

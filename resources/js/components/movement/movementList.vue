@@ -1,6 +1,9 @@
 <template>
     <div>
-        <table class="table table-striped">
+        <div class="jumbotron">
+            <h1>Movements</h1>
+        </div>
+        <table class="table table-hover table-borderless" v-if="movementInformationClicked === false">
             <thead>
             <tr>
                 <th>Date</th>
@@ -12,7 +15,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="movement in movements" :key="movement.id">
+            <tr v-if="movements.length > 0" v-for="movement in movements" :key="movement.id" @click="moreMovementInformation(movement)">
                 <td>{{movement.date}}</td>
                 <td>{{typeToString(movement.type)}}</td>
                 <td>{{categoryToString(movement.category_id)}}</td>
@@ -22,16 +25,23 @@
             </tr>
             </tbody>
         </table>
+        <movement-information v-if="movementInformationClicked" :categories="categories" :movementClicked="movementClicked" v-on:movement-information-clicked="changeInformationClicked"></movement-information>
+        <h3 class="text-center" v-if="movements.length === 0">No Records Found!</h3>
     </div>
 </template>
 
 <script>
+    import MovementInformation from './movementInformation';
+
     export default {
+        components: {MovementInformation},
         data: function () {
                 return {
                     movements: {},
                     categories: [],
                     filterSettings: [],
+                    movementInformationClicked: false,
+                    movementClicked: {}
                 }
         }, methods: {
             getMovements: function () {
@@ -43,7 +53,7 @@
                 .then(response=>{this.categories = response.data.data/*, console.log(response.data.data)*/});
             },
             typeToString: function(type){
-                return (type === "i")?"Expense Movement":"Income Credit";
+                return (type === "e")?"Expense Movement":"Income Credit";
             },
             categoryToString: function(categoryID){
                 for (let i = 0; i < this.categories.length; i++) {
@@ -52,22 +62,20 @@
                     }
                 }
                 return "N/A";
+            },
+            moreMovementInformation: function(movement){
+                this.movementInformationClicked = true;
+                this.movementClicked = movement;
+                this.movementClicked.type_string = this.typeToString(movement.type)
+                this.movementClicked.category_string = this.categoryToString(movement.category_id);
+            },
+            changeInformationClicked:function(){
+                this.movementInformationClicked = false;
             }
         },
         mounted() {
             this.getMovements();
             this.getCategory();
-        },
-        computed: {
-            filteredMovements (){
-                if(this.filterSettings){
-                    return this.resources.filter((item)=>{
-                        return item.title.startsWith(this.searchQuery);
-                    })
-                }else{
-                    return this.resources;
-                }
-            }
         }
     }
 </script>

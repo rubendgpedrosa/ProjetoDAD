@@ -9,6 +9,7 @@ use App\Http\Resources\User as UserResource;
 use Illuminate\Support\Facades\DB;
 
 use App\User;
+use App\Http\Controllers\WalletControllerAPI;
 use App\StoreUserRequest;
 use Hash;
 
@@ -33,6 +34,7 @@ class UserControllerAPI extends Controller
 
     public function store(Request $request)
     {
+        $walletController = new WalletControllerAPI();
         $request->validate([
                 'name' => 'required|min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
                 'email' => 'required|email|unique:users,email',
@@ -43,6 +45,9 @@ class UserControllerAPI extends Controller
         $user->fill($request->all());
         $user->password = Hash::make($user->password);
         $user->save();
+        if($user->type == "u"){
+            $walletController->store($request);
+        }
         return response()->json(new UserResource($user), 201);
     }
 

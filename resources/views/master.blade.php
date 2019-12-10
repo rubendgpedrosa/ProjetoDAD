@@ -9,7 +9,7 @@
         <title>@yield('title')</title>
         @yield('extrastyles')
         <!-- Latest compiled and minified CSS & JS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/style.css">
         </head>
 
@@ -24,9 +24,11 @@
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
             <ul class="nav flex-column">
-                <li><router-link to="/login">Login</router-link> </li>
-                <li><router-link to="/users">Users</router-link></li>
+                <li><router-link to="/expenses">Register Expense</router-link></li>
+                <li><router-link to="/wallets/12">My Wallet</router-link></li>
                 <li><router-link to="/categories">Categories</router-link></li>
+                <li><router-link to="/users">Users</router-link></li>
+                <li><router-link to="/login">Login</router-link> </li>
             </ul>
         </div>
     </nav>

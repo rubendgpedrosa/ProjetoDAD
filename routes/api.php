@@ -25,12 +25,12 @@ Route::middleware('auth:api')->get('teste', function () {return response()->json
 //Category
 Route::get('categories', 'CategoryControllerAPI@index');
 Route::get('categories/{id}', 'CategoryControllerAPI@show');
-Route::post('categories', 'CategoryControllerAPI@   store');
+Route::post('categories', 'CategoryControllerAPI@store');
 Route::put('categories', 'CategoryControllerAPI@update');
 Route::delete('categories', 'CategoryControllerAPI@destroy');
 
 //Users
-Route::get('users', 'UserControllerAPI@index');
+Route::get('users', 'UserControllerAPI@index');//->middleware('auth::api')
 Route::get('users/{id}', 'UserControllerAPI@show');
 Route::post('users', 'UserControllerAPI@store');
 Route::put('users/{id}', 'UserControllerAPI@update');
@@ -39,10 +39,12 @@ Route::delete('users/{id}', 'UserControllerAPI@destroy');
 //Movement
 Route::get('movements', 'MovementsControllerAPI@index');
 Route::get('movements/{id}', 'MovementsControllerAPI@show');
+Route::post('movements', 'MovementsControllerAPI@registerExpense');
+Route::put('movements', 'MovementsControllerAPI@update');
 
 //Wallet
-Route::get('walletNumber', 'WalletControllerAPI@index');
-Route::post('wallet/create', 'WalletControllerAPI@store');
-Route::get('wallet/{id}', 'WalletControllerAPI@show');
-Route::put('wallet/registerIncome', 'WalletControllerAPI@registerIncome');
+Route::get('wallets', 'WalletControllerAPI@index');
+Route::post('wallets/create', 'WalletControllerAPI@store');
+Route::get('wallets/{id}', 'WalletControllerAPI@show');
+Route::put('wallets', 'WalletControllerAPI@registerIncome');
 
