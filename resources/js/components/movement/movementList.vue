@@ -46,7 +46,7 @@
         }, methods: {
             getMovements: function () {
                 axios.get(`api/movements/${this.$route.params.id}`)
-                .then(response=>{this.movements = response.data.data/*, console.log(this.movements)*/});
+                .then(response=>{this.movements = response.data/*, console.log(this.movements)*/});
             },
             getCategory: function () {
                 axios.get('api/categories/')

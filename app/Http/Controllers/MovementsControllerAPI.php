@@ -27,18 +27,23 @@ class MovementsControllerAPI extends Controller
      */
     public function store(Request $request, Wallet $wallet)
     {
-        //'wallet_id','type','transfer','transfer_movement_id','type_payment','category_id',
-        //'iban','mb_entity_code','mb_payment_reference','descrition','source_description','date','start_balance','end_balance','value'
         $movement = new Movement;
         $movement->wallet_id = $wallet->id;
         $movement->type = $request->type;
         $movement->transfer = $request->transfer;
+        $movement->transfer_movement_id = $request->transfer_movement_id;
+        $movement->type_payment = $request->type_payment;
+        $movement->category_id = $request->category_id;
+        $movement->iban = $request->iban;
+        $movement->mb_entity_code = $request->mb_entity_code;
+        $movement->mb_payment_reference = $request->mb_payment_reference;
+        $movement->description = $request->description;
+        $movement->source_description = $request->source_description;
         $movement->date = new \DateTime();
         $movement->start_balance = $wallet->balance;
         $movement->end_balance = $wallet->balance + $request->balance;
         $movement->value = $request->balance;
-        $movement->save();
-        return $movement;
+        return response()->json($movement->save());
     }
 
     /**
@@ -62,15 +67,25 @@ class MovementsControllerAPI extends Controller
           destination wallet and a source description – application must guarantee that the
           destination e-mail is associated to a valid virtual wallet from another user.*/
         $movement = new Movement;
+        $wallet = Wallet::where('email', $request->email)->first();
         $movement->wallet_id = $wallet->id;
+        $movement->category_id = $request->category_id;
+        $movement->description = $request->description;
+        $movement->iban = $request->iban;
+        $movement->type_payment = $request->type_payment;
+        $movement->mb_entity_code = $request->mb_entity_code;
+        $movement->mb_payment_reference = $request->mb_payment_reference;
+        $movement->source_description = $request->source_description;
         $movement->type = $request->type;
-        $movement->transfer = $request->transfer;
+        $movement->transfer = ($request->email == null? 0:1);
         $movement->date = new \DateTime();
         $movement->start_balance = $wallet->balance;
         $movement->end_balance = $wallet->balance + $request->balance;
-        $movement->value = $request->balance;
+        $wallet->balance += $request->value;
+        $wallet->save();
+        $movement->value = $request->value;
         $movement->save();
-        return $movement;
+        return $wallet;
     }
 
     /**
@@ -81,7 +96,7 @@ class MovementsControllerAPI extends Controller
      */
     public function show($id)
     {
-        return MovementResource::collection(Movement::where('wallet_id',$id)->paginate(10));
+        return response()->json(MovementResource::collection(Movement::where('wallet_id',$id)->paginate(10)));
     }
 
     /**

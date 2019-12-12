@@ -23,7 +23,7 @@
             </tbody>
         </table>
         <div style="position: relative;">
-            <div class="card-body card-block" v-if="editMovementClicked == false">
+            <div class="card-body card-block" v-if="editMovementClicked === false">
                 <div class="form-group">
                     <label for="inputDescription" style="float:left;">Description</label>
                     <textarea class="form-control" readonly :value="movementClicked.description === null? 'Not Available':movementClicked.description"/>
@@ -49,11 +49,10 @@
                     <img src="movementClicked.photo"/>
                 </div>
             </div>
-            <div v-else>
-                <h4>Edit Movement</h4>
+            <div class="card-body card-block" v-else>
                 <div class="form-group">
                     <label for="inputDescription" style="float:left;">Description</label>
-                    <input type="text" class="form-control" id="inputDescription" aria-describedby="descriptionHelp" v-model="movementClicked.description">
+                    <textarea type="text" class="form-control" id="inputDescription" aria-describedby="descriptionHelp" v-model="movementClicked.description"/>
                     <small id="descriptionHelp" class="form-text text-muted">Please enter your new description.</small>
                 </div>
                 <div class="form-group">

@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/expense/registerExpense.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/expense/registerExpense.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/homepage/homepage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/homepage/homepage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/movement/movementInformation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/movement/movementInformation.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/movement/movementList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/movement/movementList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/laravel-2019-11-16.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/laravel-2019-11-17.log" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +143,13 @@
       <workItem from="1575883915329" duration="8439000" />
       <workItem from="1575896274253" duration="4964000" />
       <workItem from="1575917336084" duration="7094000" />
-      <workItem from="1575990844499" duration="7931000" />
+      <workItem from="1575990844499" duration="8221000" />
+      <workItem from="1576004727342" duration="4840000" />
+      <workItem from="1576056695291" duration="13554000" />
+      <workItem from="1576079508810" duration="1160000" />
+      <workItem from="1576093634528" duration="1512000" />
+      <workItem from="1576095577891" duration="5000" />
+      <workItem from="1576143655198" duration="13767000" />
     </task>
     <task id="LOCAL-00001" summary="Category Model, Controller, Route API">
       <created>1573578346429</created>
@@ -234,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575992018960</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Movement category and description edition completed">
+      <created>1575999817822</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1575999817822</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,18 +301,19 @@
     <MESSAGE value="Deposit API with wallet update and movement creating. Listing for movements in &quot;My Wallet&quot; missing pagination." />
     <MESSAGE value="User creation and homepage." />
     <MESSAGE value="Display extra information related to movements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Display extra information related to movements" />
+    <MESSAGE value="Movement category and description edition completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Movement category and description edition completed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="696" y="349" width="554" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1575918216925">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="696" y="349" width="554" height="383" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1575918216925" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1575992018846">
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1575999817418">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="393" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1574788333556" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1575992018846" />
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1575999817418" />
     <state x="147" y="64" width="1228" height="688" key="DiffContextDialog" timestamp="1574205928205">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -323,11 +346,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="481" y="128" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1573578420425" />
-    <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1575992020187">
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1575999820296">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1574788336284" />
-    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1575992020187" />
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1575999820296" />
     <state x="617" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1574862552343">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -348,10 +371,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1575852767853" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1575902409116">
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1576008969038">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1573604925537" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1575902409116" />
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1576008969038" />
   </component>
 </project>

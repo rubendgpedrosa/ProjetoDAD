@@ -4,11 +4,11 @@
             <h1 class="display-4">{{ title }}</h1>
             <p class="lead">{{ welcome_message }}</p>
             <hr class="my-4">
-            <div  v-if="clickedButton == false && formSubmitted == false">
+            <div>
                 <p>Current number of wallets: {{ number_wallets }}</p>
-                <button @click="clickedButton = true" class="btn btn-primary" href="#/register" role="button">Register Now</button>
+                <button v-if="clickedButton === false && formSubmitted === false" @click="clickedButton = true" class="btn btn-primary" href="#/register" role="button">Register Now</button>
             </div>
-            <register-user v-if="clickedButton && formSubmitted == false" v-on:cancel-registration="cancelRegistration" v-on:form-submitted="formSubmittion"></register-user>
+            <register-user v-if="clickedButton && formSubmitted === false" v-on:cancel-registration="cancelRegistration" v-on:form-submitted="formSubmittion"></register-user>
             <div v-if="clickedButton && formSubmitted ">
                 Thank you for joining us!
             </div>
@@ -32,13 +32,14 @@
         },
         methods: {
             getNumberWallets: function(){
-                axios.get('/api/wallets').then(response => (this.number_wallets = response.data));
+                axios.get('/api/wallets').then(response => (this.number_wallets = response.data)).catch(error=>console.log(error.nessage));
             },
             cancelRegistration: function(){
                 this.clickedButton = false;
             },
             formSubmittion: function(){
                 this.formSubmitted = true;
+                this.getNumberWallets();
             }
         },
         mounted (){

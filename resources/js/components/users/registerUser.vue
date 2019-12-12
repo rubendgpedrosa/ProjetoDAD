@@ -61,7 +61,7 @@
                     email: '',
                     password: '',
                     type: 'u',
-                    photo: '',
+                    photo: null,
                     photoURL: '',
                     nif: '',
                 },
@@ -72,16 +72,14 @@
             cancelRegistration:function() {
                 this.$emit('cancel-registration');
             },
-            submitUser:function(){
-                this.newUser.photo = this.newUser.photoURL;
+            async submitUser(){
                 axios.post("api/users", this.newUser)
-                    .then(response => console.log(response.status), console.log(this.newUser),this.$emit('form-submitted'))
+                    .then(response => {this.$emit('form-submitted')})
                     .catch(error => console.log(error.message));
             },
-            imageUpload:function(photo){
-                const file = photo.target.files[0];
-                this.photo = file;
-                this.newUser.photoURL = URL.createObjectURL(file);
+            imageUpload:function(event){
+                this.newUser.photo = event.target.files[0];
+                this.newUser.photoURL = URL.createObjectURL(this.newUser.photo);
             },
             clickPhotograph:function(){
                 this.photo = '';

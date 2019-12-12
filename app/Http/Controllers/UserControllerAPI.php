@@ -12,6 +12,7 @@ use App\User;
 use App\Http\Controllers\WalletControllerAPI;
 use App\StoreUserRequest;
 use Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserControllerAPI extends Controller
 {
@@ -23,8 +24,6 @@ class UserControllerAPI extends Controller
         } else {
             return UserResource::collection(User::all());
         }
-
-
     }
 
     public function show($id)
