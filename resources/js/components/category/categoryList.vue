@@ -29,6 +29,7 @@
             }
         },
         methods: {
+            //TODO pagination and filter
             editCategory(category){
                 this.currentCategory = category;
                 this.$emit('edit-category', category);

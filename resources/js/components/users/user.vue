@@ -4,7 +4,7 @@
             <h1>{{ title }}</h1>
 
         </div>
-        <usersList :users="users"/>
+        <usersList v-on:user-deleted="updateList" :users="users"/>
 
         <div class="alert alert-success" v-if="showSuccess">
             <button type="button" class="close-btn" v-on:click="showSuccess=false">&times;</button>
@@ -26,9 +26,13 @@
                 users: []}
         }, methods: {
             getUsers: function () {
-
                 axios.get('api/users')
                     .then(response=>{this.users = response.data.data});
+            },
+            updateList: function(id){
+                this.users = this.users.filter(user => {
+                    return user.id != id;
+                });
             }
         },
         components: {

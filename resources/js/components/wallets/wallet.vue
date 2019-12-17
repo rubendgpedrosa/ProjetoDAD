@@ -41,6 +41,7 @@ s<template>
             this.$eventHub.$off('logged-in');
         },
         methods:{
+            //TODO get wallet from logged in user
             getWallet: function() {
                 axios.get(`/api/wallets/${this.$route.params.id}`).then(response => (this.wallet = response.data));
             }

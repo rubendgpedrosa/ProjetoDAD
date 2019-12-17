@@ -2154,6 +2154,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    //TODO pagination and filter
     editCategory: function editCategory(category) {
       this.currentCategory = category;
       this.$emit('edit-category', category);
@@ -3707,6 +3708,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('api/users').then(function (response) {
         _this.users = response.data.data;
       });
+    },
+    updateList: function updateList(id) {
+      this.users = this.users.filter(function (user) {
+        return user.id != id;
+      });
     }
   },
   components: {
@@ -3736,8 +3742,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    //TODO pagination
     deleteUser: function deleteUser(event) {
-      console.log(event);
+      var _this = this;
+
+      axios["delete"]("/api/users/".concat(event.id), event.id).then(function (response) {
+        _this.$emit('user-deleted', event.id);
+      })["catch"](function (error) {
+        return console.log(error.message);
+      });
     }
   }
 });
@@ -3797,6 +3810,7 @@ __webpack_require__.r(__webpack_exports__);
     this.$eventHub.$off('logged-in');
   },
   methods: {
+    //TODO get wallet from logged in user
     getWallet: function getWallet() {
       var _this = this;
 
@@ -45667,7 +45681,10 @@ var render = function() {
         _c("h1", [_vm._v(_vm._s(_vm.title))])
       ]),
       _vm._v(" "),
-      _c("usersList", { attrs: { users: _vm.users } }),
+      _c("usersList", {
+        attrs: { users: _vm.users },
+        on: { "user-deleted": _vm.updateList }
+      }),
       _vm._v(" "),
       _vm.showSuccess
         ? _c("div", { staticClass: "alert alert-success" }, [

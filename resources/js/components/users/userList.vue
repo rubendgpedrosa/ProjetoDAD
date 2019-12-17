@@ -7,8 +7,9 @@
             }
         },
         methods:{
+            //TODO pagination
             deleteUser: function(event){
-                console.log(event);
+                axios.delete(`/api/users/${event.id}`, event.id).then(response => {this.$emit('user-deleted', event.id)}).catch(error => console.log(error.message));
             }
         }
     }

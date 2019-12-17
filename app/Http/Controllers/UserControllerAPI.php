@@ -9,7 +9,8 @@ use App\Http\Resources\User as UserResource;
 use Illuminate\Support\Facades\DB;
 
 use App\User;
-use App\Http\Controllers\WalletControllerAPI;
+use App\Http\Controllers\MovementsControllerAPI as Movement;
+use App\Http\Controllers\WalletControllerAPI as Wallet;
 use App\StoreUserRequest;
 use Hash;
 use Illuminate\Support\Facades\Storage;
@@ -87,6 +88,10 @@ class UserControllerAPI extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+        $wallet = new Wallet();
+        $movements = new Movement();
+        $wallet = $wallet->show($id);
+        $wallet->delete();
         $user->delete();
         return response()->json(null, 204);
     }
