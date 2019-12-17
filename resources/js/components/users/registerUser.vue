@@ -25,13 +25,14 @@
                 <div class="form-group">
                     <label for="inputNIF">NIF</label>
                     <input type="number" class="form-control" id="inputNIF" aria-describedby="nifHelp" placeholder="Enter NIF" v-model.number="newUser.nif">
+                    <small id="nifHelp" class="form-text text-muted">Nif can only have up to 9 numbers.</small>
                 </div>
                 <div class="form-group">
                     <div>
                         <label for="inputImage">Profile Picture</label>
                         <div class=" custom-file" v-if="newUser.photoURL.length === 0" >
                             <input style="display: none;" ref="inputImage" type="file" accept="image/*" @change="imageUpload" id="inputImage" aria-describedby="imageHelp">
-                            <button class="custom-file-label" @click="$refs.inputImage.click()" >Upload</button>
+                            <button class="custom-file-label" @click="$refs.inputImage.click()">Upload</button>
                         </div>
                         <div v-else>
                             <img style="width:20%" :src="newUser.photoURL"/>
@@ -73,6 +74,7 @@
                 this.$emit('cancel-registration');
             },
             async submitUser(){
+                console.log(this.newUser);
                 axios.post("api/users", this.newUser)
                     .then(response => {this.$emit('form-submitted')})
                     .catch(error => console.log(error.message));
@@ -80,11 +82,26 @@
             imageUpload:function(event){
                 this.newUser.photo = event.target.files[0];
                 this.newUser.photoURL = URL.createObjectURL(this.newUser.photo);
+                //returned string is too big and database can't be altered, if it could, converting the image file to base64 and storing it as a string would be an option.
+                this.readFileAsDataURL(this.newUser.photo).then(response => this.newUser.photo = response);
+            },
+            readFileAsDataURL: async function(file) {
+                return await new Promise((resolve) => {
+                    let fileReader = new FileReader();
+                    fileReader.onload = (e) => resolve(fileReader.result);
+                    fileReader.readAsDataURL(file);
+                });
             },
             clickPhotograph:function(){
                 this.photo = '';
                 this.newUser.photoURL = '';
-            }
+            }/*,
+            base64_encode: function(file) {
+                // read binary data
+                let bitmap = fs.readFileSync(file);
+                // convert binary data to base64 encoded string
+                return new Buffer(bitmap).toString('base64');
+            }*/
         }
     }
 </script>

@@ -19,7 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', 'LoginControllerAPI@login')->name('login');
 Route::middleware('auth:api')->post('logout', 'LoginControllerAPI@logout');
-
 Route::middleware('auth:api')->get('teste', function () {return response()->json(['msg'=>'Só um teste'], 200);});
 
 //Category
@@ -34,6 +33,7 @@ Route::get('users', 'UserControllerAPI@index');//->middleware('auth::api')
 Route::get('users/{id}', 'UserControllerAPI@show');
 Route::post('users', 'UserControllerAPI@store');
 Route::put('users/{id}', 'UserControllerAPI@update');
+Route::put('users/{id}', 'UserControllerAPI@uploadImage');
 Route::delete('users/{id}', 'UserControllerAPI@destroy');
 
 //Movement
@@ -47,4 +47,3 @@ Route::get('wallets', 'WalletControllerAPI@index');
 Route::post('wallets/create', 'WalletControllerAPI@store');
 Route::get('wallets/{id}', 'WalletControllerAPI@show');
 Route::put('wallets', 'WalletControllerAPI@registerIncome');
-

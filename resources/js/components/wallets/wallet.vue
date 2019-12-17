@@ -33,7 +33,14 @@ s<template>
                 title: 'My Wallet',
                 wallet: ''
             }
-        },methods:{
+        },
+        created() {
+            this.$eventHub.$on('logged-in', this.token);
+        },
+        beforeDestroy() {
+            this.$eventHub.$off('logged-in');
+        },
+        methods:{
             getWallet: function() {
                 axios.get(`/api/wallets/${this.$route.params.id}`).then(response => (this.wallet = response.data));
             }

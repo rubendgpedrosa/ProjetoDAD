@@ -67,8 +67,9 @@ class MovementsControllerAPI extends Controller
           destination wallet and a source description – application must guarantee that the
           destination e-mail is associated to a valid virtual wallet from another user.*/
         $movement = new Movement;
-        $wallet = Wallet::where('email', $request->email)->first();
-        $movement->wallet_id = $wallet->id;
+        $walletToDeposit = Wallet::where('email', $request->email)->first();
+        $walletToRetract = Wallet::where('id', $request->id)->first();
+        $movement->wallet_id = $walletToDeposit->id;
         $movement->category_id = $request->category_id;
         $movement->description = $request->description;
         $movement->iban = $request->iban;
@@ -79,13 +80,15 @@ class MovementsControllerAPI extends Controller
         $movement->type = $request->type;
         $movement->transfer = ($request->email == null? 0:1);
         $movement->date = new \DateTime();
-        $movement->start_balance = $wallet->balance;
-        $movement->end_balance = $wallet->balance + $request->balance;
-        $wallet->balance += $request->value;
-        $wallet->save();
+        $movement->start_balance = $walletToDeposit->balance;
+        $movement->end_balance = $walletToDeposit->balance + $request->balance;
+        $walletToRetract->balance = $walletToRetract->balance - $request->value;
+        $walletToDeposit->balance += $request->value;
+        $walletToRetract->save();
+        $walletToDeposit->save();
         $movement->value = $request->value;
         $movement->save();
-        return $wallet;
+        return $walletToDeposit;
     }
 
     /**

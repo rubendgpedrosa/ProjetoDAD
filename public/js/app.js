@@ -1896,23 +1896,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      email: "admin1@mail.pt",
-      password: "123"
+      email: '',
+      password: ''
     };
   },
   methods: {
     login: function login() {
+      var _this = this;
+
       axios.post('/api/login', {
         'email': email.value,
         'password': password.value
@@ -1920,6 +1914,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
         sessionStorage.setItem('tokenAuth', Object.values(response.data)[2].toString());
         axios.defaults.headers.common.Authorization = "Bearer " + sessionStorage.getItem('tokenAuth');
+        var token = sessionStorage.getItem('tokenAuth');
+
+        _this.$eventHub.$emit('logged-in', token);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2244,6 +2241,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2258,7 +2258,8 @@ __webpack_require__.r(__webpack_exports__);
         mb_entity_code: '',
         mb_payment_reference: '',
         email: '',
-        source_description: ''
+        source_description: '',
+        id: 12
       },
       categories: [{}],
       types: [{
@@ -2283,18 +2284,19 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.expenseClicked);
     },
     submitExpense: function submitExpense() {
-      console.log(this.newExpense);
+      var _this = this;
+
       axios.post('/api/movements', this.newExpense).then(function (response) {
-        return console.log(response.status);
+        return _this.$emit('expense-registered');
       })["catch"](function (error) {
         return console.log(error.message);
       });
     },
     getCategories: function getCategories() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get('/api/categories').then(function (response) {
-        return _this.categories = response.data.data;
+        return _this2.categories = response.data.data;
       })["catch"](function (error) {
         return console.log(error.message);
       });
@@ -3566,6 +3568,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3593,13 +3596,14 @@ __webpack_require__.r(__webpack_exports__);
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              console.log(this.newUser);
               axios.post("api/users", this.newUser).then(function (response) {
                 _this.$emit('form-submitted');
               })["catch"](function (error) {
                 return console.log(error.message);
               });
 
-            case 1:
+            case 2:
             case "end":
               return _context.stop();
           }
@@ -3607,13 +3611,53 @@ __webpack_require__.r(__webpack_exports__);
       }, null, this);
     },
     imageUpload: function imageUpload(event) {
+      var _this2 = this;
+
       this.newUser.photo = event.target.files[0];
-      this.newUser.photoURL = URL.createObjectURL(this.newUser.photo);
+      this.newUser.photoURL = URL.createObjectURL(this.newUser.photo); //returned string is too big and database can't be altered, if it could, converting the image file to base64 and storing it as a string would be an option.
+
+      this.readFileAsDataURL(this.newUser.photo).then(function (response) {
+        return _this2.newUser.photo = response;
+      });
+    },
+    readFileAsDataURL: function readFileAsDataURL(file) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function readFileAsDataURL$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(new Promise(function (resolve) {
+                var fileReader = new FileReader();
+
+                fileReader.onload = function (e) {
+                  return resolve(fileReader.result);
+                };
+
+                fileReader.readAsDataURL(file);
+              }));
+
+            case 2:
+              return _context2.abrupt("return", _context2.sent);
+
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      });
     },
     clickPhotograph: function clickPhotograph() {
       this.photo = '';
       this.newUser.photoURL = '';
     }
+    /*,
+    base64_encode: function(file) {
+       // read binary data
+       let bitmap = fs.readFileSync(file);
+       // convert binary data to base64 encoded string
+       return new Buffer(bitmap).toString('base64');
+    }*/
+
   }
 });
 
@@ -3691,7 +3735,11 @@ __webpack_require__.r(__webpack_exports__);
       currentUser: {}
     };
   },
-  methods: {}
+  methods: {
+    deleteUser: function deleteUser(event) {
+      console.log(event);
+    }
+  }
 });
 
 /***/ }),
@@ -3741,6 +3789,12 @@ __webpack_require__.r(__webpack_exports__);
       title: 'My Wallet',
       wallet: ''
     };
+  },
+  created: function created() {
+    this.$eventHub.$on('logged-in', this.token);
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.$eventHub.$off('logged-in');
   },
   methods: {
     getWallet: function getWallet() {
@@ -10087,7 +10141,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*fixes text area issues with padding on a parent div.\n.box {\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -webkit-box-sizing: border-box;\n    width: 100px;\n    padding: 10px;\n}*/\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*fixes text area issues with padding on a parent div.\n.box {\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -webkit-box-sizing: border-box;\n    width: 100px;\n    padding: 10px;\n}*/\n", ""]);
 
 // exports
 
@@ -45476,7 +45530,13 @@ var render = function() {
                 return _vm.$forceUpdate()
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _c(
+            "small",
+            { staticClass: "form-text text-muted", attrs: { id: "nifHelp" } },
+            [_vm._v("Nif can only have up to 9 numbers.")]
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
@@ -97898,6 +97958,8 @@ var routes = [{
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   routes: routes
 });
+Vue.prototype.$eventHub = new Vue(); // Global event bus
+
 var app = new Vue({
   el: '#app',
   //mode: 'history',

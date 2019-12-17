@@ -68,6 +68,8 @@ const routes = [
 
 const router = new VueRouter({routes});
 
+Vue.prototype.$eventHub = new Vue(); // Global event bus
+
 const app = new Vue({
     el: '#app',
     //mode: 'history',

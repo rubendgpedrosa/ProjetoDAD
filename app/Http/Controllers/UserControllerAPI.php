@@ -31,9 +31,28 @@ class UserControllerAPI extends Controller
         return new UserResource(User::find($id));
     }
 
+    public function uploadImage(Request $request, $id){
+        $exploded = explode(',', $request->photo);
+        $decoded = base64_decode($exploded[1]);
+        if(strpos($exploded[0], 'jpeg') !== false){
+            $extension = '.jpg';
+        }
+        else{
+            $extension = '.png';
+        }
+        //TODO substring 13 characters.
+        $string = md5($id);
+        $partial_string = $string.substr(0, 12);
+        $fileName = $id .'_'.$partial_string.$extension;
+        $path = public_path().'/storage/fotos/'.$fileName;
+        file_put_contents($path, $decoded);
+        return $fileName;
+    }
+
     public function store(Request $request)
     {
         $walletController = new WalletControllerAPI();
+        $userController = new UserControllerAPI();
         $request->validate([
                 'name' => 'required|min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
                 'email' => 'required|email|unique:users,email',
@@ -41,13 +60,16 @@ class UserControllerAPI extends Controller
                 'password' => 'min:3'
             ]);
         $user = new User();
-        $user->fill($request->all());
+        $user->fill($request->except('photo'));
         $user->password = Hash::make($user->password);
         $user->save();
         if($user->type == "u"){
             $walletController->store($request);
         }
-        return response()->json(new UserResource($user), 201);
+        //\Log::info($request->all());
+        $user->photo = $userController->uploadImage($request, $user->id);
+        $user->save();
+        return $user;
     }
 
     public function update(Request $request, $id)

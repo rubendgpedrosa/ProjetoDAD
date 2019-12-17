@@ -7,7 +7,9 @@
             }
         },
         methods:{
-
+            deleteUser: function(event){
+                console.log(event);
+            }
         }
     }
 </script>

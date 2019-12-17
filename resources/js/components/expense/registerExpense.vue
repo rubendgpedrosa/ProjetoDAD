@@ -41,17 +41,20 @@
                 </div>
                 <div class="col">
                     <label for="inputValue">IBAN</label>
-                    <input :disabled="newExpense.type_payment !== 'bt'" :required="newExpense.type_payment === 'bt'"  type="text" class="form-control" id="inputIBAN" v-model.lazy="newExpense.iban">
+                    <input :disabled="newExpense.type_payment !== 'bt'" :required="newExpense.type_payment === 'bt'"
+                           type="text" class="form-control" id="inputIBAN" v-model.lazy="newExpense.iban">
                 </div>
             </div>
             <div class="form-row" v-if="newExpense.type === 'e'">
                 <div class="col">
                     <label for="inputMBEntityCode">MB Entity Code</label>
-                    <input :disabled="newExpense.type_payment !== 'mb'" :required="newExpense.type_payment === 'mb'" type="text" class="form-control" id="inputMBEntityCode" v-model.lazy="newExpense.mb_entity_code">
+                    <input :disabled="newExpense.type_payment !== 'mb'" :required="newExpense.type_payment === 'mb'"
+                           type="text" class="form-control" id="inputMBEntityCode" v-model.lazy="newExpense.mb_entity_code">
                 </div>
                 <div class="col">
                     <label for="inputMBPaymentReference">MB Payment Reference</label>
-                    <input :disabled="newExpense.type_payment !== 'mb'" :required="newExpense.type_payment === 'mb'" type="text" class="form-control" id="inputMBPaymentReference" v-model.lazy="newExpense.mb_payment_reference">
+                    <input :disabled="newExpense.type_payment !== 'mb'" :required="newExpense.type_payment === 'mb'"
+                           type="text" class="form-control" id="inputMBPaymentReference" v-model.lazy="newExpense.mb_payment_reference">
                 </div>
             </div>
             <div class="mb-3" v-if="newExpense.type === 'i'">
@@ -82,7 +85,8 @@ export default{
                 mb_entity_code: '',
                 mb_payment_reference: '',
                 email: '',
-                source_description: ''
+                source_description: '',
+                id: 12
             },
             categories: [{}],
             types: [{name: 'Payment to External Entity', value: 'e'}, {name: 'Transfer Movement', value: 'i'}],
@@ -95,8 +99,7 @@ export default{
             console.log(this.expenseClicked);
         },
         submitExpense: function(){
-            console.log(this.newExpense);
-            axios.post('/api/movements', this.newExpense).then(response => console.log(response.status)).catch(error => console.log(error.message));
+            axios.post('/api/movements', this.newExpense).then(response => this.$emit('expense-registered')).catch(error => console.log(error.message));
         },
         getCategories: function(){
             axios.get('/api/categories').then(response => this.categories = response.data.data).catch(error => console.log(error.message));
