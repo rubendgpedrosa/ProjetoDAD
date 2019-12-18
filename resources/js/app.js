@@ -14,7 +14,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import RegisterExpense from './components/expense/registerExpense.vue'
+import RegisterExpense from './components/expense/registerExpense.vue';
 import RegisterUser from './components/users/registerUser';
 import Categories from './components/category/category';
 import VueRouter from 'vue-router';

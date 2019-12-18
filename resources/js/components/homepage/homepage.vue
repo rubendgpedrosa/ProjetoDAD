@@ -17,9 +17,6 @@
 </template>
 
 <script>
-    /*As a user (anonymous or authenticated user) I want to access the application's initial page
-    with a welcome message and information about the total number of virtual wallets;*/
-
     export default{
         data: function() {
             return{

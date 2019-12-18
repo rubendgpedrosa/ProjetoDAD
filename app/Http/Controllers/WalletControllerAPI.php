@@ -20,6 +20,10 @@ class WalletControllerAPI extends Controller
 
     }
 
+    public function walletsEmail(){
+        return Wallet::all();
+    }
+
     public function edit(){
         //update wallet balance
 

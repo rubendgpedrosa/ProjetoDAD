@@ -25,7 +25,8 @@ class MovementsControllerAPI extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Wallet $wallet)
+
+    public function store(Request $request)
     {
         $movement = new Movement;
         $movement->wallet_id = $wallet->id;
@@ -52,43 +53,52 @@ class MovementsControllerAPI extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function registerExpense(Request $request)
     {
-        /*As a platform user I want to be able to register an expense (debit) movement of my
-          virtual wallet. The movement requires the type of movement (payment to external entity
-          or transfer); the value (from 0,01€ up to 5000,00€); the category of expense and a
-          description.
-          If the type of movement is a payment to an external entity, the registration must also
-          include the type of payment (bank transfer or MB payment). When the payment uses a
-          bank transfer the registration also requires the IBAN (2 capital letters followed by 23
-          digits). For MB payments the registration also requires an MB entity code (5 digits) and
-          the MB payment reference (9 digits).
-          If the type of movement is a transfer, the registration must also include the e-mail of the
-          destination wallet and a source description – application must guarantee that the
-          destination e-mail is associated to a valid virtual wallet from another user.*/
         $movement = new Movement;
+        $movement_mirrored = new Movement;
         $walletToDeposit = Wallet::where('email', $request->email)->first();
         $walletToRetract = Wallet::where('id', $request->id)->first();
-        $movement->wallet_id = $walletToDeposit->id;
+
+        $movement->type = $request->type;
         $movement->category_id = $request->category_id;
+        $movement->wallet_id = $walletToDeposit->id;
         $movement->description = $request->description;
+        $movement_mirrored->type = $request->type;
+        $movement_mirrored->category_id = $request->category_id;
+        $movement_mirrored->wallet_id = $walletToRetract->id;
+        $movement_mirrored->description = $request->description;
+
         $movement->iban = $request->iban;
         $movement->type_payment = $request->type_payment;
         $movement->mb_entity_code = $request->mb_entity_code;
+        $movement->transfer = ($request->email == null? 0:1);
         $movement->mb_payment_reference = $request->mb_payment_reference;
         $movement->source_description = $request->source_description;
-        $movement->type = $request->type;
-        $movement->transfer = ($request->email == null? 0:1);
         $movement->date = new \DateTime();
         $movement->start_balance = $walletToDeposit->balance;
-        $movement->end_balance = $walletToDeposit->balance + $request->balance;
+        $movement->end_balance = $walletToDeposit->balance + $request->value;
+        $movement_mirrored->iban = $request->iban;
+        $movement_mirrored->type_payment = $request->type_payment;
+        $movement_mirrored->mb_entity_code = $request->mb_entity_code;
+        $movement_mirrored->transfer = ($request->email == null? 0:1);
+        $movement_mirrored->mb_payment_reference = $request->mb_payment_reference;
+        $movement_mirrored->source_description = $request->source_description;
+        $movement_mirrored->date = new \DateTime();
+        $movement_mirrored->start_balance = $walletToRetract->balance;
+        $movement_mirrored->end_balance = $walletToRetract->balance-$request->value;
+
         $walletToRetract->balance = $walletToRetract->balance - $request->value;
         $walletToDeposit->balance += $request->value;
         $walletToRetract->save();
         $walletToDeposit->save();
+
         $movement->value = $request->value;
         $movement->save();
-        return $walletToDeposit;
+        $movement_mirrored->value = $request->value;
+        $movement_mirrored->save();
+        return array($movement,$movement_mirrored);
     }
 
     /**

@@ -3,11 +3,11 @@
         <div class="jumbotron">
             <h1>Expense Registration</h1>
         </div>
-        <form>
+        <form v-if="expenseSubmitted === false">
             <div class="form-row">
                 <div class="col-md-4 mb-3">
                     <label for="inputType">Type</label>
-                    <select required class="form-control custom-select" id="inputType" v-model="newExpense.type">
+                    <select class="form-control custom-select" id="inputType" v-model="newExpense.type" required>
                         <option v-for="type in types" :value="type.value">
                             {{type.name}}
                         </option>
@@ -15,20 +15,21 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="inputCategory">Category</label>
-                    <select required class="form-control custom-select" id="inputCategory" v-model="newExpense.category_id">
+                    <select class="form-control custom-select" id="inputCategory" v-model="newExpense.category_id">
                         <option v-for="category in categories" :value="category.id">
                             {{category.name}}
                         </option>
                     </select>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="inputValue">Value</label>
-                    <input required type="number" class="form-control" id="inputValue" v-model.lazy="newExpense.value">
+                    <label for="inputValue">Amount</label>
+                    <input required type="number" class="form-control" id="inputValue" v-model.number="newExpense.value">
+                    <small min="0.01" required v-show="newExpense.value > 5000.0 || newExpense.value < 0.01" id="passwordNotMatch" style="color:red;" class="form-text text-muted"><a style="color:red">Amount must be between 0.01€ and 5000€.</a></small>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="inputDescription">Description</label>
-                <textarea r equired class="form-control" id="inputDescription" v-model="newExpense.description"></textarea>
+                <textarea class="form-control" id="inputDescription" v-model="newExpense.description" required></textarea>
             </div>
             <div class="form-row" v-if="newExpense.type === 'e'">
                 <div class="col">
@@ -59,7 +60,7 @@
             </div>
             <div class="mb-3" v-if="newExpense.type === 'i'">
                 <label for="inputEmail">Destination Email</label>
-                <input :disabled="newExpense.type !== 'i'" type="text" class="form-control" id="inputEmail" v-model.lazy="newExpense.email">
+                <vue-bootstrap-typeahead :minMatchingChars="1" id="inputEmail" :disabled="newExpense.type !== 'i'" v-model="newExpense.email" :data="walletsEmailArray"/>
             </div>
             <div class="mb-3" v-if="newExpense.type === 'i'">
                 <label for="inputSourceDescription">Source Description</label>
@@ -67,48 +68,66 @@
             </div>
             <button type="submit" class="btn btn-primary" @click="submitExpense">Submit Expense</button>
         </form>
+        <div v-if="expenseSubmitted">
+            <button type="submit" class="btn btn-primary" @click="expenseSubmitted = false">Submit New Expense</button>
+        </div>
     </div>
 </template>
 
 <script>
-export default{
-    data: function(){
-        return{
-            expenseClicked: false,
-            newExpense: {
-                type: '',
-                value: '',
-                category_id: '',
-                description: '',
-                type_payment: '',
-                iban: '',
-                mb_entity_code: '',
-                mb_payment_reference: '',
-                email: '',
-                source_description: '',
-                id: 12
+    import VueBootstrapTypeahead from 'vue-bootstrap-typeahead';
+
+    export default{
+        data: function(){
+            return{
+                expenseClicked: false,
+                newExpense: {
+                    type: '',
+                    value: '',
+                    category_id: '',
+                    description: '',
+                    type_payment: '',
+                    iban: '',
+                    mb_entity_code: '',
+                    mb_payment_reference: '',
+                    email: '',
+                    source_description: '',
+                    id: 12
+                },
+                walletsEmailArray: [],
+                categories: [{}],
+                expenseSubmitted: false,
+                types: [{name: 'Payment to External Entity', value: 'e'}, {name: 'Transfer Movement', value: 'i'}],
+                types_payment: [{name: 'Bank Transfer', value: 'bt'}, {name: 'MB Payment', value: 'mb'}]
+            }
+        },
+        methods: {
+            toggleEditMovement: function () {
+                this.expenseClicked = this.expenseClicked === false;
             },
-            categories: [{}],
-            types: [{name: 'Payment to External Entity', value: 'e'}, {name: 'Transfer Movement', value: 'i'}],
-            types_payment: [{name: 'Bank Transfer', value: 'bt'}, {name: 'MB Payment', value: 'mb'}]
-        }
-    },
-    methods: {
-        toggleEditMovement: function () {
-            this.expenseClicked = this.expenseClicked === false;
-            console.log(this.expenseClicked);
+            submitExpense: function(){
+                axios.post('/api/movements', this.newExpense).then(function(response){
+                    if(response.status === 200){
+                        this.expenseSubmitted = true;
+                        this.$emit('expense-registered');
+                    }
+                }).catch(error => console.log(error.message));
+            },
+            getCategories: function(){
+                axios.get('/api/categories').then(response => this.categories = response.data.data).catch(error => console.log(error.message));
+            },
+            walletsEmail: function(){
+                axios.get('api/walletsEmail').then(response => {response.data.forEach(element => this.walletsEmailArray.push(element.email))});
+            }
         },
-        submitExpense: function(){
-            axios.post('/api/movements', this.newExpense).then(response => this.$emit('expense-registered')).catch(error => console.log(error.message));
+        components: {
+            VueBootstrapTypeahead,
         },
-        getCategories: function(){
-            axios.get('/api/categories').then(response => this.categories = response.data.data).catch(error => console.log(error.message));
+        mounted() {
+            this.getCategories();
+            this.walletsEmail();
         }
-    },
-    mounted() {
-        this.getCategories();
     }
-}
 </script>
 
 <style scoped>
