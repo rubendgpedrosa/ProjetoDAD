@@ -2292,6 +2292,21 @@ __webpack_require__.r(__webpack_exports__);
       this.expenseClicked = this.expenseClicked === false;
     },
     submitExpense: function submitExpense() {
+      if (this.newExpense.type === "e") {
+        this.newExpense.email = "";
+
+        if (this.newExpense.type_payment === "bt") {
+          this.newExpense.mb_entity_code = "";
+          this.newExpense.mb_payment_reference = "";
+        } else {
+          this.newExpense.iban = "";
+        }
+      } else {
+        this.newExpense.mb_entity_code = "";
+        this.newExpense.mb_payment_reference = "";
+        this.newExpense.iban = "";
+      }
+
       axios.post('/api/movements', this.newExpense).then(function (response) {
         if (response.status === 200) {
           this.expenseSubmitted = true;
@@ -2318,6 +2333,9 @@ __webpack_require__.r(__webpack_exports__);
           return _this2.walletsEmailArray.push(element.email);
         });
       });
+    },
+    disableButtonSubmit: function disableButtonSubmit() {
+      return this.newExpense.type === "" || this.newExpense.category === "" || this.newExpense.value === "" || this.newExpense.type === "" || (this.newExpense.type === "i" ? this.newExpense.email === "" : this.newExpense.type_payment === "bt" ? this.newExpense.iban === "" : this.newExpense.mb_entity_code === "" || this.newExpense.mb_payment_reference === "");
     }
   },
   components: {
@@ -2635,6 +2653,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _movementInformation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./movementInformation */ "./resources/js/components/movement/movementInformation.vue");
+/* harmony import */ var jw_vue_pagination__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jw-vue-pagination */ "./node_modules/jw-vue-pagination/lib/JwPagination.js");
+/* harmony import */ var jw_vue_pagination__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jw_vue_pagination__WEBPACK_IMPORTED_MODULE_1__);
+//
 //
 //
 //
@@ -2668,17 +2689,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    MovementInformation: _movementInformation__WEBPACK_IMPORTED_MODULE_0__["default"]
+    MovementInformation: _movementInformation__WEBPACK_IMPORTED_MODULE_0__["default"],
+    JwPagination: jw_vue_pagination__WEBPACK_IMPORTED_MODULE_1___default.a
   },
   data: function data() {
     return {
-      movements: {},
+      movements: [{}],
+      pagedMovements: [{}],
       categories: [],
-      filterSettings: [],
       movementInformationClicked: false,
-      movementClicked: {}
+      movementClicked: {},
+      filteredMovements: [{}],
+      filterSettings: {
+        date: '',
+        type: '',
+        category: '',
+        start_balance: '',
+        value_transfered: ''
+      }
     };
   },
   methods: {
@@ -2686,8 +2717,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("api/movements/".concat(this.$route.params.id)).then(function (response) {
-        _this.movements = response.data;
-        /*, console.log(this.movements)*/
+        _this.movements = response.data, _this.totalPages = _this.movements.length;
       });
     },
     getCategory: function getCategory() {
@@ -2718,6 +2748,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     changeInformationClicked: function changeInformationClicked() {
       this.movementInformationClicked = false;
+    },
+    onChangePage: function onChangePage(pagedMovements) {
+      this.pagedMovements = pagedMovements;
     }
   },
   mounted: function mounted() {
@@ -3532,8 +3565,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var form_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! form-data */ "./node_modules/form-data/lib/browser.js");
-/* harmony import */ var form_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(form_data__WEBPACK_IMPORTED_MODULE_1__);
 
 //
 //
@@ -3590,9 +3621,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3605,7 +3633,8 @@ __webpack_require__.r(__webpack_exports__);
         photoURL: '',
         nif: ''
       },
-      confirmed_password: ''
+      confirmed_password: '',
+      email_taken: false
     };
   },
   methods: {
@@ -3623,7 +3652,7 @@ __webpack_require__.r(__webpack_exports__);
               axios.post("api/users", this.newUser).then(function (response) {
                 _this.$emit('form-submitted');
               })["catch"](function (error) {
-                return console.log(error.message);
+                _this.email_taken = true;
               });
 
             case 2:
@@ -3672,9 +3701,6 @@ __webpack_require__.r(__webpack_exports__);
     clickPhotograph: function clickPhotograph() {
       this.photo = '';
       this.newUser.photoURL = '';
-      2 == "2"; //true;
-
-      2 === "2"; // false;
     },
     disableButtonSubmit: function disableButtonSubmit() {
       return this.newUser.password === "" || this.confirmed_password === "" || this.newUser.name === "" || this.newUser.email === "" || this.newUser.password !== this.confirmed_password;
@@ -3754,11 +3780,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jw_vue_pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jw-vue-pagination */ "./node_modules/jw-vue-pagination/lib/JwPagination.js");
+/* harmony import */ var jw_vue_pagination__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jw_vue_pagination__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _movement_movementInformation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../movement/movementInformation */ "./resources/js/components/movement/movementInformation.vue");
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    JwPagination: jw_vue_pagination__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
   props: ['users'],
   data: function data() {
     return {
-      currentUser: {}
+      currentUser: {},
+      pagedUsers: [{}]
     };
   },
   methods: {
@@ -3771,6 +3806,9 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         return console.log(error.message);
       });
+    },
+    onChangePage: function onChangePage(pagedUsers) {
+      this.pagedUsers = pagedUsers;
     }
   }
 });
@@ -10194,7 +10232,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*fixes text area issues with padding on a parent div.\n.box {\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -webkit-box-sizing: border-box;\n    width: 100px;\n    padding: 10px;\n}*/\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*fixes text area issues with padding on a parent div.\n.box {\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -webkit-box-sizing: border-box;\n    width: 100px;\n    padding: 10px;\n}*/\n", ""]);
 
 // exports
 
@@ -10341,19 +10379,6 @@ function toComment(sourceMap) {
 
 	return '/*# ' + data + ' */';
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/form-data/lib/browser.js":
-/*!***********************************************!*\
-  !*** ./node_modules/form-data/lib/browser.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* eslint-env browser */
-module.exports = typeof self == 'object' ? self.FormData : window.FormData;
 
 
 /***/ }),
@@ -20987,6 +21012,17 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+
+/***/ }),
+
+/***/ "./node_modules/jw-vue-pagination/lib/JwPagination.js":
+/*!************************************************************!*\
+  !*** ./node_modules/jw-vue-pagination/lib/JwPagination.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports=function(e){var t={};function s(r){if(t[r])return t[r].exports;var a=t[r]={i:r,l:!1,exports:{}};return e[r].call(a.exports,a,a.exports,s),a.l=!0,a.exports}return s.m=e,s.c=t,s.d=function(e,t,r){s.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},s.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},s.t=function(e,t){if(1&t&&(e=s(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(s.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var a in e)s.d(r,a,function(t){return e[t]}.bind(null,a));return r},s.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return s.d(t,"a",t),t},s.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},s.p="",s(s.s=1)}([function(e,t,s){"use strict";e.exports=function(e,t,s,r){void 0===t&&(t=1),void 0===s&&(s=10),void 0===r&&(r=10);var a,n,i=Math.ceil(e/s);if(t<1?t=1:t>i&&(t=i),i<=r)a=1,n=i;else{var l=Math.floor(r/2),o=Math.ceil(r/2)-1;t<=l?(a=1,n=r):t+o>=i?(a=i-r+1,n=i):(a=t-l,n=t+o)}var c=(t-1)*s,u=Math.min(c+s-1,e-1),p=Array.from(Array(n+1-a).keys()).map(function(e){return a+e});return{totalItems:e,currentPage:t,pageSize:s,totalPages:i,startPage:a,endPage:n,startIndex:c,endIndex:u,pages:p}}},function(e,t,s){"use strict";s.r(t);var r=function(){var e=this,t=e.$createElement,s=e._self._c||t;return e.pager.pages&&e.pager.pages.length?s("ul",{staticClass:"pagination",style:e.ulStyles},[s("li",{staticClass:"page-item first",class:{disabled:1===e.pager.currentPage},style:e.liStyles},[s("a",{staticClass:"page-link",style:e.aStyles,on:{click:function(t){return e.setPage(1)}}},[e._v(e._s(e.labels.first))])]),e._v(" "),s("li",{staticClass:"page-item previous",class:{disabled:1===e.pager.currentPage},style:e.liStyles},[s("a",{staticClass:"page-link",style:e.aStyles,on:{click:function(t){return e.setPage(e.pager.currentPage-1)}}},[e._v(e._s(e.labels.previous))])]),e._v(" "),e._l(e.pager.pages,function(t){return s("li",{key:t,staticClass:"page-item page-number",class:{active:e.pager.currentPage===t},style:e.liStyles},[s("a",{staticClass:"page-link",style:e.aStyles,on:{click:function(s){return e.setPage(t)}}},[e._v(e._s(t))])])}),e._v(" "),s("li",{staticClass:"page-item next",class:{disabled:e.pager.currentPage===e.pager.totalPages},style:e.liStyles},[s("a",{staticClass:"page-link",style:e.aStyles,on:{click:function(t){return e.setPage(e.pager.currentPage+1)}}},[e._v(e._s(e.labels.next))])]),e._v(" "),s("li",{staticClass:"page-item last",class:{disabled:e.pager.currentPage===e.pager.totalPages},style:e.liStyles},[s("a",{staticClass:"page-link",style:e.aStyles,on:{click:function(t){return e.setPage(e.pager.totalPages)}}},[e._v(e._s(e.labels.last))])])],2):e._e()};r._withStripped=!0;var a=s(0),n=s.n(a);function i(e,t){var s=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter(function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable})),s.push.apply(s,r)}return s}function l(e){for(var t=1;t<arguments.length;t++){var s=null!=arguments[t]?arguments[t]:{};t%2?i(s,!0).forEach(function(t){o(e,t,s[t])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(s)):i(s).forEach(function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(s,t))})}return e}function o(e,t,s){return t in e?Object.defineProperty(e,t,{value:s,enumerable:!0,configurable:!0,writable:!0}):e[t]=s,e}var c={first:"First",last:"Last",previous:"Previous",next:"Next"},u={margin:0,padding:0,display:"inline-block"},p={listStyle:"none",display:"inline",textAlign:"center"},g={cursor:"pointer",padding:"6px 12px",display:"block",float:"left"};var f=function(e,t,s,r,a,n,i,l){var o,c="function"==typeof e?e.options:e;if(t&&(c.render=t,c.staticRenderFns=s,c._compiled=!0),r&&(c.functional=!0),n&&(c._scopeId="data-v-"+n),i?(o=function(e){(e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),a&&a.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(i)},c._ssrRegister=o):a&&(o=l?function(){a.call(this,this.$root.$options.shadowRoot)}:a),o)if(c.functional){c._injectStyles=o;var u=c.render;c.render=function(e,t){return o.call(t),u(e,t)}}else{var p=c.beforeCreate;c.beforeCreate=p?[].concat(p,o):[o]}return{exports:e,options:c}}({props:{items:{type:Array,required:!0},initialPage:{type:Number,default:1},pageSize:{type:Number,default:10},maxPages:{type:Number,default:10},labels:{type:Object,default:function(){return c}},styles:{type:Object},disableDefaultStyles:{type:Boolean,default:!1}},data:function(){return{pager:{},ulStyles:{},liStyles:{},aStyles:{}}},created:function(){if(!this.$listeners.changePage)throw'Missing required event listener: "changePage"';this.disableDefaultStyles||(this.ulStyles=u,this.liStyles=p,this.aStyles=g),this.styles&&(this.ulStyles=l({},this.ulStyles,{},this.styles.ul),this.liStyles=l({},this.liStyles,{},this.styles.li),this.aStyles=l({},this.aStyles,{},this.styles.a)),this.setPage(this.initialPage)},methods:{setPage:function(e){var t=this.items,s=this.pageSize,r=this.maxPages,a=n()(t.length,e,s,r),i=t.slice(a.startIndex,a.endIndex+1);this.pager=a,this.$emit("changePage",i)}},watch:{items:function(){this.setPage(this.initialPage)}}},r,[],!1,null,null,null);f.options.__file="src/JwPagination.vue";t.default=f.exports}]);
 
 /***/ }),
 
@@ -45008,10 +45044,11 @@ var render = function() {
                       name: "show",
                       rawName: "v-show",
                       value:
-                        _vm.newExpense.value > 5000.0 ||
+                        (_vm.newExpense.value !== "") &
+                          (_vm.newExpense.value > 5000.0) ||
                         _vm.newExpense.value < 0.01,
                       expression:
-                        "newExpense.value > 5000.0 || newExpense.value < 0.01"
+                        "newExpense.value !== '' & newExpense.value > 5000.0 || newExpense.value < 0.01"
                     }
                   ],
                   staticClass: "form-text text-muted",
@@ -45292,7 +45329,7 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-primary",
-              attrs: { type: "submit" },
+              attrs: { type: "submit", disabled: _vm.disableButtonSubmit() },
               on: { click: _vm.submitExpense }
             },
             [_vm._v("Submit Expense")]
@@ -46031,8 +46068,8 @@ var render = function() {
             _vm._v(" "),
             _c(
               "tbody",
-              _vm._l(_vm.movements, function(movement) {
-                return _vm.movements.length > 0
+              _vm._l(_vm.pagedMovements, function(movement) {
+                return _vm.filteredMovements.length > 0
                   ? _c(
                       "tr",
                       {
@@ -46079,6 +46116,11 @@ var render = function() {
             on: { "movement-information-clicked": _vm.changeInformationClicked }
           })
         : _vm._e(),
+      _vm._v(" "),
+      _c("jw-pagination", {
+        attrs: { items: _vm.movements },
+        on: { changePage: _vm.onChangePage }
+      }),
       _vm._v(" "),
       _vm.movements.length === 0
         ? _c("h3", { staticClass: "text-center" }, [
@@ -47337,6 +47379,9 @@ var render = function() {
             },
             domProps: { value: _vm.newUser.email },
             on: {
+              change: function($event) {
+                _vm.email_taken = false
+              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -47344,7 +47389,28 @@ var render = function() {
                 _vm.$set(_vm.newUser, "email", $event.target.value)
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _c(
+            "small",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.email_taken,
+                  expression: "email_taken"
+                }
+              ],
+              staticClass: "form-text text-muted",
+              staticStyle: { color: "red" }
+            },
+            [
+              _c("a", { staticStyle: { color: "red" } }, [
+                _vm._v("This email has already been taken.")
+              ])
+            ]
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
@@ -47591,9 +47657,7 @@ var render = function() {
           },
           [_vm._v("Cancel")]
         )
-      ]),
-      _vm._v(" "),
-      _c("div")
+      ])
     ])
   ])
 }
@@ -47676,67 +47740,80 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("table", { staticClass: "table table-hover table-borderless" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.users, function(user) {
-          return _c("tr", { key: user.id }, [
-            _c("td", [
-              _c("img", {
-                staticClass: "img-circle",
-                staticStyle: { "max-width": "70px" },
-                attrs: { src: "./storage/fotos/" + user.photo }
-              })
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(user.name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(user.email))]),
-            _vm._v(" "),
-            user.type === "o" ? _c("td", [_vm._v("Operator")]) : _vm._e(),
-            _vm._v(" "),
-            user.type === "a" ? _c("td", [_vm._v("Administrator")]) : _vm._e(),
-            _vm._v(" "),
-            user.type === "u" ? _c("td", [_vm._v("Platform User")]) : _vm._e(),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-sm btn-primary",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.editUser(user)
-                    }
-                  }
-                },
-                [_vm._v("Edit")]
-              ),
+  return _c(
+    "div",
+    [
+      _c("table", { staticClass: "table table-hover table-borderless" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.pagedUsers, function(user) {
+            return _c("tr", { key: user.id }, [
+              _c("td", [
+                _c("img", {
+                  staticClass: "img-circle",
+                  staticStyle: { "max-width": "70px" },
+                  attrs: { src: "./storage/fotos/" + user.photo }
+                })
+              ]),
               _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-sm btn-danger",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.deleteUser(user)
+              _c("td", [_vm._v(_vm._s(user.name))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(user.email))]),
+              _vm._v(" "),
+              user.type === "o" ? _c("td", [_vm._v("Operator")]) : _vm._e(),
+              _vm._v(" "),
+              user.type === "a"
+                ? _c("td", [_vm._v("Administrator")])
+                : _vm._e(),
+              _vm._v(" "),
+              user.type === "u"
+                ? _c("td", [_vm._v("Platform User")])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-sm btn-primary",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.editUser(user)
+                      }
                     }
-                  }
-                },
-                [_vm._v("Delete")]
-              )
+                  },
+                  [_vm._v("Edit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-sm btn-danger",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.deleteUser(user)
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
+                )
+              ])
             ])
-          ])
-        }),
-        0
-      )
-    ])
-  ])
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("jw-pagination", {
+        attrs: { items: _vm.users },
+        on: { changePage: _vm.onChangePage }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -50842,7 +50919,7 @@ if (inBrowser && window.Vue) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.6.10
+ * Vue.js v2.6.11
  * (c) 2014-2019 Evan You
  * Released under the MIT License.
  */
@@ -52808,7 +52885,7 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
   isUsingMicroTask = true;
 } else if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
   // Fallback to setImmediate.
-  // Techinically it leverages the (macro) task queue,
+  // Technically it leverages the (macro) task queue,
   // but it is still a better choice than setTimeout.
   timerFunc = function () {
     setImmediate(flushCallbacks);
@@ -52897,7 +52974,7 @@ var initProxy;
     warn(
       "Property \"" + key + "\" must be accessed with \"$data." + key + "\" because " +
       'properties starting with "$" or "_" are not proxied in the Vue instance to ' +
-      'prevent conflicts with Vue internals' +
+      'prevent conflicts with Vue internals. ' +
       'See: https://vuejs.org/v2/api/#data',
       target
     );
@@ -53757,7 +53834,7 @@ function bindDynamicKeys (baseObj, values) {
     if (typeof key === 'string' && key) {
       baseObj[values[i]] = values[i + 1];
     } else if (key !== '' && key !== null) {
-      // null is a speical value for explicitly removing a binding
+      // null is a special value for explicitly removing a binding
       warn(
         ("Invalid value for dynamic directive argument (expected string or null): " + key),
         this
@@ -54252,6 +54329,12 @@ function _createElement (
     ns = (context.$vnode && context.$vnode.ns) || config.getTagNamespace(tag);
     if (config.isReservedTag(tag)) {
       // platform built-in elements
+      if (isDef(data) && isDef(data.nativeOn)) {
+        warn(
+          ("The .native modifier for v-on is only valid on components but it was used on <" + tag + ">."),
+          context
+        );
+      }
       vnode = new VNode(
         config.parsePlatformTagName(tag), data, children,
         undefined, undefined, context
@@ -54377,7 +54460,7 @@ function renderMixin (Vue) {
     // render self
     var vnode;
     try {
-      // There's no need to maintain a stack becaues all render fns are called
+      // There's no need to maintain a stack because all render fns are called
       // separately from one another. Nested component's render fns are called
       // when parent component is patched.
       currentRenderingInstance = vm;
@@ -56276,7 +56359,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.6.10';
+Vue.version = '2.6.11';
 
 /*  */
 
@@ -56949,7 +57032,7 @@ function createPatchFunction (backend) {
     }
   }
 
-  function removeVnodes (parentElm, vnodes, startIdx, endIdx) {
+  function removeVnodes (vnodes, startIdx, endIdx) {
     for (; startIdx <= endIdx; ++startIdx) {
       var ch = vnodes[startIdx];
       if (isDef(ch)) {
@@ -57060,7 +57143,7 @@ function createPatchFunction (backend) {
       refElm = isUndef(newCh[newEndIdx + 1]) ? null : newCh[newEndIdx + 1].elm;
       addVnodes(parentElm, refElm, newCh, newStartIdx, newEndIdx, insertedVnodeQueue);
     } else if (newStartIdx > newEndIdx) {
-      removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx);
+      removeVnodes(oldCh, oldStartIdx, oldEndIdx);
     }
   }
 
@@ -57152,7 +57235,7 @@ function createPatchFunction (backend) {
         if (isDef(oldVnode.text)) { nodeOps.setTextContent(elm, ''); }
         addVnodes(elm, null, ch, 0, ch.length - 1, insertedVnodeQueue);
       } else if (isDef(oldCh)) {
-        removeVnodes(elm, oldCh, 0, oldCh.length - 1);
+        removeVnodes(oldCh, 0, oldCh.length - 1);
       } else if (isDef(oldVnode.text)) {
         nodeOps.setTextContent(elm, '');
       }
@@ -57381,7 +57464,7 @@ function createPatchFunction (backend) {
 
         // destroy old node
         if (isDef(parentElm)) {
-          removeVnodes(parentElm, [oldVnode], 0, 0);
+          removeVnodes([oldVnode], 0, 0);
         } else if (isDef(oldVnode.tag)) {
           invokeDestroyHook(oldVnode);
         }
@@ -60087,7 +60170,7 @@ var startTagOpen = new RegExp(("^<" + qnameCapture));
 var startTagClose = /^\s*(\/?)>/;
 var endTag = new RegExp(("^<\\/" + qnameCapture + "[^>]*>"));
 var doctype = /^<!DOCTYPE [^>]+>/i;
-// #7298: escape - to avoid being pased as HTML comment when inlined in page
+// #7298: escape - to avoid being passed as HTML comment when inlined in page
 var comment = /^<!\--/;
 var conditionalComment = /^<!\[/;
 
@@ -60372,7 +60455,7 @@ function parseHTML (html, options) {
 /*  */
 
 var onRE = /^@|^v-on:/;
-var dirRE = /^v-|^@|^:/;
+var dirRE = /^v-|^@|^:|^#/;
 var forAliasRE = /([\s\S]*?)\s+(?:in|of)\s+([\s\S]*)/;
 var forIteratorRE = /,([^,\}\]]*)(?:,([^,\}\]]*))?$/;
 var stripParensRE = /^\(|\)$/g;
@@ -60996,7 +61079,7 @@ function processSlotContent (el) {
           if (el.parent && !maybeComponent(el.parent)) {
             warn$2(
               "<template v-slot> can only appear at the root level inside " +
-              "the receiving the component",
+              "the receiving component",
               el
             );
           }
@@ -61559,7 +61642,7 @@ function isDirectChildOfTemplateFor (node) {
 
 /*  */
 
-var fnExpRE = /^([\w$_]+|\([^)]*?\))\s*=>|^function\s*(?:[\w$]+)?\s*\(/;
+var fnExpRE = /^([\w$_]+|\([^)]*?\))\s*=>|^function(?:\s+[\w$]+)?\s*\(/;
 var fnInvokeRE = /\([^)]*?\);*$/;
 var simplePathRE = /^[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*|\['[^']*?']|\["[^"]*?"]|\[\d+]|\[[A-Za-z_$][\w$]*])*$/;
 
@@ -62328,6 +62411,8 @@ function checkNode (node, warn) {
           var range = node.rawAttrsMap[name];
           if (name === 'v-for') {
             checkFor(node, ("v-for=\"" + value + "\""), warn, range);
+          } else if (name === 'v-slot' || name[0] === '#') {
+            checkFunctionParameterExpression(value, (name + "=\"" + value + "\""), warn, range);
           } else if (onRE.test(name)) {
             checkEvent(value, (name + "=\"" + value + "\""), warn, range);
           } else {
@@ -62347,9 +62432,9 @@ function checkNode (node, warn) {
 }
 
 function checkEvent (exp, text, warn, range) {
-  var stipped = exp.replace(stripStringRE, '');
-  var keywordMatch = stipped.match(unaryOperatorsRE);
-  if (keywordMatch && stipped.charAt(keywordMatch.index - 1) !== '$') {
+  var stripped = exp.replace(stripStringRE, '');
+  var keywordMatch = stripped.match(unaryOperatorsRE);
+  if (keywordMatch && stripped.charAt(keywordMatch.index - 1) !== '$') {
     warn(
       "avoid using JavaScript unary operator as property name: " +
       "\"" + (keywordMatch[0]) + "\" in expression " + (text.trim()),
@@ -62401,6 +62486,19 @@ function checkExpression (exp, text, warn, range) {
         range
       );
     }
+  }
+}
+
+function checkFunctionParameterExpression (exp, text, warn, range) {
+  try {
+    new Function(exp, '');
+  } catch (e) {
+    warn(
+      "invalid function parameter expression: " + (e.message) + " in\n\n" +
+      "    " + exp + "\n\n" +
+      "  Raw expression: " + (text.trim()) + "\n",
+      range
+    );
   }
 }
 

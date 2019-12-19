@@ -15,7 +15,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-if="movements.length > 0" v-for="movement in movements" :key="movement.id" @click="moreMovementInformation(movement)">
+            <tr v-if="filteredMovements.length > 0" v-for="movement in pagedMovements" :key="movement.id" @click="moreMovementInformation(movement)">
                 <td>{{movement.date}}</td>
                 <td>{{typeToString(movement.type)}}</td>
                 <td>{{categoryToString(movement.category_id)}}</td>
@@ -26,27 +26,37 @@
             </tbody>
         </table>
         <movement-information v-if="movementInformationClicked" :categories="categories" :movementClicked="movementClicked" v-on:movement-information-clicked="changeInformationClicked"></movement-information>
+        <jw-pagination :items="movements" @changePage="onChangePage"></jw-pagination>
         <h3 class="text-center" v-if="movements.length === 0">No Records Found!</h3>
     </div>
 </template>
 
 <script>
     import MovementInformation from './movementInformation';
+    import JwPagination from 'jw-vue-pagination';
 
     export default {
-        components: {MovementInformation},
+        components: {MovementInformation, JwPagination},
         data: function () {
                 return {
-                    movements: {},
+                    movements: [{}],
+                    pagedMovements: [{}],
                     categories: [],
-                    filterSettings: [],
                     movementInformationClicked: false,
-                    movementClicked: {}
+                    movementClicked: {},
+                    filteredMovements: [{}],
+                    filterSettings: {
+                        date: '',
+                        type: '',
+                        category: '',
+                        start_balance: '',
+                        value_transfered: '',
+                    },
                 }
         }, methods: {
             getMovements: function () {
                 axios.get(`api/movements/${this.$route.params.id}`)
-                .then(response=>{this.movements = response.data/*, console.log(this.movements)*/});
+                .then(response=>{ this.movements = response.data, this.totalPages = this.movements.length });
             },
             getCategory: function () {
                 axios.get('api/categories/')
@@ -71,6 +81,9 @@
             },
             changeInformationClicked:function(){
                 this.movementInformationClicked = false;
+            },
+            onChangePage: function(pagedMovements){
+                this.pagedMovements = pagedMovements;
             }
         },
         mounted() {

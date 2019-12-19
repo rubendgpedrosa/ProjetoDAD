@@ -24,7 +24,7 @@
                 <div class="col-md-4 mb-3">
                     <label for="inputValue">Amount</label>
                     <input required type="number" class="form-control" id="inputValue" v-model.number="newExpense.value">
-                    <small min="0.01" required v-show="newExpense.value > 5000.0 || newExpense.value < 0.01" id="passwordNotMatch" style="color:red;" class="form-text text-muted"><a style="color:red">Amount must be between 0.01€ and 5000€.</a></small>
+                    <small min="0.01" required v-show="newExpense.value !== '' & newExpense.value > 5000.0 || newExpense.value < 0.01" id="passwordNotMatch" style="color:red;" class="form-text text-muted"><a style="color:red">Amount must be between 0.01€ and 5000€.</a></small>
                 </div>
             </div>
             <div class="mb-3">
@@ -66,7 +66,7 @@
                 <label for="inputSourceDescription">Source Description</label>
                 <textarea :disabled="newExpense.type !== 'i'" type="text" class="form-control" id="inputSourceDescription" v-model.lazy="newExpense.source_description"/>
             </div>
-            <button type="submit" class="btn btn-primary" @click="submitExpense">Submit Expense</button>
+            <button type="submit" :disabled="disableButtonSubmit()" class="btn btn-primary" @click="submitExpense">Submit Expense</button>
         </form>
         <div v-if="expenseSubmitted">
             <button type="submit" class="btn btn-primary" @click="expenseSubmitted = false">Submit New Expense</button>
@@ -106,6 +106,19 @@
                 this.expenseClicked = this.expenseClicked === false;
             },
             submitExpense: function(){
+                if(this.newExpense.type === "e"){
+                    this.newExpense.email = "";
+                    if(this.newExpense.type_payment === "bt"){
+                        this.newExpense.mb_entity_code = "";
+                        this.newExpense.mb_payment_reference = "";
+                    }else{
+                        this.newExpense.iban = "";
+                    }
+                }else{
+                    this.newExpense.mb_entity_code = "";
+                    this.newExpense.mb_payment_reference = "";
+                    this.newExpense.iban = "";
+                }
                 axios.post('/api/movements', this.newExpense).then(function(response){
                     if(response.status === 200){
                         this.expenseSubmitted = true;
@@ -118,6 +131,11 @@
             },
             walletsEmail: function(){
                 axios.get('api/walletsEmail').then(response => {response.data.forEach(element => this.walletsEmailArray.push(element.email))});
+            },
+            disableButtonSubmit: function(){
+                return (this.newExpense.type === "" || this.newExpense.category === "" || this.newExpense.value === ""|| this.newExpense.type === "" ||
+                    (this.newExpense.type === "i"? this.newExpense.email === "":(this.newExpense.type_payment === "bt"? this.newExpense.iban === "":
+                        (this.newExpense.mb_entity_code === "" || this.newExpense.mb_payment_reference === ""))));
             }
         },
         components: {

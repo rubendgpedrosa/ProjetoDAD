@@ -109,7 +109,7 @@ class MovementsControllerAPI extends Controller
      */
     public function show($id)
     {
-        return response()->json(MovementResource::collection(Movement::where('wallet_id',$id)->paginate(10)));
+        return response()->json(MovementResource::collection(Movement::where('wallet_id',$id)->get()));
     }
 
     /**

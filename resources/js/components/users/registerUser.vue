@@ -9,7 +9,8 @@
                 </div>
                 <div class="form-group">
                     <label for="inputEmail">Email Address</label>
-                    <input type="email" class="form-control" id="inputEmail" required placeholder="Enter email" v-model="newUser.email">
+                    <input type="email" class="form-control" id="inputEmail" required placeholder="Enter email" @change="email_taken = false" v-model="newUser.email">
+                    <small v-show="email_taken"  style="color:red;" class="form-text text-muted"><a style="color:red">This email has already been taken.</a></small>
                 </div>
                 <div class="row">
                     <div class="form-group col">
@@ -48,16 +49,11 @@
                 <button :disabled="disableButtonSubmit() === true" v-on:click.prevent="submitUser()" type="submit" class="btn btn-primary">Submit</button>
                 <button v-on:click.prevent="cancelRegistration()" class="btn btn-danger">Cancel</button>
             </form>
-            <div>
-
-            </div>
         </div>
     </div>
 </template>
 
 <script>
-    import FormData from 'form-data';
-
     export default {
         data: function(){
             return{
@@ -71,6 +67,7 @@
                     nif: '',
                 },
                 confirmed_password: '',
+                email_taken: false,
             }
         },
         methods:{
@@ -81,7 +78,7 @@
                 console.log(this.newUser);
                 axios.post("api/users", this.newUser)
                     .then(response => {this.$emit('form-submitted')})
-                    .catch(error => console.log(error.message));
+                    .catch(error => {this.email_taken = true});
             },
             imageUpload:function(event){
                 this.newUser.photo = event.target.files[0];
@@ -99,8 +96,6 @@
             clickPhotograph:function(){
                 this.photo = '';
                 this.newUser.photoURL = '';
-                2 == "2"; //true;
-                2 === "2"; // false;
             },
             disableButtonSubmit: function(){
                 return (this.newUser.password === "" || this.confirmed_password === "" || this.newUser.name === "" || this.newUser.email === "" || this.newUser.password !== this.confirmed_password);

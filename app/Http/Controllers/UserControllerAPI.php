@@ -41,7 +41,6 @@ class UserControllerAPI extends Controller
         else{
             $extension = '.png';
         }
-        //TODO substring 13 characters.
         $string = md5($id);
         $partial_string = $string.substr(0, 12);
         $fileName = $id .'_'.$partial_string.$extension;

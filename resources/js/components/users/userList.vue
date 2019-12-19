@@ -1,15 +1,23 @@
 <script>
+    import JwPagination from 'jw-vue-pagination';
+    import MovementInformation from "../movement/movementInformation";
+
     export default {
+        components: {JwPagination},
         props:['users'],
         data: function (){
             return{
-                currentUser: {}
+                currentUser: {},
+                pagedUsers: [{}]
             }
         },
         methods:{
             //TODO pagination
             deleteUser: function(event){
                 axios.delete(`/api/users/${event.id}`, event.id).then(response => {this.$emit('user-deleted', event.id)}).catch(error => console.log(error.message));
+            },
+            onChangePage: function(pagedUsers){
+                this.pagedUsers = pagedUsers;
             }
         }
     }
@@ -29,7 +37,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="user in users" :key="user.id">
+        <tr v-for="user in pagedUsers" :key="user.id">
           <td ><img :src="`./storage/fotos/${user.photo}`" class="img-circle" style="max-width:70px;"> </td>
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
@@ -44,6 +52,7 @@
         </tr>
         </tbody>
     </table>
+        <jw-pagination :items="users" @changePage="onChangePage"></jw-pagination>
     </div>
 </template>
 
