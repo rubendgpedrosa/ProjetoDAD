@@ -4,14 +4,12 @@
     <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/expense/registerExpense.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/expense/registerExpense.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/movement/movementList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/movement/movementList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/users/userList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/userList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,13 +61,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/js/components/expense" />
       <recent name="C:\Projects\ProjetoDAD\resources\views" />
       <recent name="C:\laragon\www\ProjetoDAD\DAD\resources\js" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -160,7 +158,13 @@
       <workItem from="1576664770364" duration="7547000" />
       <workItem from="1576691111576" duration="599000" />
       <workItem from="1576749516441" duration="16349000" />
-      <workItem from="1576782969508" duration="4178000" />
+      <workItem from="1576782969508" duration="4278000" />
+      <workItem from="1576834249854" duration="16229000" />
+      <workItem from="1576855866478" duration="2088000" />
+      <workItem from="1576863218594" duration="688000" />
+      <workItem from="1576931612071" duration="875000" />
+      <workItem from="1577015305361" duration="366000" />
+      <workItem from="1577042037555" duration="3300000" />
     </task>
     <task id="LOCAL-00001" summary="Category Model, Controller, Route API">
       <created>1573578346429</created>
@@ -302,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576674239535</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Email already taken validation and button disabling/data treatment.">
+      <created>1576788075964</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1576788075964</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,18 +363,19 @@
     <MESSAGE value="Upload image API request completed with user creation option enabled." />
     <MESSAGE value="TODO items added." />
     <MESSAGE value="Form validation for user registration and expense registration." />
-    <option name="LAST_COMMIT_MESSAGE" value="Form validation for user registration and expense registration." />
+    <MESSAGE value="Email already taken validation and button disabling/data treatment." />
+    <option name="LAST_COMMIT_MESSAGE" value="Email already taken validation and button disabling/data treatment." />
   </component>
   <component name="WindowStateProjectService">
     <state x="696" y="349" width="554" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1575918216925">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="696" y="349" width="554" height="383" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1575918216925" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1576674238997">
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1576788075278">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="393" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1574788333556" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1576674238997" />
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1576788075278" />
     <state x="184" y="84" width="1228" height="688" key="DiffContextDialog" timestamp="1576596354612">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

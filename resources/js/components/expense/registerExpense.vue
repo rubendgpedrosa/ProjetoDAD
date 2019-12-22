@@ -31,7 +31,7 @@
                 <label for="inputDescription">Description</label>
                 <textarea class="form-control" id="inputDescription" v-model="newExpense.description" required></textarea>
             </div>
-            <div class="form-row" v-if="newExpense.type === 'e'">
+            <div class="form-row" v-if="newExpense.type === 0">
                 <div class="col">
                     <label for="inputTypePayment">Type of Payment</label>
                     <select required class="form-control custom-select" id="inputTypePayment" v-model="newExpense.type_payment">
@@ -46,7 +46,7 @@
                            type="text" class="form-control" id="inputIBAN" v-model.lazy="newExpense.iban">
                 </div>
             </div>
-            <div class="form-row" v-if="newExpense.type === 'e'">
+            <div class="form-row" v-if="newExpense.type === 0">
                 <div class="col">
                     <label for="inputMBEntityCode">MB Entity Code</label>
                     <input :disabled="newExpense.type_payment !== 'mb'" :required="newExpense.type_payment === 'mb'"
@@ -58,13 +58,13 @@
                            type="text" class="form-control" id="inputMBPaymentReference" v-model.lazy="newExpense.mb_payment_reference">
                 </div>
             </div>
-            <div class="mb-3" v-if="newExpense.type === 'i'">
+            <div class="mb-3" v-if="newExpense.type === 1">
                 <label for="inputEmail">Destination Email</label>
-                <vue-bootstrap-typeahead :minMatchingChars="1" id="inputEmail" :disabled="newExpense.type !== 'i'" v-model="newExpense.email" :data="walletsEmailArray"/>
+                <vue-bootstrap-typeahead :minMatchingChars="1" id="inputEmail" :disabled="newExpense.type !== 1" v-model="newExpense.email" :data="walletsEmailArray"/>
             </div>
-            <div class="mb-3" v-if="newExpense.type === 'i'">
+            <div class="mb-3" v-if="newExpense.type === 1">
                 <label for="inputSourceDescription">Source Description</label>
-                <textarea :disabled="newExpense.type !== 'i'" type="text" class="form-control" id="inputSourceDescription" v-model.lazy="newExpense.source_description"/>
+                <textarea :disabled="newExpense.type !== 1" type="text" class="form-control" id="inputSourceDescription" v-model.lazy="newExpense.source_description"/>
             </div>
             <button type="submit" :disabled="disableButtonSubmit()" class="btn btn-primary" @click="submitExpense">Submit Expense</button>
         </form>
@@ -97,7 +97,7 @@
                 walletsEmailArray: [],
                 categories: [{}],
                 expenseSubmitted: false,
-                types: [{name: 'Payment to External Entity', value: 'e'}, {name: 'Transfer Movement', value: 'i'}],
+                types: [{name: 'Payment to External Entity', value: 0}, {name: 'Transfer Movement', value: 1}],
                 types_payment: [{name: 'Bank Transfer', value: 'bt'}, {name: 'MB Payment', value: 'mb'}]
             }
         },
@@ -134,7 +134,7 @@
             },
             disableButtonSubmit: function(){
                 return (this.newExpense.type === "" || this.newExpense.category === "" || this.newExpense.value === ""|| this.newExpense.type === "" ||
-                    (this.newExpense.type === "i"? this.newExpense.email === "":(this.newExpense.type_payment === "bt"? this.newExpense.iban === "":
+                    (this.newExpense.type === 1? this.newExpense.email === "":(this.newExpense.type_payment === "bt"? this.newExpense.iban === "":
                         (this.newExpense.mb_entity_code === "" || this.newExpense.mb_payment_reference === ""))));
             }
         },

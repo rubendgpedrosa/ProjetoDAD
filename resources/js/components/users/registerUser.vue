@@ -83,7 +83,6 @@
             imageUpload:function(event){
                 this.newUser.photo = event.target.files[0];
                 this.newUser.photoURL = URL.createObjectURL(this.newUser.photo);
-                //returned string is too big and database can't be altered, if it could, converting the image file to base64 and storing it as a string would be an option.
                 this.readFileAsDataURL(this.newUser.photo).then(response => this.newUser.photo = response);
             },
             readFileAsDataURL: async function(file) {
