@@ -58,8 +58,7 @@ class MovementsControllerAPI extends Controller
     {
         $movement = new Movement;
         $walletToRetract = Wallet::where('id', $request->id)->first();
-
-        $movement->wallet_id = $walletToDeposit->id;
+        $movement->wallet_id = $walletToRetract->id;
         $movement->type = $request->type;
         $movement->category_id = $request->category_id;
         $movement->description = $request->description;
@@ -70,7 +69,7 @@ class MovementsControllerAPI extends Controller
             $walletToDeposit = Wallet::where('email', $request->email)->first();
             $movement->transfer = 1;
             $movement_mirrored->transfer = 1;
-            $movement_mirrored->wallet_id = $walletToRetract->id;
+            $movement_mirrored->wallet_id = $walletToDeposit->id;
             //Income inserted in the wallet to receive the deposit
             $movement_mirrored->type = 'i';
             $movement_mirrored->category_id = $request->category_id;
@@ -79,13 +78,14 @@ class MovementsControllerAPI extends Controller
             $movement_mirrored->date = new \DateTime();
             $movement->source_description = $request->source_description;
             $movement_mirrored->source_description = $request->source_description;
-            $movement_mirrored->start_balance = $walletToRetract->balance;
-            $movement_mirrored->end_balance = $walletToRetract->balance-$request->value;
+            $movement_mirrored->start_balance = $walletToDeposit->balance;
+            $movement_mirrored->end_balance = $walletToDeposit->balance + $request->value;
             $walletToDeposit->balance += $request->value;
             $movement_mirrored->value = $request->value;
             $walletToDeposit->save();
             $movement_mirrored->save();
         }else{
+            $movement->transfer = 0;
             $movement->type_payment = $request->type_payment;
             if($request->type_payment == 'bt'){
                 $movement->iban = $request->iban;

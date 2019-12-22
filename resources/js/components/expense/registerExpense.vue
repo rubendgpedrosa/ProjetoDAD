@@ -23,13 +23,13 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="inputValue">Amount</label>
-                    <input required type="number" class="form-control" id="inputValue" v-model.number="newExpense.value">
+                    <input required type="number" step="0.01" class="form-control" id="inputValue" v-model.number="newExpense.value">
                     <small min="0.01" required v-show="newExpense.value !== '' & newExpense.value > 5000.0 || newExpense.value < 0.01" id="passwordNotMatch" style="color:red;" class="form-text text-muted"><a style="color:red">Amount must be between 0.01€ and 5000€.</a></small>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="inputDescription">Description</label>
-                <textarea class="form-control" id="inputDescription" v-model="newExpense.description" required></textarea>
+                <textarea class="form-control" id="inputDescription" v-model="newExpense.description"></textarea>
             </div>
             <div class="form-row" v-if="newExpense.type === 0">
                 <div class="col">
@@ -42,19 +42,19 @@
                 </div>
                 <div class="col">
                     <label for="inputValue">IBAN</label>
-                    <input :disabled="newExpense.type_payment !== 'bt'" :required="newExpense.type_payment === 'bt'"
+                    <input :disabled="newExpense.type_payment !== 'bt'" maxlength="25" :required="newExpense.type_payment === 'bt'"
                            type="text" class="form-control" id="inputIBAN" v-model.lazy="newExpense.iban">
                 </div>
             </div>
             <div class="form-row" v-if="newExpense.type === 0">
                 <div class="col">
                     <label for="inputMBEntityCode">MB Entity Code</label>
-                    <input :disabled="newExpense.type_payment !== 'mb'" :required="newExpense.type_payment === 'mb'"
+                    <input :disabled="newExpense.type_payment !== 'mb'" maxlength="5" :required="newExpense.type_payment === 'mb'"
                            type="text" class="form-control" id="inputMBEntityCode" v-model.lazy="newExpense.mb_entity_code">
                 </div>
                 <div class="col">
                     <label for="inputMBPaymentReference">MB Payment Reference</label>
-                    <input :disabled="newExpense.type_payment !== 'mb'" :required="newExpense.type_payment === 'mb'"
+                    <input :disabled="newExpense.type_payment !== 'mb'" maxlength="9" :required="newExpense.type_payment === 'mb'"
                            type="text" class="form-control" id="inputMBPaymentReference" v-model.lazy="newExpense.mb_payment_reference">
                 </div>
             </div>
@@ -106,7 +106,8 @@
                 this.expenseClicked = this.expenseClicked === false;
             },
             submitExpense: function(){
-                if(this.newExpense.type === "e"){
+                let self = this;
+                if(this.newExpense.type === 0){
                     this.newExpense.email = "";
                     if(this.newExpense.type_payment === "bt"){
                         this.newExpense.mb_entity_code = "";
@@ -119,10 +120,9 @@
                     this.newExpense.mb_payment_reference = "";
                     this.newExpense.iban = "";
                 }
-                axios.post('/api/movements', this.newExpense).then(function(response){
-                    if(response.status === 200){
-                        this.expenseSubmitted = true;
-                        this.$emit('expense-registered');
+                axios.post('/api/movements', this.newExpense).then(function(response){ if(  response.status === 201) {
+                        self.registeredExpense();
+                        self.newExpense = {};
                     }
                 }).catch(error => console.log(error.message));
             },
@@ -136,6 +136,9 @@
                 return (this.newExpense.type === "" || this.newExpense.category === "" || this.newExpense.value === ""|| this.newExpense.type === "" ||
                     (this.newExpense.type === 1? this.newExpense.email === "":(this.newExpense.type_payment === "bt"? this.newExpense.iban === "":
                         (this.newExpense.mb_entity_code === "" || this.newExpense.mb_payment_reference === ""))));
+            },
+            registeredExpense: function(){
+                this.expenseSubmitted = true;
             }
         },
         components: {
