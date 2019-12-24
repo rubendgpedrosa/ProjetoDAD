@@ -28,19 +28,19 @@
                     <label for="inputDescription" style="float:left;">Description</label>
                     <textarea class="form-control" readonly :value="movementClicked.description === null? 'Not Available':movementClicked.description"/>
                 </div>
-                <div v-if="movementClicked.type === 'e' & movementClicked.source_description !== null" class="form-group">
+                <div v-if="movementClicked.source_description !== null" class="form-group">
                     <label for="inputDescription" style="float:left;">Source Description</label>
                     <textarea class="form-control" readonly :value="movementClicked.source_description"/>
                 </div>
-                <div v-if="movementClicked.type === 'e' & movementClicked.iban !== null" class="form-group">
+                <div v-if="movementClicked.iban !== null" class="form-group">
                     <label for="inputDescription" style="float:left;">IBAN</label>
                     <input type="text" class="form-control" readonly :value="movementClicked.iban">
                 </div>
-                <div v-if="movementClicked.type === 'e' & movementClicked.mb_entity_code !== null" class="form-group">
+                <div v-if="movementClicked.mb_entity_code !== null" class="form-group">
                     <label for="inputDescription" style="float:left;">MB Entity Code</label>
                     <input type="text" class="form-control" readonly :value="movementClicked.mb_entity_code">
                 </div>
-                <div v-if="movementClicked.type === 'e' & movementClicked.mb_payment_reference !== null" class="form-group">
+                <div v-if="movementClicked.mb_payment_reference !== null" class="form-group">
                     <label for="inputDescription" style="float:left;">MB Payment Reference</label>
                     <input type="text" class="form-control" readonly :value="movementClicked.mb_payment_reference">
                 </div>

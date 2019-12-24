@@ -82,6 +82,7 @@
             return{
                 expenseClicked: false,
                 newExpense: {
+                    //TODO issue with submiting new expense. Some fields seem to be cleared for unknown reasons when sending a new request.
                     type: '',
                     value: '',
                     category_id: '',
@@ -92,6 +93,7 @@
                     mb_payment_reference: '',
                     email: '',
                     source_description: '',
+                    //TODO hardcoded id
                     id: 12
                 },
                 walletsEmailArray: [],
@@ -122,7 +124,6 @@
                 }
                 axios.post('/api/movements', this.newExpense).then(function(response){ if(  response.status === 201) {
                         self.registeredExpense();
-                        self.newExpense = {};
                     }
                 }).catch(error => console.log(error.message));
             },

@@ -21,7 +21,11 @@ class WalletControllerAPI extends Controller
     }
 
     public function walletsEmail(){
-        return Wallet::all();
+        $wallets = Wallet::all();
+        foreach($wallets as $wallet){
+            $wallet->balance = null;
+        }
+        return $wallets;
     }
 
     public function edit(){

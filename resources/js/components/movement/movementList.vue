@@ -3,31 +3,34 @@
         <div class="jumbotron">
             <h1>Movements</h1>
         </div>
-        {{filteredMovements}}
-        {{searchObject}}
         <div>
+            <button style="padding: 0px;" type="button" class="btn btn-sm btn-outline-primary" @click="clearFilter">Clear Filter</button>
             <div class="form-row">
-                <div class="col-md-2 mb-3">
-                    <label>Wallet ID</label>
-                    <input type="number" class="form-control" v-model="searchObject.id" placeholder="Insert ID">
+                <!-- TODO BUTTONS THAT CLEAN FITLER. HOW SHOULD I DO IT??-->
+                <div class="col">
+                    <label>Movement ID</label>
+                    <input type="text" class="form-control" v-model="searchObject.id">
                 </div>
-                <div class="col-md-2 mb-3">
+                <div class="col">
                     <label>Type</label>
-                    <select class="form-control custom-select" v-model="searchObject.type">
+                    <select class="form-control custom-select" type="search" v-model="searchObject.type">
                         <option v-for="type in types" :value="type.value">
                             {{type.name}}
                         </option>
                     </select>
                 </div>
-                <div class="col-md-2 mb-3">
+                <div class="col">
                     <label>Category</label>
                     <select class="form-control custom-select" placeholder="Category" v-model="searchObject.category">
                         <option v-for="category in categories" :value="category.id">
                             {{category.name}}
                         </option>
                     </select>
+                    <button class="btn bg-transparent" style="margin-left: -40px; z-index: 100;">
+                        <i class="fa fa-times"></i>
+                    </button>
                 </div>
-                <div v-if="searchObject.type === 'e'" class="col-md-2 mb-3">
+                <div class="col">
                     <label>Type of Payment</label>
                     <select required class="form-control custom-select" v-model="searchObject.type_payment">
                         <option v-for="type_payment in types_payment" :value="type_payment.value">
@@ -35,43 +38,42 @@
                         </option>
                     </select>
                 </div>
-                <div v-if="searchObject.type === 'i'" class="col-md-2 mb-3">
+                <div class="col">
                     <label>Destination Email</label>
-                    <vue-bootstrap-typeahead  :minMatchingChars="1" v-model="searchObject.email" :data="walletsEmailArray"/>
+                    <vue-bootstrap-typeahead :minMatchingChars="1" v-model="searchObject.email" :data="walletsEmailOnly"/>
                 </div>
-                <div class="col-md-2 mb-3">
+                <div class="col">
                     <label>Date Interval</label>
                     <date-picker type="datetime" range v-model="searchObject.timeInterval" value-type="format" format="YYYY-MM-DD HH:mm:ss"></date-picker>
                 </div>
-                <div>
-                    <button class="btn btn-danger glyphicon glyphicon-trash"></button>
-                </div>
             </div>
         </div>
-        <table class="table table-hover table-borderless" v-if="movementInformationClicked === false">
-            <thead>
-            <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Category</th>
-                <th>Start Balance</th>
-                <th>End Balance</th>
-                <th>Value Transfered</th>
-            </tr>
-            </thead>
-            <tbody>
+        <div>
+            <table class="table table-hover table-borderless" v-if="movementInformationClicked === false">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Start Balance</th>
+                    <th>End Balance</th>
+                    <th>Value Transfered</th>
+                </tr>
+                </thead>
+                <tbody>
                 <tr v-for="movement in pagedMovements" :key="movement.id" @click="moreMovementInformation(movement)">
-                <td>{{movement.date}}</td>
-                <td>{{typeToString(movement.type)}}</td>
-                <td>{{categoryToString(movement.category_id)}}</td>
-                <td>{{movement.start_balance}}</td>
-                <td>{{movement.end_balance}}</td>
-                <td>{{movement.value}}</td>
-            </tr>
-            </tbody>
-        </table>
-        <movement-information v-if="movementInformationClicked" :categories="categories" :movementClicked="movementClicked" v-on:movement-information-clicked="changeInformationClicked"></movement-information>
-        <jw-pagination :items="movements" @changePage="onChangePage"></jw-pagination>
+                    <td>{{movement.date}}</td>
+                    <td>{{typeToString(movement.type)}}</td>
+                    <td>{{categoryToString(movement.category_id)}}</td>
+                    <td>{{movement.start_balance}}</td>
+                    <td>{{movement.end_balance}}</td>
+                    <td>{{movement.value}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <movement-information v-if="movementInformationClicked" :categories="categories" :movementClicked="movementClicked" v-on:movement-information-clicked="changeInformationClicked"></movement-information>
+            <jw-pagination v-show="getFilteredMovements.length > 12" :pageSize="12" :items="getFilteredMovements" @changePage="onChangePage"></jw-pagination>
+        </div>
         <h3 class="text-center" v-if="movements.length === 0">No Records Found!</h3>
     </div>
 </template>
@@ -102,24 +104,26 @@
                     },
                     searchObject:
                         {
-                            timeInterval: null,
+                            id: '',
+                            timeInterval: '',
                             type: '',
+                            type_payment: '',
                             category: '',
-                            start: '',
                             email: ''
                         },
-                    walletsEmailArray: [],
+                    walletsEmailArray: [{}],
+                    walletsEmailOnly: [],
                     types: [{name: 'Expense Movement', value: 'e'}, {name: 'Income Credit', value: 'i'}],
                     types_payment: [{name: 'Bank Transfer', value: 'bt'}, {name: 'MB Payment', value: 'mb'}]
                 }
         }, methods: {
             getMovements: function () {
                 axios.get(`api/movements/${this.$route.params.id}`)
-                .then(response=>{ this.movements = response.data, this.totalPages = this.movements.length });
+                    .then(response=>{ this.movements = response.data.reverse(), this.totalPages = this.movements.length });
             },
             getCategory: function () {
                 axios.get('api/categories/')
-                .then(response=>{this.categories = response.data.data/*, console.log(response.data.data)*/});
+                    .then(response=>{this.categories = response.data.data/*, console.log(response.data.data)*/});
             },
             typeToString: function(type){
                 return (type === "e")?"Expense Movement":"Income Credit";
@@ -133,7 +137,13 @@
                 return "N/A";
             },
             walletsEmail: function(){
-                axios.get('api/walletsEmail').then(response => {response.data.forEach(element => this.walletsEmailArray.push(element.email))});
+                axios.get('api/walletsEmail')
+                    .then(response => {
+                        this.walletsEmailArray = response.data;
+                        response.data.forEach(element => {
+                            this.walletsEmailOnly.push(element.email)
+                        });
+                    });
             },
             moreMovementInformation: function(movement){
                 this.movementInformationClicked = true;
@@ -149,6 +159,14 @@
             },
             filterMovements: function(){
                 this.filteredMovements = this.movements.filter(movement=>movement.id === this.searchObject.id);
+            },
+            clearFilter: function () {
+                this.searchObject.id = '';
+                this.searchObject.type = '';
+                this.searchObject.category = '';
+                this.searchObject.type_payment = '';
+                this.searchObject.email = '';
+                this.searchObject.walletsEmailArray = '';
             }
         },
         mounted() {
@@ -156,11 +174,33 @@
             this.getCategory();
             this.walletsEmail();
         },
-        watch: {
-            searchObject: function() {
-                return this.movements.filter((movement) => {
-                    movement.id === searchObject.id
-                })
+        computed: {
+            getFilteredMovements: function() {
+                let self = this;
+                let stuff = this.movements;
+                if(this.searchObject.id !== '')
+                    stuff = stuff.filter(movement => movement.id == self.searchObject.id);
+                if(this.searchObject.type !== '')
+                    stuff = stuff.filter(movement => movement.type === self.searchObject.type);
+                if(this.searchObject.category !== '')
+                    stuff = stuff.filter(movement => movement.category_id === self.searchObject.category);
+                if(this.searchObject.type_payment !== '')
+                    stuff = stuff.filter(movement => movement.type_payment === self.searchObject.type_payment);
+                if(this.searchObject.email !== ''){
+                    var walletId = this.walletsEmailArray.filter(wallet => wallet.email === self.searchObject.email);
+                    if(walletId[0] !== undefined){
+                        stuff = stuff.filter(movement => {return movement.transfer_wallet_id == walletId[0].id});
+                    }
+                }
+                if(this.searchObject.timeInterval[0] && this.searchObject.timeInterval[1]){
+                    var startDate = new Date(self.searchObject.timeInterval[0]);
+                    var endDate = new Date(self.searchObject.timeInterval[1]);
+                    stuff = stuff.filter(function(movement){
+                        var movementDate = new Date(movement.date);
+                        return movementDate.getTime() >= startDate.getTime() && movementDate.getTime() <= endDate.getTime();
+                    });
+                }
+                return stuff;
             }
         }
     }
