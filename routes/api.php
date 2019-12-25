@@ -33,7 +33,6 @@ Route::get('users', 'UserControllerAPI@index');//->middleware('auth::api')
 Route::get('users/{id}', 'UserControllerAPI@show');
 Route::post('users', 'UserControllerAPI@store');
 Route::put('users/{id}', 'UserControllerAPI@update');
-Route::put('users/{id}', 'UserControllerAPI@uploadImage');
 Route::delete('users/{id}', 'UserControllerAPI@destroy');
 
 //Movement

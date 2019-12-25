@@ -9,16 +9,18 @@
                 <th>Start Balance</th>
                 <th>End Balance</th>
                 <th>Value Transfered</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr v-model="movementInformationClicked" @click="$emit('movement-information-clicked')">
+            <tr v-model="movementInformationClicked">
                 <td>{{movementClicked.date}}</td>
                 <td>{{movementClicked.type_string}}</td>
                 <td>{{movementClicked.category_string}}</td>
                 <td>{{movementClicked.start_balance}}</td>
                 <td>{{movementClicked.end_balance}}</td>
                 <td>{{movementClicked.value}}</td>
+                <td><button class="glyphicon glyphicon-remove" @click="$emit('movement-information-clicked')"></button></td>
             </tr>
             </tbody>
         </table>

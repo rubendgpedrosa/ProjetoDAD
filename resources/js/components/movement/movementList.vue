@@ -58,16 +58,18 @@
                     <th>Start Balance</th>
                     <th>End Balance</th>
                     <th>Value Transfered</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="movement in pagedMovements" :key="movement.id" @click="moreMovementInformation(movement)">
+                <tr v-for="movement in pagedMovements" :key="movement.id">
                     <td>{{movement.date}}</td>
                     <td>{{typeToString(movement.type)}}</td>
                     <td>{{categoryToString(movement.category_id)}}</td>
                     <td>{{movement.start_balance}}</td>
                     <td>{{movement.end_balance}}</td>
                     <td>{{movement.value}}</td>
+                    <td><button class="glyphicon glyphicon-search" @click="moreMovementInformation(movement)"></button></td>
                 </tr>
                 </tbody>
             </table>

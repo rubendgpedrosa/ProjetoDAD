@@ -93,7 +93,7 @@
                 });
             },
             clickPhotograph:function(){
-                this.photo = '';
+                this.newUser.photo = '';
                 this.newUser.photoURL = '';
             },
             disableButtonSubmit: function(){

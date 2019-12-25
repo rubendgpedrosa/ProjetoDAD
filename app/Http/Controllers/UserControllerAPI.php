@@ -56,32 +56,49 @@ class UserControllerAPI extends Controller
         $request->validate([
                 'name' => 'required|min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
                 'email' => 'required|email|unique:users,email',
-                'age' => 'integer|between:18,75',
-                'password' => 'min:3'
+                'password' => 'min:3',
+                'nif' => 'integer',
             ]);
         $user = new User();
         $user->fill($request->except('photo'));
         $user->password = Hash::make($user->password);
         $user->save();
         if($user->type == "u"){
+        //TODO type insertion with default being 'u' (regular user with a wallet)
             $walletController->store($request);
         }
         //\Log::info($request->all());
         $user->photo = $userController->uploadImage($request, $user->id);
-        $user->save();
-        return $user;
+        return response()->json($user->save());
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $userController = new UserControllerAPI();
         $request->validate([
-                'name' => 'required|min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
-                'email' => 'required|email|unique:users,email,'.$id,
-                'age' => 'integer|between:18,75'
-            ]);
-        $user = User::findOrFail($id);
-        $user->update($request->all());
-        return new UserResource($user);
+            'name' => 'min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
+            'password' => 'integer|min:3',
+            'nif' => 'integer',
+        ]);
+        $user = User::findOrFail($request->id);
+        if($request->new_password != null) {
+            if(Hash::check($request->password, $user->password)){
+                $user['password'] = Hash::make($request->new_password);
+            }
+            else{
+               abort(403);;
+            }
+        }
+        if($request->name != null && $request->name != $user->name){
+            $user->name = $request->name;
+        }
+        if($request->nif != $user->nif){
+            $user->nif = $request->nif;
+        }
+        if($request->photo != null && $request->photo != $user->photo){
+            $user->photo = $userController->uploadImage($request, $user->id);
+        }
+        return response()->json($user->save());
     }
 
     public function destroy($id)

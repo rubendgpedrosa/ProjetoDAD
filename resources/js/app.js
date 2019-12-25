@@ -16,6 +16,7 @@ window.Vue = require('vue');
 
 import RegisterExpense from './components/expense/registerExpense.vue';
 import RegisterUser from './components/users/registerUser';
+import UserProfile from './components/profile/userProfile';
 import Categories from './components/category/category';
 import VueRouter from 'vue-router';
 import Homepage from './components/homepage/homepage.vue';
@@ -31,6 +32,7 @@ Vue.component('passport-authorized-clients', require('./components/passport/Auth
 Vue.component('passport-clients', require('./components/passport/Clients.vue').default);
 Vue.component('RegisterExpense', RegisterExpense);
 Vue.component('RegisterUser', RegisterUser);
+Vue.component('UserProfile', UserProfile);
 Vue.component('category', Categories);
 Vue.component('Homepage', Homepage);
 Vue.component('wallets', Wallets);
@@ -64,6 +66,11 @@ const routes = [
     {
         path: '/expenses',
         component: RegisterExpense
+    },
+    {
+    //TODO test path for now
+        path: '/profile',
+        component: UserProfile
     }
 ];
 
