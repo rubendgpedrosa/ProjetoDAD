@@ -60,7 +60,7 @@
             </div>
             <div class="mb-3" v-if="newExpense.type === 1">
                 <label for="inputEmail">Destination Email</label>
-                <vue-bootstrap-typeahead :minMatchingChars="1" id="inputEmail" :disabled="newExpense.type !== 1" v-model="newExpense.email" :data="walletsEmailArray"/>
+                <vue-bootstrap-typeahead :minMatchingChars="1" id="inputEmail" :disabled="newExpense.type !== 1" v-model="newExpense.email" :data="walletsEmailOnly"/>
             </div>
             <div class="mb-3" v-if="newExpense.type === 1">
                 <label for="inputSourceDescription">Source Description</label>
@@ -93,10 +93,10 @@
                     mb_payment_reference: '',
                     email: '',
                     source_description: '',
-                    //TODO hardcoded id
-                    id: 12
+                    id: sessionStorage.getItem('id'),
                 },
-                walletsEmailArray: [],
+                walletsEmailArray: [{}],
+                walletsEmailOnly: [],
                 categories: [{}],
                 expenseSubmitted: false,
                 types: [{name: 'Payment to External Entity', value: 0}, {name: 'Transfer Movement', value: 1}],
@@ -124,6 +124,7 @@
                 }
                 axios.post('/api/movements', this.newExpense).then(function(response){ if(  response.status === 201) {
                         self.registeredExpense();
+                        //var walletId = self.walletsEmailArray.filter(wallet => wallet.email === self.newExpense.email);
                     }
                 }).catch(error => console.log(error.message));
             },
@@ -131,7 +132,12 @@
                 axios.get('/api/categories').then(response => this.categories = response.data.data).catch(error => console.log(error.message));
             },
             walletsEmail: function(){
-                axios.get('api/walletsEmail').then(response => {response.data.forEach(element => this.walletsEmailArray.push(element.email))});
+                axios.get('api/walletsEmail').then(response => {
+                    this.walletsEmailArray = response.data;
+                    response.data.forEach(element => {
+                        this.walletsEmailOnly.push(element.email)
+                    });
+                });
             },
             disableButtonSubmit: function(){
                 return (this.newExpense.type === "" || this.newExpense.category === "" || this.newExpense.value === ""|| this.newExpense.type === "" ||
@@ -140,6 +146,7 @@
             },
             registeredExpense: function(){
                 this.expenseSubmitted = true;
+                this.$eventHub.$emit('registered-expense');
             }
         },
         components: {

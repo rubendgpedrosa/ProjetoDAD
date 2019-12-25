@@ -87,6 +87,7 @@
 
     export default {
         components: {MovementInformation, JwPagination, DatePicker, VueBootstrapTypeahead},
+        props:['walletid'],
         data: function () {
                 return {
                     movements: [{}],
@@ -118,7 +119,7 @@
                 }
         }, methods: {
             getMovements: function () {
-                axios.get(`api/movements/${this.$route.params.id}`)
+                axios.get(`api/movements/${this.walletid}`)
                     .then(response=>{ this.movements = response.data.reverse(), this.totalPages = this.movements.length });
             },
             getCategory: function () {
@@ -166,6 +167,7 @@
                 this.searchObject.category = '';
                 this.searchObject.type_payment = '';
                 this.searchObject.email = '';
+                this.searchObject.timeInterval = '';
                 this.searchObject.walletsEmailArray = '';
             }
         },

@@ -24,6 +24,7 @@ import Wallets from './components/wallets/wallet.vue';
 import Login from './components/auth/login';
 import Users from './components/users/user';
 import Home from './components/home';
+import Vue from "vue";
 
 Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue').default);
 Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue').default);
@@ -53,7 +54,7 @@ const routes = [
         path:'/Home',component:Home
     },
     {
-        path: '/wallets/:id',
+        path: '/wallet/',
         component: Wallets
     },
     {
@@ -68,12 +69,13 @@ const routes = [
 
 const router = new VueRouter({routes});
 
+Vue.prototype.$bus = new Vue({})
 Vue.prototype.$eventHub = new Vue(); // Global event bus
 
 const app = new Vue({
     el: '#app',
     //mode: 'history',
     router,
-    vuetify
+    vuetify,
     }
 );

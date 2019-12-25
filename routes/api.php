@@ -46,5 +46,5 @@ Route::put('movements', 'MovementsControllerAPI@update');
 Route::get('wallets', 'WalletControllerAPI@index');
 Route::get('walletsEmail', 'WalletControllerAPI@walletsEmail');
 Route::post('wallets/create', 'WalletControllerAPI@store');
-Route::get('wallets/{id}', 'WalletControllerAPI@show');
+Route::get('wallet/{id}', 'WalletControllerAPI@show');
 Route::put('wallets', 'WalletControllerAPI@registerIncome');

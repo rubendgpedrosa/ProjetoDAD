@@ -18,7 +18,7 @@ s<template>
             <tr><td></td><td></td></tr>
             </tbody>
         </table>
-        <movement-list></movement-list>
+        <movement-list :walletid="walletid"></movement-list>
     </div>
 </template>
 
@@ -31,19 +31,20 @@ s<template>
         data: function() {
             return {
                 title: 'My Wallet',
-                wallet: ''
+                wallet: '',
+                walletid: sessionStorage.getItem('id'),
             }
         },
         created() {
-            this.$eventHub.$on('logged-in', this.token);
+            //this.$bus.$on('payment-done', (email) => {this.getWallet(email.data)});
         },
         beforeDestroy() {
-            this.$eventHub.$off('logged-in');
+            //this.$eventHub.$off('logged-in');
         },
         methods:{
-            //TODO get wallet from logged in user
             getWallet: function() {
-                axios.get(`/api/wallets/${this.$route.params.id}`).then(response => (this.wallet = response.data));
+                axios.get(`/api/wallet/${(this.walletid)}`)
+                    .then(response => {this.wallet = response.data;});
             }
         },
         mounted () {
