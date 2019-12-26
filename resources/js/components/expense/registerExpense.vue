@@ -63,7 +63,8 @@
                 </div>
                 <div class="mb-3" v-if="newExpense.type === 1">
                     <label for="inputEmail">Destination Email</label>
-                    <vue-bootstrap-typeahead :minMatchingChars="1" id="inputEmail" :disabled="newExpense.type !== 1" v-model="newExpense.email" :data="walletsEmailOnly"/>
+                    <vue-bootstrap-typeahead :minMatchingChars="2" id="inputEmail" :disabled="newExpense.type !== 1" v-model="newExpense.email" :data="walletsEmailOnly"/>
+                    <small id="emailInvalid" class="form-text text-muted" v-show="!walletsEmailOnly.includes(newExpense.email)">Invalid Email.</small>
                 </div>
                 <div class="mb-3" v-if="newExpense.type === 1">
                     <label for="inputSourceDescription">Source Description</label>
@@ -100,6 +101,7 @@
                     id: sessionStorage.getItem('id'),
                 },
                 walletsEmailArray: [{}],
+                invalidEmail: false,
                 walletsEmailOnly: [],
                 categories: [{}],
                 lettersIBAN: '',
@@ -128,11 +130,10 @@
                     this.newExpense.mb_payment_reference = "";
                     this.newExpense.iban = "";
                 }
-                console.log(this.validateIBAN);
-                /*axios.post('/api/movements', this.newExpense).then(function(response){ if(  response.status === 201) {
+                axios.post('/api/movements', this.newExpense).then(function(response){ if(  response.status === 201) {
                         self.registeredExpense();
                     }
-                }).catch(error => console.log(error.message));*/
+                }).catch(error => console.log(error.message));
             },
             getCategories: function(){
                 axios.get('/api/categories').then(response => this.categories = response.data.data).catch(error => console.log(error.message));
@@ -146,7 +147,7 @@
                 });
             },
             disableButtonSubmit: function(){
-                return (this.newExpense.type === "" || this.newExpense.category === "" || this.newExpense.value === ""|| this.newExpense.type === "" ||
+                return (this.newExpense.type === "" || !this.walletsEmailOnly.includes(this.newExpense.email) || this.newExpense.category === "" || this.newExpense.value === ""|| this.newExpense.type === "" ||
                     (this.newExpense.type === 1? this.newExpense.email === "":(this.newExpense.type_payment === "bt"? this.newExpense.iban === "":
                         (this.newExpense.mb_entity_code === "" || this.newExpense.mb_payment_reference === ""))));
             },
@@ -171,7 +172,7 @@
                 }else{
                     return false;
                 }
-            },
+            }
         }
     }
 </script>

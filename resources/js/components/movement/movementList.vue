@@ -1,7 +1,6 @@
 <template>
     <div>
         <div>
-            <button style="padding: 0px;" type="button" class="btn btn-sm btn-outline-primary" @click="clearFilter">Clear Filter</button>
             <div class="form-row">
                 <!-- TODO BUTTONS THAT CLEAN FITLER. HOW SHOULD I DO IT??-->
                 <div class="col">
@@ -55,7 +54,9 @@
                     <th>Start Balance</th>
                     <th>End Balance</th>
                     <th>Value Transfered</th>
-                    <th></th>
+                    <th>
+                        <button style="padding: 0px;" type="button" class="btn btn-sm btn-outline-primary" @click="clearFilter">Clear Filter</button>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>

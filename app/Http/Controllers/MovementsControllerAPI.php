@@ -73,6 +73,9 @@ class MovementsControllerAPI extends Controller
         if($request->type == 1){
             $movement_mirrored = new Movement;
             $walletToDeposit = Wallet::where('email', $request->email)->first();
+            if($walletToDeposit == null){
+                return abort(403);
+            }
             $movement->transfer = 1;
             $movement->transfer_wallet_id = $walletToDeposit->id;
             $movement_mirrored->transfer = 1;
