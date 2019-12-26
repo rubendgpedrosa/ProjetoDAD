@@ -23,7 +23,7 @@
                 successMessage: '',
                 failMessage: '',
                 currentUser: null,
-                users: []}
+                users: [{}]}
         }, methods: {
             getUsers: function () {
                 axios.get('api/users')

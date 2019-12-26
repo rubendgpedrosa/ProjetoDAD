@@ -51,20 +51,24 @@ class UserControllerAPI extends Controller
 
     public function store(Request $request)
     {
+        /*As an Administrator of the platform I want to create operator and administration
+          accounts. These accounts will only have a name (only spaces and letters), a photo (upload
+          a JPG file), a password (3 or more characters) and an e-mail, which must be unique
+          among all accounts of the platform (including the platform users).*/
         $walletController = new WalletControllerAPI();
         $userController = new UserControllerAPI();
         $request->validate([
                 'name' => 'required|min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'min:3',
+                'password' => 'required|min:3',
                 'nif' => 'integer',
             ]);
         $user = new User();
         $user->fill($request->except('photo'));
         $user->password = Hash::make($user->password);
+        $request->type == null? $user->type = 'u':$user->type = $request->type;
         $user->save();
-        if($user->type == "u"){
-        //TODO type insertion with default being 'u' (regular user with a wallet)
+        if($user->type == 'u'){
             $walletController->store($request);
         }
         //\Log::info($request->all());
@@ -111,6 +115,7 @@ class UserControllerAPI extends Controller
         $user->delete();
         return response()->json(null, 204);
     }
+
     public function emailAvailable(Request $request)
     {
         $totalEmail = 1;

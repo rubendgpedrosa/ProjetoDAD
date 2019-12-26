@@ -61,7 +61,6 @@
                     name: '',
                     email: '',
                     password: '',
-                    type: 'u',
                     photo: null,
                     photoURL: '',
                     nif: '',

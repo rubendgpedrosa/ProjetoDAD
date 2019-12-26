@@ -2,7 +2,6 @@
     <div>
         <div>
             <div class="form-row">
-                <!-- TODO BUTTONS THAT CLEAN FITLER. HOW SHOULD I DO IT??-->
                 <div class="col">
                     <label>Movement ID</label>
                     <input type="text" class="form-control" v-model="searchObject.id">
@@ -55,7 +54,7 @@
                     <th>End Balance</th>
                     <th>Value Transfered</th>
                     <th>
-                        <button style="padding: 0px;" type="button" class="btn btn-sm btn-outline-primary" @click="clearFilter">Clear Filter</button>
+                        <button style="padding: 0px;" type="button" class="btn btn-sm btn-outline-primary" @click="clearFilter">Clear Filters</button>
                     </th>
                 </tr>
                 </thead>
@@ -103,15 +102,14 @@
                         start_balance: '',
                         value_transfered: '',
                     },
-                    searchObject:
-                        {
-                            id: '',
-                            timeInterval: '',
-                            type: '',
-                            type_payment: '',
-                            category: '',
-                            email: ''
-                        },
+                    searchObject:{
+                        id: '',
+                        timeInterval: '',
+                        type: '',
+                        type_payment: '',
+                        category: '',
+                        email: ''
+                    },
                     walletsEmailArray: [{}],
                     walletsEmailOnly: [],
                     types: [{name: 'Expense Movement', value: 'e'}, {name: 'Income Credit', value: 'i'}],

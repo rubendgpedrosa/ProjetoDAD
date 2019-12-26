@@ -3,11 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/expense/registerExpense.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/expense/registerExpense.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/movement/movementInformation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/movement/movementInformation.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/movement/movementList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/movement/movementList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/users/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/user.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/users/userList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/userList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +159,7 @@
       <workItem from="1577196643805" duration="5079000" />
       <workItem from="1577234933103" duration="22621000" />
       <workItem from="1577300701132" duration="19400000" />
-      <workItem from="1577360541175" duration="1770000" />
+      <workItem from="1577360541175" duration="5200000" />
     </task>
     <task id="LOCAL-00001" summary="Category Model, Controller, Route API">
       <created>1573578346429</created>
@@ -348,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577320069049</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Email validation when creating new expense">
+      <created>1577362476576</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1577362476577</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +389,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="SHOW_UNVERSIONED_FILES_WHILE_COMMIT" value="false" />
-    <MESSAGE value="Category Model, Controller, Route API" />
     <MESSAGE value="Components Category and List, Master.blade" />
     <MESSAGE value="Components Category and List, Master.blade, Delete vue.js and welcome.blade.php" />
     <MESSAGE value="Components Category Add_Edit, Login and Logout Config but disabled" />
@@ -405,18 +413,19 @@
     <MESSAGE value="Using Session Storage to retrieve wallets from ID." />
     <MESSAGE value="US5. Created a change user profile component that enables a uset to change his name, NIF, password and photo." />
     <MESSAGE value="IBAN and MB validation on expense registration." />
-    <option name="LAST_COMMIT_MESSAGE" value="IBAN and MB validation on expense registration." />
+    <MESSAGE value="Email validation when creating new expense" />
+    <option name="LAST_COMMIT_MESSAGE" value="Email validation when creating new expense" />
   </component>
   <component name="WindowStateProjectService">
     <state x="696" y="349" width="554" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1575918216925">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="696" y="349" width="554" height="383" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1575918216925" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1577320067695">
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1577362475825">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="393" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1574788333556" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1577320067695" />
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1577362475825" />
     <state x="184" y="84" width="1228" height="688" key="DiffContextDialog" timestamp="1576596354612">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -475,10 +484,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577316938942" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1577294441395">
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1577364315699">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1573604925537" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577294441395" />
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577364315699" />
   </component>
 </project>
