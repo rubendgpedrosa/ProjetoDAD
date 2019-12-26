@@ -52,7 +52,7 @@
         </tr>
         </tbody>
     </table>
-        <jw-pagination :items="users" @changePage="onChangePage"></jw-pagination>
+        <jw-pagination class="d-flex justify-content-center" :items="users" @changePage="onChangePage"></jw-pagination>
     </div>
 </template>
 

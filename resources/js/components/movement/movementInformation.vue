@@ -90,6 +90,7 @@
         methods: {
             toggleEditMovement: function () {
                 this.editMovementClicked = this.editMovementClicked === false;
+                this.$emit('more-information-closed');
             },
             updateMovement: function(){
                 this.newData.category_id = this.movementClicked.category_id;

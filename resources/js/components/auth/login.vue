@@ -2,7 +2,7 @@
     <div>
         <div class = jumbotron>
             <h1>LOGIN</h1>
-            <hr class="my-4"></hr>
+            <hr class="my-4">
             <div v-if="logged !== null">
                 <p class="lead">Currently Logged with {{ logged_email }}</p>
                 <button @click="logout" class="btn btn-danger">Log Out</button>

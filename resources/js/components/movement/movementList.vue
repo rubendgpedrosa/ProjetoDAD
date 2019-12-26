@@ -1,8 +1,5 @@
 <template>
     <div>
-        <div class="jumbotron">
-            <h1>Movements</h1>
-        </div>
         <div>
             <button style="padding: 0px;" type="button" class="btn btn-sm btn-outline-primary" @click="clearFilter">Clear Filter</button>
             <div class="form-row">
@@ -74,7 +71,7 @@
                 </tbody>
             </table>
             <movement-information v-if="movementInformationClicked" :categories="categories" :movementClicked="movementClicked" v-on:movement-information-clicked="changeInformationClicked"></movement-information>
-            <jw-pagination v-show="getFilteredMovements.length > 12" :pageSize="12" :items="getFilteredMovements" @changePage="onChangePage"></jw-pagination>
+            <jw-pagination class="d-flex justify-content-center" v-show="getFilteredMovements.length > 12 && !movementInformationClicked" :pageSize="12" :items="getFilteredMovements" @changePage="onChangePage"></jw-pagination>
         </div>
         <h3 class="text-center" v-if="movements.length === 0">No Records Found!</h3>
     </div>

@@ -2,74 +2,78 @@
     <div>
         <div class="jumbotron">
             <h1>Expense Registration</h1>
-        </div>
-        <form v-if="expenseSubmitted === false">
-            <div class="form-row">
-                <div class="col-md-4 mb-3">
-                    <label for="inputType">Type</label>
-                    <select class="form-control custom-select" id="inputType" v-model="newExpense.type" required>
-                        <option v-for="type in types" :value="type.value">
-                            {{type.name}}
-                        </option>
-                    </select>
+            <hr class="my-4">
+            <form v-if="expenseSubmitted === false">
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="inputType">Type*</label>
+                        <select class="form-control custom-select" id="inputType" v-model="newExpense.type" required>
+                            <option v-for="type in types" :value="type.value">
+                                {{type.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="inputCategory">Category*</label>
+                        <select class="form-control custom-select" id="inputCategory" v-model="newExpense.category_id">
+                            <option v-for="category in categories" :value="category.id">
+                                {{category.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="inputValue">Amount*</label>
+                        <input min="0.01" required type="number" step="0.01" class="form-control" id="inputValue" v-model.number="newExpense.value">
+                        <small id="passwordNotMatch" class="form-text text-muted"><a>Amount must be between 0.01€ and 5000€.</a></small>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <label for="inputCategory">Category</label>
-                    <select class="form-control custom-select" id="inputCategory" v-model="newExpense.category_id">
-                        <option v-for="category in categories" :value="category.id">
-                            {{category.name}}
-                        </option>
-                    </select>
+                <div class="mb-3">
+                    <label for="inputDescription">Description</label>
+                    <textarea class="form-control" id="inputDescription" v-model="newExpense.description"></textarea>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <label for="inputValue">Amount</label>
-                    <input required type="number" step="0.01" class="form-control" id="inputValue" v-model.number="newExpense.value">
-                    <small min="0.01" required v-show="newExpense.value !== '' & newExpense.value > 5000.0 || newExpense.value < 0.01" id="passwordNotMatch" style="color:red;" class="form-text text-muted"><a style="color:red">Amount must be between 0.01€ and 5000€.</a></small>
+                <div class="form-row" v-if="newExpense.type === 0">
+                    <div class="col">
+                        <label for="inputTypePayment">Type of Payment</label>
+                        <select required class="form-control custom-select" id="inputTypePayment" v-model="newExpense.type_payment">
+                            <option v-for="type_payment in types_payment" :value="type_payment.value">
+                                {{type_payment.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="inputValue">IBAN</label>
+                        <input :disabled="newExpense.type_payment !== 'bt'" maxlength="25" :required="newExpense.type_payment === 'bt'"
+                               type="text" class="form-control" id="inputIBAN" v-model.lazy="newExpense.iban">
+                        <small id="ibanInvalid" v-show="!validateIBAN" class="form-text text-muted">IBAN must have 2 Capital letter followed by 23 Numbers.</small>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="inputDescription">Description</label>
-                <textarea class="form-control" id="inputDescription" v-model="newExpense.description"></textarea>
-            </div>
-            <div class="form-row" v-if="newExpense.type === 0">
-                <div class="col">
-                    <label for="inputTypePayment">Type of Payment</label>
-                    <select required class="form-control custom-select" id="inputTypePayment" v-model="newExpense.type_payment">
-                        <option v-for="type_payment in types_payment" :value="type_payment.value">
-                            {{type_payment.name}}
-                        </option>
-                    </select>
+                <div class="form-row" v-if="newExpense.type === 0">
+                    <div class="col">
+                        <label for="inputMBEntityCode">MB Entity Code</label>
+                        <input :disabled="newExpense.type_payment !== 'mb'" maxlength="5" :required="newExpense.type_payment === 'mb'"
+                               type="text" class="form-control" id="inputMBEntityCode" v-model.lazy="newExpense.mb_entity_code">
+                        <small id="entitycodeInvalid" class="form-text text-muted">MB entity code must have 5 numbers.</small>
+                    </div>
+                    <div class="col">
+                        <label for="inputMBPaymentReference">MB Payment Reference</label>
+                        <input :disabled="newExpense.type_payment !== 'mb'" maxlength="9" :required="newExpense.type_payment === 'mb'"
+                               type="text" class="form-control" id="inputMBPaymentReference" v-model.lazy="newExpense.mb_payment_reference">
+                        <small id="paymentreferenceInvalid" class="form-text text-muted">MB payment reference must have 9 numbers.</small>
+                    </div>
                 </div>
-                <div class="col">
-                    <label for="inputValue">IBAN</label>
-                    <input :disabled="newExpense.type_payment !== 'bt'" maxlength="25" :required="newExpense.type_payment === 'bt'"
-                           type="text" class="form-control" id="inputIBAN" v-model.lazy="newExpense.iban">
+                <div class="mb-3" v-if="newExpense.type === 1">
+                    <label for="inputEmail">Destination Email</label>
+                    <vue-bootstrap-typeahead :minMatchingChars="1" id="inputEmail" :disabled="newExpense.type !== 1" v-model="newExpense.email" :data="walletsEmailOnly"/>
                 </div>
-            </div>
-            <div class="form-row" v-if="newExpense.type === 0">
-                <div class="col">
-                    <label for="inputMBEntityCode">MB Entity Code</label>
-                    <input :disabled="newExpense.type_payment !== 'mb'" maxlength="5" :required="newExpense.type_payment === 'mb'"
-                           type="text" class="form-control" id="inputMBEntityCode" v-model.lazy="newExpense.mb_entity_code">
+                <div class="mb-3" v-if="newExpense.type === 1">
+                    <label for="inputSourceDescription">Source Description</label>
+                    <textarea :disabled="newExpense.type !== 1" type="text" class="form-control" id="inputSourceDescription" v-model.lazy="newExpense.source_description"/>
                 </div>
-                <div class="col">
-                    <label for="inputMBPaymentReference">MB Payment Reference</label>
-                    <input :disabled="newExpense.type_payment !== 'mb'" maxlength="9" :required="newExpense.type_payment === 'mb'"
-                           type="text" class="form-control" id="inputMBPaymentReference" v-model.lazy="newExpense.mb_payment_reference">
-                </div>
-            </div>
-            <div class="mb-3" v-if="newExpense.type === 1">
-                <label for="inputEmail">Destination Email</label>
-                <vue-bootstrap-typeahead :minMatchingChars="1" id="inputEmail" :disabled="newExpense.type !== 1" v-model="newExpense.email" :data="walletsEmailOnly"/>
-            </div>
-            <div class="mb-3" v-if="newExpense.type === 1">
-                <label for="inputSourceDescription">Source Description</label>
-                <textarea :disabled="newExpense.type !== 1" type="text" class="form-control" id="inputSourceDescription" v-model.lazy="newExpense.source_description"/>
-            </div>
-            <button type="submit" :disabled="disableButtonSubmit()" class="btn btn-primary" @click="submitExpense">Submit Expense</button>
-        </form>
+                <button type="submit" :disabled="disableButtonSubmit()" class="btn btn-primary" @click="submitExpense">Submit Expense</button>
+            </form>
         <div v-if="expenseSubmitted">
             <button type="submit" class="btn btn-primary" @click="expenseSubmitted = false">Submit New Expense</button>
+        </div>
         </div>
     </div>
 </template>
@@ -98,6 +102,8 @@
                 walletsEmailArray: [{}],
                 walletsEmailOnly: [],
                 categories: [{}],
+                lettersIBAN: '',
+                numbersIBAN: '',
                 expenseSubmitted: false,
                 types: [{name: 'Payment to External Entity', value: 0}, {name: 'Transfer Movement', value: 1}],
                 types_payment: [{name: 'Bank Transfer', value: 'bt'}, {name: 'MB Payment', value: 'mb'}]
@@ -122,11 +128,11 @@
                     this.newExpense.mb_payment_reference = "";
                     this.newExpense.iban = "";
                 }
-                axios.post('/api/movements', this.newExpense).then(function(response){ if(  response.status === 201) {
+                console.log(this.validateIBAN);
+                /*axios.post('/api/movements', this.newExpense).then(function(response){ if(  response.status === 201) {
                         self.registeredExpense();
-                        //var walletId = self.walletsEmailArray.filter(wallet => wallet.email === self.newExpense.email);
                     }
-                }).catch(error => console.log(error.message));
+                }).catch(error => console.log(error.message));*/
             },
             getCategories: function(){
                 axios.get('/api/categories').then(response => this.categories = response.data.data).catch(error => console.log(error.message));
@@ -155,6 +161,17 @@
         mounted() {
             this.getCategories();
             this.walletsEmail();
+        },
+        computed: {
+            validateIBAN: function(){
+                this.lettersIBAN = this.newExpense.iban.substring(0,2);
+                this.numbersIBAN = this.newExpense.iban.substring(2,25);
+                if(((/^[A-Z]*$/).test(this.lettersIBAN) && this.lettersIBAN.length === 2) && ((/^[0-9]+$/).test(this.numbersIBAN) && this.numbersIBAN.length === 23)){
+                    return true;
+                }else{
+                    return false;
+                }
+            },
         }
     }
 </script>

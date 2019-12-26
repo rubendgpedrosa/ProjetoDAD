@@ -1,23 +1,21 @@
 s<template>
     <div>
-        <div class="jumbotron">
-            <h1>{{ title }}</h1>
+        <div>
+            <div class="jumbotron">
+                <h1>{{ title }}</h1>
+                <hr class="my-4">
+                <div class="form-row">
+                    <div class="col">
+                        <label>Wallet Email:</label>
+                        {{ wallet.email }}
+                    </div>
+                    <div class="col">
+                        <label>Current Balance:</label>
+                        {{ wallet.balance }} €
+                    </div>
+                </div>
+            </div>
         </div>
-        <table class="table table-hover table-borderless">
-            <thead>
-            <tr>
-                <th>Wallet Email</th>
-                <th>Current Balance</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td> {{ wallet.email }} </td>
-                <td> {{ wallet.balance }} € </td>
-            </tr>
-            <tr><td></td><td></td></tr>
-            </tbody>
-        </table>
         <movement-list :walletid="walletid"></movement-list>
     </div>
 </template>
@@ -32,6 +30,7 @@ s<template>
             return {
                 title: 'My Wallet',
                 wallet: '',
+                hideWallet: false,
                 walletid: sessionStorage.getItem('id'),
             }
         },
