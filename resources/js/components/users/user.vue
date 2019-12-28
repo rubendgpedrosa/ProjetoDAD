@@ -4,7 +4,7 @@
             <h1>{{ title }}</h1>
 
         </div>
-        <usersList v-on:user-deleted="updateList" :users="users"/>
+        <usersList v-on:user-deleted="updateList" v-on:refresh-data="updateDataUsers" :users="users"/>
 
         <div class="alert alert-success" v-if="showSuccess">
             <button type="button" class="close-btn" v-on:click="showSuccess=false">&times;</button>
@@ -27,7 +27,14 @@
         }, methods: {
             getUsers: function () {
                 axios.get('api/users')
-                    .then(response=>{this.users = response.data.data});
+                    .then(response=>{this.users = response.data});
+            },
+            updateDataUsers: function(user){
+                if(user.active === 0){
+                    user.active = 1;
+                }else{
+                    user.active = 0;
+                }
             },
             updateList: function(id){
                 this.users = this.users.filter(user => {

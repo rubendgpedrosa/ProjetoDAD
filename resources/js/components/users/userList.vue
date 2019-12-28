@@ -37,23 +37,23 @@
             <th>Email</th>
             <th>Type</th>
             <th>Status</th>
-            <th>Actions</th>
+            <th>Wallet Status</th>
+            <th></th>
 
         </tr>
         </thead>
         <tbody>
         <tr v-for="user in pagedUsers" :key="user.id">
-          <td ><img :src="`./storage/fotos/${user.photo}`" class="img-circle" style="max-width:70px;"> </td>
+          <td ><img :src="`./storage/fotos/${user.photo}`" class="img-circle" style="max-width:50px;"> </td>
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
-            <td v-if="user.type==='o'">Operator</td>
-            <td v-if="user.type==='a'">Administrator</td>
-            <td v-if="user.type==='u'">Platform User</td>
+            <td>{{user.type ==='o'? 'Operator':(user.type==='a'?'Administrator':'Platform User')}}</td>
+            <td>{{user.active == '1'? 'Active': 'Not Active'}}</td>
+            <td>{{user.empty_wallet === false? 'Wallet Not Empty':(user.empty_wallet === true? 'Wallet Is Empty':'No Wallet')}}</td>
             <td>
-                <a class="btn btn-sm btn-primary" v-on:click.prevent="deactivateUser(user)">Edit</a>
+                <a class="btn btn-sm btn-success" v-on:click.prevent="toggleUserActivation(user)">{{user.active == 0? 'Enable':'Disable'}}</a>
                 <a class="btn btn-sm btn-danger" v-on:click.prevent="deleteUser(user)">Delete</a>
             </td>
-
         </tr>
         </tbody>
     </table>
@@ -67,12 +67,16 @@
     import MovementInformation from "../movement/movementInformation";
 
     export default {
+        /*US16. Also, as an administrator I want to remove any operator or administrator account (except
+        my own account) and deactivate or reactivate platform users – an account can only be
+        deactivated if it has a virtual wallet with a balance value of zero.*/
         components: {JwPagination, VueBootstrapTypeahead},
         props:['users'],
         data: function (){
             return{
                 currentUser: {},
                 pagedUsers: [{}],
+                walletsArray: [{}],
                 searchObject:
                     {
                         type: '',
@@ -88,8 +92,10 @@
             deleteUser: function(event){
                 axios.delete(`/api/users/${event.id}`, event.id).then(response => {this.$emit('user-deleted', event.id)}).catch(error => console.log(error.message));
             },
-            deactivateUser: function(){
-
+            toggleUserActivation: function(user){
+                axios.put(`api/users/${user.id}`, {type_update: 'activity', email: user.email})
+                    .then(response => {this.$emit('refresh-data', user)})
+                    .catch(error => console.log(error.message));
             },
             clearFilter: function(){
               this.searchObject.type = '';
@@ -116,6 +122,8 @@
                 }
                 return stuff;
             }
+        },
+        mounted(){
         }
     }
 </script>

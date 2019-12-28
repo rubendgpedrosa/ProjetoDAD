@@ -19,12 +19,25 @@ class UserControllerAPI extends Controller
 {
     public function index(Request $request)
     {
+    //                <a v-show="user.active == 1" class="btn btn-sm btn-danger" v-on:click.prevent="toggleUserActivation(user)">Disable</a>
 
-        if ($request->has('page')) {
+        $users = User::all();
+        foreach($users as $user){
+            $wallet = \App\Wallet::where('email', $user->email)->first();
+            if($wallet != null){
+                if($wallet->balance > 0){
+                    $user->empty_wallet = false;
+                }else{
+                    $user->empty_wallet = true;
+                }
+            }
+        }
+        return $users;
+        /*if ($request->has('page')) {
             return UserResource::collection(User::paginate(5));
         } else {
             return UserResource::collection(User::all());
-        }
+        }*/
     }
 
     public function show($id)
@@ -85,22 +98,36 @@ class UserControllerAPI extends Controller
             'nif' => 'integer',
         ]);
         $user = User::findOrFail($request->id);
+        $wallet = \App\Wallet::where('email', $request->email)->first();
         if($request->new_password != null) {
             if(Hash::check($request->password, $user->password)){
                 $user['password'] = Hash::make($request->new_password);
             }
             else{
-               abort(403);;
+               abort(403);
             }
         }
         if($request->name != null && $request->name != $user->name){
             $user->name = $request->name;
         }
-        if($request->nif != $user->nif){
+        if($request->nif != null && $request->nif != $user->nif){
             $user->nif = $request->nif;
         }
         if($request->photo != null && $request->photo != $user->photo){
             $user->photo = $userController->uploadImage($request, $user->id);
+        }
+        if($request->type_update != null && $request->type_update == "activity"){
+            if($wallet->balance > 0){
+                return abort(403);
+            }else{
+                if($user->active != 1){
+                    $user->active = 1;
+                    $user->save();
+                }else{
+                    $user->active = 0;
+                    $user->save();
+                }
+            }
         }
         return response()->json($user->save());
     }
