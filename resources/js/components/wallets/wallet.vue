@@ -31,7 +31,7 @@ s<template>
                 title: 'My Wallet',
                 wallet: '',
                 hideWallet: false,
-                walletid: sessionStorage.getItem('id'),
+                walletid: sessionStorage.getItem('walletID'),
             }
         },
         created() {

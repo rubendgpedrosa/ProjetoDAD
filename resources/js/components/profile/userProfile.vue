@@ -43,8 +43,8 @@
                 </div>
                 <div class="form-group">
                     <label for="inputNIF">NIF</label>
-                    <input type="number" class="form-control" id="inputNIF" placeholder="Enter NIF" v-model="alteredUser.nif">
-                    <small v-if="alteredUser.nif.length !== 9 & alteredUser.nif !== ''" style="color:red;" class="form-text text-muted"><a style="color:red">NIF can't exceed 9 numbers.</a></small>
+                    <input type="number" class="form-control" id="inputNIF" placeholder="Enter NIF" maxlength="9" v-model="alteredUser.nif">
+                    <small class="form-text text-muted">NIF had to have 9 numbers.</small>
                 </div>
                 <div class="form-row">
                     <div class="col">
@@ -78,7 +78,7 @@
         data: function(){
             return{
                 title: 'My Profile',
-                id: sessionStorage.getItem('id'),
+                id: sessionStorage.getItem('userID'),
                 alteredUser:{
                     password: '',
                     name: '',
@@ -96,7 +96,7 @@
         },
         methods:{
             getUserData: function(){
-                axios.get(`/api/users/${this.id}`).then(response => {this.alteredUser = response.data.data; this.photo = this.alteredUser.photo});
+                axios.get(`/api/users/${this.id}`).then(response => {console.log(response.data.data);this.alteredUser = response.data.data; this.photo = this.alteredUser.photo});
             },
             imageUpload: function(event){
                 this.alteredUser.photo = event.target.files[0];
@@ -122,7 +122,7 @@
                 this.photoURL = '';
             },
             disableButtonSubmit: function(){
-                return (this.alteredUser.name === "" || this.new_password !== this.confirmed_password || this.alteredUser.nif.length >= 10 ||
+                return (this.alteredUser.name === "" || this.new_password !== this.confirmed_password ||
                     (this.alteredUser.password === "" && this.new_password !== "") || (this.alteredUser.password === "" && this.confirmed_password !== ""));
             }
         },
