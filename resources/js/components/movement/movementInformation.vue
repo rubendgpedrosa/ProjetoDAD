@@ -78,8 +78,8 @@
 </template>
 
 <script>
+    //Completed US11
     export default{
-        //TODO show user photo associated to the wallet
         props:['movementClicked','movementInformationClicked', 'categories'],
         data: function(){
                 return {

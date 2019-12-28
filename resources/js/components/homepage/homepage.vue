@@ -17,6 +17,14 @@
 </template>
 
 <script>
+
+    //TODO (US6) - API done but I'm not sure how the component should be used. What does 'outside of the platform mean'.
+    //TODO (US12) - Notify user when in platform or through email when not using the SPA when deposit is made (US6/9/10).
+    //TODO (US13) - Update wallet/movement information when operator adds movement (US6) or user transfers (US9/10).
+    //TODO (US14) - Statistic for the user about whatever information we find necessary. What we choose affects grading.
+    //TODO (US15) - Create operator/administrator accounts.
+    //TODO (US17) - Statistics for the admins about whatever information we find necessary. What we choose affects grading.
+
     export default{
         data: function() {
             return{

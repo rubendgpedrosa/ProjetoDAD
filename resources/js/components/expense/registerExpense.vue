@@ -87,7 +87,6 @@
             return{
                 expenseClicked: false,
                 newExpense: {
-                    //TODO issue with submiting new expense. Some fields seem to be cleared for unknown reasons when sending a new request.
                     type: '',
                     value: '',
                     category_id: '',

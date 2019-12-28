@@ -21,6 +21,7 @@ s<template>
 </template>
 
 <script>
+    //Completed US7
     import MovementList from "../movement/movementList";
 
     export default{

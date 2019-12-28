@@ -73,8 +73,8 @@
 </template>
 
 <script>
+    //Completed US5
     export default {
-        //TODO import component to dashboard component.
         data: function(){
             return{
                 title: 'My Profile',
@@ -96,7 +96,7 @@
         },
         methods:{
             getUserData: function(){
-                axios.get(`/api/users/${this.id}`).then(response => {console.log(response.data.data);this.alteredUser = response.data.data; this.photo = this.alteredUser.photo});
+                axios.get(`/api/users/${this.id}`).then(response => {this.alteredUser = response.data.data; this.photo = this.alteredUser.photo});
             },
             imageUpload: function(event){
                 this.alteredUser.photo = event.target.files[0];

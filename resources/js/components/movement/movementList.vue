@@ -78,6 +78,7 @@
 </template>
 
 <script>
+    //Completed US8
     import MovementInformation from './movementInformation';
     import JwPagination from 'jw-vue-pagination';
     import DatePicker from 'vue2-datepicker';

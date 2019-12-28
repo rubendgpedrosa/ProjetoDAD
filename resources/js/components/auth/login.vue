@@ -30,6 +30,7 @@
     </div>
 </template>
 <script>
+    //Completed US3
 export default {
     data:function(){
         return{
@@ -62,6 +63,7 @@ export default {
             })
         },
         logout: function(){
+            //TODO(US4) - logout must be moved somewhere else and redirect to the homepage.
             this.logged = null;
             sessionStorage.clear();
         }
