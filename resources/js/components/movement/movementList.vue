@@ -156,9 +156,6 @@
             onChangePage: function(pagedMovements){
                 this.pagedMovements = pagedMovements;
             },
-            filterMovements: function(){
-                this.filteredMovements = this.movements.filter(movement=>movement.id === this.searchObject.id);
-            },
             clearFilter: function () {
                 this.searchObject.id = '';
                 this.searchObject.type = '';

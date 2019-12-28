@@ -48,11 +48,13 @@
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>{{user.type ==='o'? 'Operator':(user.type==='a'?'Administrator':'Platform User')}}</td>
-            <td>{{user.active == '1'? 'Active': 'Not Active'}}</td>
+            <td>{{user.active === 1? 'Active': 'Not Active'}}</td>
             <td>{{user.empty_wallet === false? 'Wallet Not Empty':(user.empty_wallet === true? 'Wallet Is Empty':'No Wallet')}}</td>
             <td>
-                <a class="btn btn-sm btn-success" v-on:click.prevent="toggleUserActivation(user)">{{user.active == 0? 'Enable':'Disable'}}</a>
-                <a class="btn btn-sm btn-danger" v-on:click.prevent="deleteUser(user)">Delete</a>
+                <a v-if="user.empty_wallet !== undefined" class="btn btn-sm" :disabled="user.empty_wallet !== true"
+                   v-bind:class="{'btn-outline-success': user.active === 0, 'btn-outline-danger': user.active === 1}"
+                   v-on:click.prevent="toggleUserActivation(user)">{{buttonText(user)}}</a>
+                <a v-if="user.type !== 'u'" class="btn btn-sm btn--sm btn-outline-danger" v-on:click.prevent="deleteAccount(user)">Delete</a>
             </td>
         </tr>
         </tbody>
@@ -89,8 +91,10 @@
             }
         },
         methods:{
-            deleteUser: function(event){
-                axios.delete(`/api/users/${event.id}`, event.id).then(response => {this.$emit('user-deleted', event.id)}).catch(error => console.log(error.message));
+            deleteAccount: function(event){
+                axios.delete(`/api/users/${event.id}`, event.id)
+                    .then(response => {this.$emit('user-deleted', event.id)})
+                    .catch(error => console.log(error.message));
             },
             toggleUserActivation: function(user){
                 axios.put(`api/users/${user.id}`, {type_update: 'activity', email: user.email})
@@ -105,6 +109,17 @@
             },
             onChangePage: function(pagedUsers){
                 this.pagedUsers = pagedUsers;
+            },
+            buttonText: function(user){
+                if(user.active === 0){
+                    return 'Enable';
+                }else{
+                    if(user.empty_wallet === true){
+                        return 'Disable';
+                    }else{
+                        return "Can't Disable";
+                    }
+                }
             }
         },
         computed: {

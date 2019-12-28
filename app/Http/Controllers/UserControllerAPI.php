@@ -19,8 +19,6 @@ class UserControllerAPI extends Controller
 {
     public function index(Request $request)
     {
-    //                <a v-show="user.active == 1" class="btn btn-sm btn-danger" v-on:click.prevent="toggleUserActivation(user)">Disable</a>
-
         $users = User::all();
         foreach($users as $user){
             $wallet = \App\Wallet::where('email', $user->email)->first();
@@ -85,7 +83,11 @@ class UserControllerAPI extends Controller
             $walletController->store($request);
         }
         //\Log::info($request->all());
-        $user->photo = $userController->uploadImage($request, $user->id);
+        if($request->photo != null){
+            $user->photo = $userController->uploadImage($request, $user->id);
+        }else{
+            $user->photo = 'default.png';
+        }
         return response()->json($user->save());
     }
 
@@ -135,12 +137,18 @@ class UserControllerAPI extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $wallet = new Wallet();
-        $movements = new Movement();
-        $wallet = $wallet->show($id);
-        $wallet->delete();
-        $user->delete();
-        return response()->json(null, 204);
+        if($user->type == 'u'){
+            return abort(403);
+        }{
+            $wallet = new Wallet();
+            $movements = new Movement();
+            $wallet = $wallet->show($id);
+            if($wallet != null){
+                $wallet->delete();
+            }
+            $user->delete();
+            return response()->json(null, 204);
+        }
     }
 
     public function emailAvailable(Request $request)

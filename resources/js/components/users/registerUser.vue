@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="inputNIF">NIF</label>
                     <input type="number" class="form-control" id="inputNIF" placeholder="Enter NIF" v-model="newUser.nif">
-                    <small v-show="newUser.nif.length === 9 & newUser.nif !== ''" style="color:red;" class="form-text text-muted"><a style="color:red">NIF has to have 9 numbers.</a></small>
+                    <small v-show="newUser.nif.length !== 9 & newUser.nif !== ''" style="color:red;" class="form-text text-muted"><a style="color:red">NIF has to have 9 numbers.</a></small>
                 </div>
                 <div class="form-group">
                     <div>
