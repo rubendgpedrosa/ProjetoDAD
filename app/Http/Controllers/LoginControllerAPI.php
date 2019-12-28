@@ -28,8 +28,11 @@ class LoginControllerAPI extends Controller
             ]);
         $wallet = Wallet::where('email', $email)->first();
         $errorCode = $response->getStatusCode();
-        if($errorCode=='200'){
-            return [json_decode((string) $response->getBody(), true), $wallet->id];
+        if($errorCode =='200'){
+            if($wallet != null){
+                return [json_decode((string) $response->getBody(), true), $wallet->id];
+            }
+            return [json_decode((string) $response->getBody(), true), null];
         }else{
             return response()->json(
             ['msg'=>'User credentials are invalid'], $errorCode);

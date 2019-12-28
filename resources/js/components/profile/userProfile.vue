@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <label for="inputNIF">NIF</label>
                     <input type="number" class="form-control" id="inputNIF" placeholder="Enter NIF" v-model="alteredUser.nif">
-                    <small v-show="alteredUser.nif.length !== 9 & alteredUser.nif !== ''" style="color:red;" class="form-text text-muted"><a style="color:red">NIF can't exceed 9 numbers.</a></small>
+                    <small v-if="alteredUser.nif.length !== 9 & alteredUser.nif !== ''" style="color:red;" class="form-text text-muted"><a style="color:red">NIF can't exceed 9 numbers.</a></small>
                 </div>
                 <div class="form-row">
                     <div class="col">
