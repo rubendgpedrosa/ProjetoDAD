@@ -132,8 +132,12 @@ const store = new Vuex.Store({
             state.users = data;
         },
         addMovement(state, {data}){
-            data.date =
-            state.movements.push(data);
+            let newDate = data.date.date;
+            data.date = newDate;
+            state.movements.unshift(data);
+        },
+        addUser(state, {data}){
+            state.users.push(data);
         },
         setLoggedIn(state){
             state.logged_in = true;

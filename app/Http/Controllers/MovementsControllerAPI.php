@@ -60,6 +60,7 @@ class MovementsControllerAPI extends Controller
         $request->validate([
             'id' => 'integer|required',
             'type' => 'required|in:0,1',
+            'value' => 'required|between:0.01,5000',
             'category_id' => 'required|integer',
             'email' => 'email|required_if:type,==,1'
         ]);

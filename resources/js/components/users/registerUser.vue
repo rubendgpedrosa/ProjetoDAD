@@ -74,9 +74,8 @@
                 this.$emit('cancel-registration');
             },
             async submitUser(){
-                console.log(this.newUser);
                 axios.post("api/users", this.newUser)
-                    .then(response => {this.$emit('form-submitted')})
+                    .then(response => {this.$store.commit('addUser', response); this.$emit('form-submitted'); this.$store.state.number_wallets++; })
                     .catch(error => {this.email_taken = true});
             },
             imageUpload:function(event){

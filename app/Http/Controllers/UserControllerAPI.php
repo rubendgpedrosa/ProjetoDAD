@@ -88,7 +88,9 @@ class UserControllerAPI extends Controller
         }else{
             $user->photo = 'default.png';
         }
-        return response()->json($user->save());
+        $user->save();
+        $user->password = '';
+        return $user;
     }
 
     public function update(Request $request)
