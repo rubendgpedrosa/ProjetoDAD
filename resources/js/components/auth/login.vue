@@ -4,7 +4,7 @@
             <h1>LOGIN</h1>
             <hr class="my-4">
             <div v-if="this.$store.state.logged_in === true">
-                <p class="lead">Currently Logged with {{ this.$store.state.user.email }}</p>
+                <p class="lead">Currently logged in as {{ this.$store.state.user.name }}</p>
                 <button @click="logout" class="btn btn-danger">Log Out</button>
             </div>
             <div v-if="this.$store.state.logged_in === false">

@@ -15,6 +15,7 @@ window.Vue = require('vue');
  */
 
 import RegisterExpense from './components/expense/registerExpense.vue';
+import RegisterAdmin from './components/users/registerAdmin.vue';
 import RegisterUser from './components/users/registerUser';
 import UserProfile from './components/profile/userProfile';
 import Categories from './components/category/category';
@@ -32,6 +33,7 @@ Vue.component('passport-personal-access-tokens', require('./components/passport/
 Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue').default);
 Vue.component('passport-clients', require('./components/passport/Clients.vue').default);
 Vue.component('RegisterExpense', RegisterExpense);
+Vue.component('RegisterAdmin', RegisterAdmin);
 Vue.component('RegisterUser', RegisterUser);
 Vue.component('UserProfile', UserProfile);
 Vue.component('category', Categories);
@@ -72,9 +74,12 @@ const routes = [
         component: RegisterExpense
     },
     {
-    //TODO test path for now
         path: '/profile',
         component: UserProfile
+    },
+    {
+        path: '/admin/create',
+        component: RegisterAdmin
     }
 ];
 

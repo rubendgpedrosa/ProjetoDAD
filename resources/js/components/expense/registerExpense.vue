@@ -3,6 +3,7 @@
         <div class="jumbotron">
             <h1>Expense Registration</h1>
             <hr class="my-4">
+            <errors :errors="validationErrors"></errors>
             <form v-if="expenseSubmitted === false">
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
@@ -81,11 +82,13 @@
 
 <script>
     import VueBootstrapTypeahead from 'vue-bootstrap-typeahead';
+    import errors from '../utils/errors.vue';
 
     export default{
         data: function(){
             return{
                 expenseClicked: false,
+                validationErrors: 'tou',
                 newExpense: {
                     type: '',
                     value: '',
@@ -149,7 +152,7 @@
             }
         },
         components: {
-            VueBootstrapTypeahead,
+            VueBootstrapTypeahead, errors
         },
         computed: {
             validateIBAN: function(){

@@ -26,10 +26,11 @@
             <ul class="nav flex-column">
                 <li><router-link to="/expenses">Register Expense</router-link></li>
                 <li><router-link to="/wallet">My Wallet</router-link></li>
-                <li><router-link to="/profile">My profile</router-link></li>
+                <li><router-link to="/profile">My Profile</router-link></li>
                 <li><router-link to="/categories">Categories</router-link></li>
                 <li><router-link to="/users">Users</router-link></li>
                 <li><router-link to="/login">Login</router-link> </li>
+                <li><router-link to="/admin/create">Create Admin Acc</router-link></li>
             </ul>
         </div>
     </nav>

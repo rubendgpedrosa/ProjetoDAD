@@ -72,12 +72,13 @@ class UserControllerAPI extends Controller
                 'name' => 'required|min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'min:3',
-                'nif' => 'integer|nullable'
+                'nif' => 'integer|nullable',
+                'photo' => 'required_if:type_user,==,a,o'
             ]);
         $user = new User();
-        $user->fill($request->except('photo'));
+        $user->fill($request->except('photo','type_user'));
         $user->password = Hash::make($user->password);
-        $request->type == null? $user->type = 'u':$user->type = $request->type;
+        $request->type_user == null? $user->type = 'u':$user->type = $request->type_user;
         $user->save();
         if($user->type == 'u'){
             $walletController->store($request);
@@ -100,6 +101,7 @@ class UserControllerAPI extends Controller
             'name' => 'min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
             'password' => 'integer|min:3',
             'nif' => 'nullable|integer',
+            'photo' => 'required_if:type,==,a,o'
         ]);
         $user = User::findOrFail($request->id);
         $wallet = \App\Wallet::where('email', $request->email)->first();

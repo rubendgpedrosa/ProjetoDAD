@@ -1,6 +1,9 @@
 <template>
     <div>
         <div>
+            <div>
+                <errors :errors="validationErrors"></errors>
+            </div>
             <form>
                 <div class="form-group">
                     <label for="inputFullName">Full Name*</label>
@@ -9,8 +12,7 @@
                 </div>
                 <div class="form-group">
                     <label for="inputEmail">Email Address*</label>
-                    <input type="email" class="form-control" id="inputEmail" required placeholder="Enter email" @change="email_taken = false" v-model="newUser.email">
-                    <small v-show="email_taken"  style="color:red;" class="form-text text-muted"><a style="color:red">This email has already been taken.</a></small>
+                    <input type="email" class="form-control" id="inputEmail" required placeholder="Enter email" v-model="newUser.email">
                 </div>
                 <div class="row">
                     <div class="form-group col">
@@ -21,13 +23,11 @@
                     <div class="form-group col">
                         <label for="inputPasswordConfirm"> Confirm Password*</label>
                         <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Confirm Password" required v-model="confirmed_password">
-                        <small v-show="newUser.password !== confirmed_password" style="color:red;" class="form-text text-muted"><a style="color:red">Passwords don't match.</a></small>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputNIF">NIF</label>
                     <input type="number" class="form-control" id="inputNIF" placeholder="Enter NIF" v-model="newUser.nif">
-                    <small v-show="newUser.nif.length !== 9 & newUser.nif !== ''" style="color:red;" class="form-text text-muted"><a style="color:red">NIF has to have 9 numbers.</a></small>
                 </div>
                 <div class="form-group">
                     <div>
@@ -54,7 +54,10 @@
 </template>
 
 <script>
+    import errors from '../utils/errors.vue';
+
     export default {
+        components: { errors },
         data: function(){
             return{
                 newUser: {
@@ -66,7 +69,7 @@
                     nif: '',
                 },
                 confirmed_password: '',
-                email_taken: false,
+                validationErrors: 'tou',
             }
         },
         methods:{
@@ -76,7 +79,10 @@
             async submitUser(){
                 axios.post("api/users", this.newUser)
                     .then(response => {this.$store.commit('addUser', response); this.$emit('form-submitted'); this.$store.state.number_wallets++; })
-                    .catch(error => {this.email_taken = true});
+                    .catch(error => {
+                        if (error.response.status === 422){
+                            this.validationErrors = error.response.data.errors;
+                        }});
             },
             imageUpload:function(event){
                 this.newUser.photo = event.target.files[0];
