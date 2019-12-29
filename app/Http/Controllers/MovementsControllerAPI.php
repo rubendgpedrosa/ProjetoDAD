@@ -58,13 +58,14 @@ class MovementsControllerAPI extends Controller
     {
         $movement = new Movement;
         $request->validate([
-            'id' => 'integer|required',
+            'source_email' => 'email|required',
             'type' => 'required|in:0,1',
             'value' => 'required|between:0.01,5000',
             'category_id' => 'required|integer',
-            'email' => 'email|required_if:type,==,1'
+            //Validation below isn't working properly for whatever reason so we validate if inside an if.
+            //'email_to_transfer' => 'required_if:type,==,1'
         ]);
-        $walletToRetract = Wallet::where('id', $request->id)->first();
+        $walletToRetract = Wallet::where('email', $request->source_email)->first();
         $movement->wallet_id = $walletToRetract->id;
         $movement->type = $request->type;
         $movement->category_id = $request->category_id;
@@ -78,8 +79,11 @@ class MovementsControllerAPI extends Controller
         $movement->value = $request->value;
 
         if($request->type == 1){
+            $request->validate([
+                'email_to_transfer' => 'required|email',
+            ]);
             $movement_mirrored = new Movement;
-            $walletToDeposit = Wallet::where('email', $request->email)->first();
+            $walletToDeposit = Wallet::where('email', $request->email_to_transfer)->first();
             if($walletToDeposit == null){
                 return abort(403);
             }

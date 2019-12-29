@@ -154,8 +154,7 @@ const store = new Vuex.Store({
             state.movements = [{}];
             state.walletID = '';
             state.email = '';
-        }
-
+        },
     }
 })
 

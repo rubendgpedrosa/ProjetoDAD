@@ -3,7 +3,7 @@
         <div class="jumbotron">
             <h1>Expense Registration</h1>
             <hr class="my-4">
-            <errors :errors="validationErrors"></errors>
+            <errors :errors="validationErrors" :ibanValidated="ibanValidated"></errors>
             <form v-if="expenseSubmitted === false">
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
@@ -25,7 +25,6 @@
                     <div class="col-md-4 mb-3">
                         <label for="inputValue">Amount*</label>
                         <input min="0.01" required type="number" step="0.01" class="form-control" id="inputValue" v-model.number="newExpense.value">
-                        <small id="passwordNotMatch" class="form-text text-muted"><a>Amount must be between 0.01€ and 5000€.</a></small>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -45,7 +44,6 @@
                         <label for="inputValue">IBAN</label>
                         <input :disabled="newExpense.type_payment !== 'bt'" maxlength="25" :required="newExpense.type_payment === 'bt'"
                                type="text" class="form-control" id="inputIBAN" v-model.lazy="newExpense.iban">
-                        <small id="ibanInvalid" v-show="!validateIBAN" class="form-text text-muted">IBAN must have 2 Capital letter followed by 23 Numbers.</small>
                     </div>
                 </div>
                 <div class="form-row" v-if="newExpense.type === 0">
@@ -53,19 +51,16 @@
                         <label for="inputMBEntityCode">MB Entity Code</label>
                         <input :disabled="newExpense.type_payment !== 'mb'" maxlength="5" :required="newExpense.type_payment === 'mb'"
                                type="text" class="form-control" id="inputMBEntityCode" v-model.lazy="newExpense.mb_entity_code">
-                        <small id="entitycodeInvalid" class="form-text text-muted">MB entity code must have 5 numbers.</small>
                     </div>
                     <div class="col">
                         <label for="inputMBPaymentReference">MB Payment Reference</label>
                         <input :disabled="newExpense.type_payment !== 'mb'" maxlength="9" :required="newExpense.type_payment === 'mb'"
                                type="text" class="form-control" id="inputMBPaymentReference" v-model.lazy="newExpense.mb_payment_reference">
-                        <small id="paymentreferenceInvalid" class="form-text text-muted">MB payment reference must have 9 numbers.</small>
                     </div>
                 </div>
                 <div class="mb-3" v-if="newExpense.type === 1">
                     <label for="inputEmail">Destination Email</label>
-                    <vue-bootstrap-typeahead :minMatchingChars="2" id="inputEmail" :disabled="newExpense.type !== 1" v-model="newExpense.email" :data="walletsEmailOnly"/>
-                    <small id="emailInvalid" class="form-text text-muted" v-show="!walletsEmailOnly.includes(newExpense.email)">Invalid Email.</small>
+                    <vue-bootstrap-typeahead :minMatchingChars="2" id="inputEmail" :disabled="newExpense.type !== 1" v-model="newExpense.email_to_transfer" :data="walletsEmailOnly"/>
                 </div>
                 <div class="mb-3" v-if="newExpense.type === 1">
                     <label for="inputSourceDescription">Source Description</label>
@@ -74,6 +69,9 @@
                 <button type="submit" :disabled="disableButtonSubmit()" class="btn btn-primary" @click="submitExpense">Submit Expense</button>
             </form>
             <div v-if="expenseSubmitted">
+                <div class="alert alert-success" role="alert">
+                    New expense registered successfully!
+                </div>
                 <button type="submit" class="btn btn-primary" @click="expenseSubmitted = false">Submit New Expense</button>
             </div>
         </div>
@@ -98,15 +96,16 @@
                     iban: '',
                     mb_entity_code: '',
                     mb_payment_reference: '',
-                    email: '',
+                    email_to_transfer: '',
                     source_description: '',
-                    id: this.$store.state.walletID,
+                    source_email: this.$store.state.user.email,
                 },
                 walletsEmail: this.$store.state.walletsEmail,
                 invalidEmail: false,
-                walletsEmailOnly: this.$store.state.walletsEmailArray,
+                walletsEmailOnly: this.$store.state.walletsEmailArray.filter(email => email !== this.$store.state.email),
                 lettersIBAN: '',
                 numbersIBAN: '',
+                ibanValidated: '',
                 expenseSubmitted: false,
                 types: [{name: 'Payment to External Entity', value: 0}, {name: 'Transfer Movement', value: 1}],
                 types_payment: [{name: 'Bank Transfer', value: 'bt'}, {name: 'MB Payment', value: 'mb'}]
@@ -119,10 +118,17 @@
             submitExpense: function(){
                 let self = this;
                 if(this.newExpense.type === 0){
-                    this.newExpense.email = "";
+                    this.newExpense.email_to_transfer = "";
                     if(this.newExpense.type_payment === "bt"){
                         this.newExpense.mb_entity_code = "";
                         this.newExpense.mb_payment_reference = "";
+                        this.lettersIBAN = this.newExpense.iban.substring(0,2);
+                        this.numbersIBAN = this.newExpense.iban.substring(2,25);
+                        if(((/^[A-Z]*$/).test(this.lettersIBAN) && this.lettersIBAN.length === 2) && ((/^[0-9]+$/).test(this.numbersIBAN) && this.numbersIBAN.length === 23)){
+                            this.ibanValidated = true;
+                        }else{
+                            this.ibanValidated = false;
+                        }
                     }else{
                         this.newExpense.iban = "";
                     }
@@ -130,7 +136,7 @@
                     this.newExpense.mb_entity_code = "";
                     this.newExpense.mb_payment_reference = "";
                     this.newExpense.iban = "";
-                    if(!this.walletsEmailOnly.includes(this.newExpense.email)){
+                    if(!this.walletsEmailOnly.includes(this.newExpense.email_to_transfer)){
                         throw 403;
                     }
                 }
@@ -138,32 +144,28 @@
                     .then(function(response){ if(  response.status === 201) {
                         self.registeredExpense();
                         self.$store.commit('addMovement', response);
-                }
-                }).catch(error => console.log(error.message));
+                    }
+                })
+                    .catch(error => {
+                    if (error.response.status === 422){
+                        this.validationErrors = error.response.data.errors;
+                    }});
             },
             disableButtonSubmit: function(){
                 return (this.newExpense.type === "" || this.newExpense.category === "" || this.newExpense.value === ""|| this.newExpense.type === "" ||
-                    (this.newExpense.type === 1? this.newExpense.email === "":(this.newExpense.type_payment === "bt"? this.newExpense.iban === "":
+                    (this.newExpense.type === 1? this.newExpense.email_to_transfer === "":(this.newExpense.type_payment === "bt"? this.newExpense.iban === "":
                         (this.newExpense.mb_entity_code === "" || this.newExpense.mb_payment_reference === ""))));
             },
             registeredExpense: function(){
                 this.expenseSubmitted = true;
                 this.$eventHub.$emit('registered-expense');
-            }
+            },
         },
         components: {
             VueBootstrapTypeahead, errors
         },
-        computed: {
-            validateIBAN: function(){
-                this.lettersIBAN = this.newExpense.iban.substring(0,2);
-                this.numbersIBAN = this.newExpense.iban.substring(2,25);
-                if(((/^[A-Z]*$/).test(this.lettersIBAN) && this.lettersIBAN.length === 2) && ((/^[0-9]+$/).test(this.numbersIBAN) && this.numbersIBAN.length === 23)){
-                    return true;
-                }else{
-                    return false;
-                }
-            }
+        computed:{
+
         }
     }
 </script>

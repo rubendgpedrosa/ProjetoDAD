@@ -7,7 +7,7 @@
                 <errors :errors="validationErrors"></errors>
                 <div v-show="userSubmitted">
                     <div class="alert alert-success" role="alert">
-                        {{newAdmin.type_user === 'a'? 'Administrator':'Operator'}} account created!
+                        {{newAdmin.type_user === 'a'? 'Administrator':'Operator'}} account created successfully!
                     </div>
                     <button class="btn btn-primary" @click="newUserSubmit">Create New User</button>
                 </div>
