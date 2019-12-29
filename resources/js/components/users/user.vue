@@ -17,18 +17,16 @@
     import UserList from './userList'
     export default {
         data: function () {
-            return{title: 'Users',
+            return{
+                title: 'Users',
                 showSuccess: false,
                 showFailure: false,
                 successMessage: '',
                 failMessage: '',
                 currentUser: null,
-                users: [{}]}
+                users: this.$store.state.users,
+            }
         }, methods: {
-            getUsers: function () {
-                axios.get('api/users')
-                    .then(response=>{this.users = response.data});
-            },
             updateDataUsers: function(user){
                 if(user.active === 0){
                     user.active = 1;
@@ -45,9 +43,6 @@
         components: {
             "usersList":UserList
         },
-        mounted() {
-            this.getUsers();
-        }
     }
 </script>
 <style scoped>

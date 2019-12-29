@@ -78,14 +78,7 @@
         data: function(){
             return{
                 title: 'My Profile',
-                id: sessionStorage.getItem('userID'),
-                alteredUser:{
-                    password: '',
-                    name: '',
-                    email: '',
-                    photo: '',
-                    nif: '',
-                },
+                alteredUser: this.$store.state.user,
                 photo: '',
                 new_password: '',
                 confirmed_password: '',
@@ -95,9 +88,6 @@
             }
         },
         methods:{
-            getUserData: function(){
-                axios.get(`/api/users/${this.id}`).then(response => {this.alteredUser = response.data.data; this.photo = this.alteredUser.photo});
-            },
             imageUpload: function(event){
                 this.alteredUser.photo = event.target.files[0];
                 this.photoURL = URL.createObjectURL(this.alteredUser.photo);
@@ -124,10 +114,10 @@
             disableButtonSubmit: function(){
                 return (this.alteredUser.name === "" || this.new_password !== this.confirmed_password ||
                     (this.alteredUser.password === "" && this.new_password !== "") || (this.alteredUser.password === "" && this.confirmed_password !== ""));
-            }
+            },
         },
         mounted() {
-            this.getUserData();
+            this.photo = this.alteredUser.photo;
         }
     }
 </script>

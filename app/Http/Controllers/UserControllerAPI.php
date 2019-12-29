@@ -71,8 +71,8 @@ class UserControllerAPI extends Controller
         $request->validate([
                 'name' => 'required|min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:3',
-                'nif' => 'integer',
+                'password' => 'min:3',
+                'nif' => 'integer|nullable'
             ]);
         $user = new User();
         $user->fill($request->except('photo'));
@@ -97,7 +97,7 @@ class UserControllerAPI extends Controller
         $request->validate([
             'name' => 'min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
             'password' => 'integer|min:3',
-            'nif' => 'integer',
+            'nif' => 'nullable|integer',
         ]);
         $user = User::findOrFail($request->id);
         $wallet = \App\Wallet::where('email', $request->email)->first();

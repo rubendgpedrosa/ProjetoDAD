@@ -5,7 +5,7 @@
         </div>
         <div><button class="btn btn-primary" @click="addCategory">Add</button></div>
         <categoryAddEdit :title="'Add Category'" :currentCategory="currentCategory" @save-category="saveCategory" @cancel-category="cancelCategory" v-if="addingCategory"/>
-        <categoriesList :categories="categories" @edit-category="editCategory" ref="categoryListRef"/>
+        <categoriesList :categories="this.$store.state.categories" @edit-category="editCategory" ref="categoryListRef"/>
 
         <div class="alert alert-success" v-if="showSuccess">
             <button type="button" class="close-btn" v-on:click="showSuccess=false">&times;</button>
@@ -27,12 +27,8 @@
                 successMessage: '',
                 failMessage: '',
                 currentCategory: null,
-                categories: []}
+            }
         }, methods: {
-            getCategories: function () {
-                axios.get('api/categories')
-                .then(response=>{this.categories = response.data.data});
-            },
             addCategory: function(){
                 this.currentCategory = {};
                 this.addingCategory = true;
@@ -95,9 +91,6 @@
         components: {
             "categoriesList":CategoryList,
             "categoryAddEdit":CategoryAddEdit
-        },
-        mounted() {
-            this.getCategories();
         }
     }
 </script>

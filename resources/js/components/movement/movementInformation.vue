@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <label for="inputCategory">Category</label>
                     <select class="form-control" id="inputCategory" aria-describedby="categoryHelp" required v-model="movementClicked.category_id">
-                        <option v-for="category in categories" :value="category.id">
+                        <option v-for="category in this.$store.state.categories" :value="category.id">
                             {{category.name}}
                         </option>
                     </select>
@@ -80,7 +80,7 @@
 <script>
     //Completed US11
     export default{
-        props:['movementClicked','movementInformationClicked', 'categories'],
+        props:['movementClicked','movementInformationClicked'],
         data: function(){
                 return {
                     editMovementClicked: false,
@@ -101,7 +101,7 @@
                     .then(response=>{
                         if(response.status === 200){
                             this.toggleEditMovement();
-                            this.movementClicked.category_string = this.categories.find(category => category.id === this.movementClicked.category_id).name;
+                            this.movementClicked.category_string = this.$store.state.categories.find(category => category.id === this.movementClicked.category_id).name;
                         }
                     })
                     .catch(error=>{console.log(error.message)});

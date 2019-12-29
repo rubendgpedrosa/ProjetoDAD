@@ -57,6 +57,12 @@ class MovementsControllerAPI extends Controller
     public function registerExpense(Request $request)
     {
         $movement = new Movement;
+        $request->validate([
+            'id' => 'integer|required',
+            'type' => 'required|in:0,1',
+            'category_id' => 'required|integer',
+            'email' => 'email|required_if:type,==,1'
+        ]);
         $walletToRetract = Wallet::where('id', $request->id)->first();
         $movement->wallet_id = $walletToRetract->id;
         $movement->type = $request->type;

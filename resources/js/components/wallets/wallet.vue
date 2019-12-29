@@ -30,9 +30,9 @@ s<template>
         data: function() {
             return {
                 title: 'My Wallet',
-                wallet: '',
+                wallet: this.$store.state.wallet,
                 hideWallet: false,
-                walletid: sessionStorage.getItem('walletID'),
+                walletid: this.$store.state.walletID,
             }
         },
         created() {
@@ -41,15 +41,6 @@ s<template>
         beforeDestroy() {
             //this.$eventHub.$off('logged-in');
         },
-        methods:{
-            getWallet: function() {
-                axios.get(`/api/wallet/${(this.walletid)}`)
-                    .then(response => {this.wallet = response.data;});
-            }
-        },
-        mounted () {
-            this.getWallet();
-        }
     }
 
 </script>

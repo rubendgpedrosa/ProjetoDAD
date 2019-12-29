@@ -47,13 +47,16 @@ export default {
                 'email': this.email,
                 'password' : this.password
             }).then(response=>{
-                console.log(response.data);
+                //TODO login with vuex
                 this.logged = Object.values(response.data[0])[2].toString();
                 sessionStorage.setItem('tokenAuth',Object.values(response.data[0])[2].toString());
+                this.$store.commit('setEmail', this.email);
+                //sessionStorage.setItem('email', this.email);
                 if(response.data[2] !== null){
-                    sessionStorage.setItem('walletID', response.data[1]);
+                    this.$store.commit('setUserData', response.data[1]);
+                    //sessionStorage.setItem('walletID', response.data[1]);
                 }
-                sessionStorage.setItem('userID', response.data[2]);
+                //sessionStorage.setItem('userID', response.data[2]);
                 axios.defaults.headers.common.Authorization = "Bearer " +sessionStorage.getItem('tokenAuth');
                 //var token = sessionStorage.getItem('tokenAuth');
                 //this.$bus.$emit('logged-in', {data: this.email});
@@ -63,7 +66,6 @@ export default {
             })
         },
         logout: function(){
-            //TODO(US4) - logout must be moved somewhere else and redirect to the homepage.
             this.logged = null;
             sessionStorage.clear();
         }

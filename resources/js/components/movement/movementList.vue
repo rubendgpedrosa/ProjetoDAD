@@ -17,7 +17,7 @@
                 <div class="col">
                     <label>Category</label>
                     <select class="form-control custom-select" placeholder="Category" v-model="searchObject.category">
-                        <option v-for="category in categories" :value="category.id">
+                        <option v-for="category in this.$store.state.categories" :value="category.id">
                             {{category.name}}
                         </option>
                     </select>
@@ -70,7 +70,7 @@
                 </tr>
                 </tbody>
             </table>
-            <movement-information v-if="movementInformationClicked" :categories="categories" :movementClicked="movementClicked" v-on:movement-information-clicked="changeInformationClicked"></movement-information>
+            <movement-information v-if="movementInformationClicked" :categories="this.$store.state.categories" :movementClicked="movementClicked" v-on:movement-information-clicked="changeInformationClicked"></movement-information>
             <jw-pagination class="d-flex justify-content-center" v-show="getFilteredMovements.length > 12 && !movementInformationClicked" :pageSize="12" :items="getFilteredMovements" @changePage="onChangePage"></jw-pagination>
         </div>
         <h3 class="text-center" v-if="movements.length === 0">No Records Found!</h3>
@@ -87,12 +87,11 @@
 
     export default {
         components: {MovementInformation, JwPagination, DatePicker, VueBootstrapTypeahead},
-        props:['walletid'],
         data: function () {
                 return {
-                    movements: [{}],
+                    movements: this.$store.state.movements,
+                    walletID: this.$store.state.walletID,
                     pagedMovements: [{}],
-                    categories: [],
                     movementInformationClicked: false,
                     movementClicked: {},
                     filteredMovements: [{}],
@@ -111,39 +110,22 @@
                         category: '',
                         email: ''
                     },
-                    walletsEmailArray: [{}],
-                    walletsEmailOnly: [],
+                    walletsEmail: this.$store.state.walletsEmail,
+                    walletsEmailOnly: this.$store.state.walletsEmailArray,
                     types: [{name: 'Expense Movement', value: 'e'}, {name: 'Income Credit', value: 'i'}],
                     types_payment: [{name: 'Bank Transfer', value: 'bt'}, {name: 'MB Payment', value: 'mb'}]
                 }
         }, methods: {
-            getMovements: function () {
-                axios.get(`api/movements/${this.walletid}`)
-                    .then(response=>{ this.movements = response.data.reverse(), this.totalPages = this.movements.length });
-            },
-            getCategory: function () {
-                axios.get('api/categories/')
-                    .then(response=>{this.categories = response.data.data/*, console.log(response.data.data)*/});
-            },
             typeToString: function(type){
                 return (type === "e")?"Expense Movement":"Income Credit";
             },
             categoryToString: function(categoryID){
-                for (let i = 0; i < this.categories.length; i++) {
-                    if(this.categories[i].id === categoryID){
-                        return this.categories[i].name;
+                for (let i = 0; i < this.$store.state.categories.length; i++) {
+                    if(this.$store.state.categories[i].id === categoryID){
+                        return this.$store.state.categories[i].name;
                     }
                 }
                 return "N/A";
-            },
-            walletsEmail: function(){
-                axios.get('api/walletsEmail')
-                    .then(response => {
-                        this.walletsEmailArray = response.data;
-                        response.data.forEach(element => {
-                            this.walletsEmailOnly.push(element.email)
-                        });
-                    });
             },
             moreMovementInformation: function(movement){
                 this.movementInformationClicked = true;
@@ -164,13 +146,8 @@
                 this.searchObject.type_payment = '';
                 this.searchObject.email = '';
                 this.searchObject.timeInterval = '';
-                this.searchObject.walletsEmailArray = '';
+                this.searchObject.walletsEmail = '';
             }
-        },
-        mounted() {
-            this.getMovements();
-            this.getCategory();
-            this.walletsEmail();
         },
         computed: {
             getFilteredMovements: function() {
@@ -185,7 +162,7 @@
                 if(this.searchObject.type_payment !== '')
                     stuff = stuff.filter(movement => movement.type_payment === self.searchObject.type_payment);
                 if(this.searchObject.email !== ''){
-                    var walletId = this.walletsEmailArray.filter(wallet => wallet.email === self.searchObject.email);
+                    var walletId = this.walletsEmail.filter(wallet => wallet.email === self.searchObject.email);
                     if(walletId[0] !== undefined){
                         stuff = stuff.filter(movement => {return movement.transfer_wallet_id == walletId[0].id});
                     }

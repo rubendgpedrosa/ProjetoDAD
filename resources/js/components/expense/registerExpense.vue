@@ -16,7 +16,7 @@
                     <div class="col-md-4 mb-3">
                         <label for="inputCategory">Category*</label>
                         <select class="form-control custom-select" id="inputCategory" v-model="newExpense.category_id">
-                            <option v-for="category in categories" :value="category.id">
+                            <option v-for="category in this.$store.state.categories" :value="category.id">
                                 {{category.name}}
                             </option>
                         </select>
@@ -72,9 +72,9 @@
                 </div>
                 <button type="submit" :disabled="disableButtonSubmit()" class="btn btn-primary" @click="submitExpense">Submit Expense</button>
             </form>
-        <div v-if="expenseSubmitted">
-            <button type="submit" class="btn btn-primary" @click="expenseSubmitted = false">Submit New Expense</button>
-        </div>
+            <div v-if="expenseSubmitted">
+                <button type="submit" class="btn btn-primary" @click="expenseSubmitted = false">Submit New Expense</button>
+            </div>
         </div>
     </div>
 </template>
@@ -97,12 +97,11 @@
                     mb_payment_reference: '',
                     email: '',
                     source_description: '',
-                    id: sessionStorage.getItem('id'),
+                    id: this.$store.state.walletID,
                 },
-                walletsEmailArray: [{}],
+                walletsEmail: this.$store.state.walletsEmail,
                 invalidEmail: false,
-                walletsEmailOnly: [],
-                categories: [{}],
+                walletsEmailOnly: this.$store.state.walletsEmailArray,
                 lettersIBAN: '',
                 numbersIBAN: '',
                 expenseSubmitted: false,
@@ -128,28 +127,17 @@
                     this.newExpense.mb_entity_code = "";
                     this.newExpense.mb_payment_reference = "";
                     this.newExpense.iban = "";
-                    if(!this.walletsEmailOnly.includes(this.newExpense.email)){
+                    if(!this.walletsEmail.includes(this.newExpense.email)){
                         throw 403;
                     }
                 }
                 axios.post('/api/movements', this.newExpense).then(function(response){ if(  response.status === 201) {
-                        self.registeredExpense();
-                    }
+                    self.registeredExpense();
+                }
                 }).catch(error => console.log(error.message));
             },
-            getCategories: function(){
-                axios.get('/api/categories').then(response => this.categories = response.data.data).catch(error => console.log(error.message));
-            },
-            walletsEmail: function(){
-                axios.get('api/walletsEmail').then(response => {
-                    this.walletsEmailArray = response.data;
-                    response.data.forEach(element => {
-                        this.walletsEmailOnly.push(element.email)
-                    });
-                });
-            },
             disableButtonSubmit: function(){
-                return (this.newExpense.type === "" || !this.walletsEmailOnly.includes(this.newExpense.email) || this.newExpense.category === "" || this.newExpense.value === ""|| this.newExpense.type === "" ||
+                return (this.newExpense.type === "" || this.newExpense.category === "" || this.newExpense.value === ""|| this.newExpense.type === "" ||
                     (this.newExpense.type === 1? this.newExpense.email === "":(this.newExpense.type_payment === "bt"? this.newExpense.iban === "":
                         (this.newExpense.mb_entity_code === "" || this.newExpense.mb_payment_reference === ""))));
             },
@@ -160,10 +148,6 @@
         },
         components: {
             VueBootstrapTypeahead,
-        },
-        mounted() {
-            this.getCategories();
-            this.walletsEmail();
         },
         computed: {
             validateIBAN: function(){
