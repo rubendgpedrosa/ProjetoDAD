@@ -127,12 +127,14 @@
                     this.newExpense.mb_entity_code = "";
                     this.newExpense.mb_payment_reference = "";
                     this.newExpense.iban = "";
-                    if(!this.walletsEmail.includes(this.newExpense.email)){
+                    if(!this.walletsEmailOnly.includes(this.newExpense.email)){
                         throw 403;
                     }
                 }
-                axios.post('/api/movements', this.newExpense).then(function(response){ if(  response.status === 201) {
-                    self.registeredExpense();
+                axios.post('/api/movements', this.newExpense)
+                    .then(function(response){ if(  response.status === 201) {
+                        self.registeredExpense();
+                        self.$store.commit('addMovement', response);
                 }
                 }).catch(error => console.log(error.message));
             },

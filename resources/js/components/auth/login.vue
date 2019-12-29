@@ -3,11 +3,11 @@
         <div class = jumbotron>
             <h1>LOGIN</h1>
             <hr class="my-4">
-            <div v-if="logged !== null">
-                <p class="lead">Currently Logged with {{ logged_email }}</p>
+            <div v-if="this.$store.state.logged_in === true">
+                <p class="lead">Currently Logged with {{ this.$store.state.user.email }}</p>
                 <button @click="logout" class="btn btn-danger">Log Out</button>
             </div>
-            <div v-if="logged === null">
+            <div v-if="this.$store.state.logged_in === false">
                 <div class="form-row">
                     <div class="col-auto">
                         <label>Email</label>
@@ -36,19 +36,15 @@ export default {
         return{
             email: '',
             password: '',
-            logged: sessionStorage.getItem('tokenAuth'),
-            logged_email: sessionStorage.getItem('email'),
         }
     },
     methods:{
         login:function(){
-            this.logged_email = this.email;
             axios.post('/api/login',{
                 'email': this.email,
                 'password' : this.password
             }).then(response=>{
                 //TODO login with vuex
-                this.logged = Object.values(response.data[0])[2].toString();
                 sessionStorage.setItem('tokenAuth',Object.values(response.data[0])[2].toString());
                 this.$store.commit('setEmail', this.email);
                 //sessionStorage.setItem('email', this.email);
@@ -56,6 +52,7 @@ export default {
                     this.$store.commit('setUserData', response.data[1]);
                     //sessionStorage.setItem('walletID', response.data[1]);
                 }
+                this.$store.commit('setLoggedIn');
                 //sessionStorage.setItem('userID', response.data[2]);
                 axios.defaults.headers.common.Authorization = "Bearer " +sessionStorage.getItem('tokenAuth');
                 //var token = sessionStorage.getItem('tokenAuth');
@@ -66,7 +63,7 @@ export default {
             })
         },
         logout: function(){
-            this.logged = null;
+            this.$store.commit('reset');
             sessionStorage.clear();
         }
     }

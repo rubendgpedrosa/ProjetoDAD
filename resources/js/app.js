@@ -87,6 +87,7 @@ const store = new Vuex.Store({
     state: {
         walletID: '',
         email: '',
+        logged_in: false,
         token: {},
         number_wallets: '',
         categories: [{}],
@@ -109,7 +110,7 @@ const store = new Vuex.Store({
         setUserData(state, id){
             state.walletID = id;
             axios.get(`api/movements/${id}`)
-                .then(response=>{ state.movements = response.data});
+                .then(response=>{ state.movements = response.data.reverse()});
             axios.get(`/api/users/${id}`)
                 .then(response => {state.user = response.data.data;});
             axios.get(`/api/wallet/${(id)}`)
@@ -129,7 +130,23 @@ const store = new Vuex.Store({
         },
         setUsers(state, {data}){
             state.users = data;
+        },
+        addMovement(state, {data}){
+            data.date =
+            state.movements.push(data);
+        },
+        setLoggedIn(state){
+            state.logged_in = true;
+        },
+        reset (state) {
+            state.logged_in = false;
+            state.user = {};
+            state.wallet = {};
+            state.movements = [{}];
+            state.walletID = '';
+            state.email = '';
         }
+
     }
 })
 
