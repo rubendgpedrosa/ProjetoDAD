@@ -3,13 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="Expense registration with new validation/error treatment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MovementsControllerAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginControllerAPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/expense/registerExpense.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/expense/registerExpense.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/homepage/homepage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/homepage/homepage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/profile/userProfile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/profile/userProfile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/utils/errors.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/utils/errors.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,6 +184,7 @@
       <workItem from="1577562641785" duration="7207000" />
       <workItem from="1577622094988" duration="17095000" />
       <workItem from="1577640381746" duration="12376000" />
+      <workItem from="1577710432960" duration="23376000" />
     </task>
     <task id="LOCAL-00001" summary="Category Model, Controller, Route API">
       <created>1573578346429</created>
@@ -501,11 +509,11 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="696" y="349" width="554" height="383" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1575918216925" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1577653465793">
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1577653583682">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="393" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1574788333556" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1577653465793" />
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1577653583682" />
     <state x="184" y="84" width="1228" height="688" key="DiffContextDialog" timestamp="1576596354612">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -539,11 +547,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="481" y="128" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1573578420425" />
-    <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1577559128689">
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1577653585955">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1574788336284" />
-    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1577559128689" />
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1577653585955" />
     <state x="617" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1574862552343">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -560,14 +568,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="473" y="203" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1574788390105" />
-    <state x="623" y="248" key="run.anything.popup" timestamp="1577316938942">
+    <state x="623" y="248" key="run.anything.popup" timestamp="1577730956780">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577316938942" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1577652098805">
+    <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577730956780" />
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1577729300067">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1573604925537" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577652098805" />
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577729300067" />
   </component>
 </project>

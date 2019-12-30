@@ -11,10 +11,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
+
     protected $table = 'users';
 
     public function Wallet(){
-    return $this->hasOne('App\Wallet');
+        return $this->hasOne('App\Wallet');
     }
 
 

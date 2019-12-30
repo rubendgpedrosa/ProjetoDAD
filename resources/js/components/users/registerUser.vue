@@ -79,8 +79,8 @@
             async submitUser(){
                 axios.post("api/users", this.newUser)
                     .then(response => {this.$store.commit('addUser', response); this.$emit('form-submitted'); this.$store.state.number_wallets++; })
-                    .catch(error => {
-                        if (error.response.status === 422){
+                    .catch(error => { console.log(error.message);
+                        if (error.response.status === 400){
                             this.validationErrors = error.response.data.errors;
                         }});
             },

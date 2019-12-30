@@ -13,31 +13,28 @@ define('CLIENT_SECRET',env('CLIENT_SECRET'));
 class LoginControllerAPI extends Controller
 {
     public function login(Request $request){
-        $email = $request->email;
         $http = new \GuzzleHttp\Client;
+        $request->validate([
+            'password_login' => 'required|min:3',
+            'email_login' => 'required|email',
+        ]);
         $response = $http->post(SERVER_URL.'/oauth/token', [
             'form_params'=> [
                 'grant_type'=> 'password',
                 'client_id'=>CLIENT_ID,
                 'client_secret'=>CLIENT_SECRET,
-                'username'=>$request->email,
-                'password'=>$request->password,
+                'username'=>$request->email_login,
+                'password'=>$request->password_login,
                 'scope'=>''
             ],
             'exceptions'=> false,
             ]);
-        $wallet = Wallet::where('email', $email)->first();
-        $user = \App\User::where('email', $email)->first();
         $errorCode = $response->getStatusCode();
         if($errorCode =='200'){
-            if($wallet != null){
-                return [json_decode((string) $response->getBody(), true), $wallet->id, $user->id];
-            }else{
-                return [json_decode((string) $response->getBody(), true), null, $user->id];
-            }
+            return json_decode((string) $response->getBody(), true);
         }else{
             return response()->json(
-            ['msg'=>'User credentials are invalid'], $errorCode);
+            ['msg'=>'User credentials are invalid'], 422);
         }
     }
 

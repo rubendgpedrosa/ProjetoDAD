@@ -102,7 +102,7 @@
                 },
                 walletsEmail: this.$store.state.walletsEmail,
                 invalidEmail: false,
-                walletsEmailOnly: this.$store.state.walletsEmailArray.filter(email => email !== this.$store.state.email),
+                walletsEmailOnly: this.$store.state.walletsEmailArray.filter(email => email !== this.$store.state.user.email),
                 lettersIBAN: '',
                 numbersIBAN: '',
                 ibanValidated: '',

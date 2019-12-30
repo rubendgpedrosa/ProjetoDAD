@@ -135,7 +135,11 @@ class UserControllerAPI extends Controller
                 }
             }
         }
-        return response()->json($user->save());
+        $user->save();
+        $userToReturn = new User();
+        $userToReturn->name = $user->name;
+        $userToReturn->id = $user->id;
+        return $userToReturn;
     }
 
     public function destroy($id)

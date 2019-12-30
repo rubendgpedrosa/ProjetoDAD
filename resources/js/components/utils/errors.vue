@@ -50,6 +50,12 @@
                 <div v-show="errors.mb_payment_reference !== undefined">
                     <li>MB payment reference must have 9 numbers!</li>
                 </div>
+                <div v-show="errors.email_login !== undefined">
+                    <li>A valid email is required to login!</li>
+                </div>
+                <div v-show="errors.password_login !== undefined">
+                    <li>A password with at least 3 digits is required to login!</li>
+                </div>
             </ul>
         </div>
     </div>
