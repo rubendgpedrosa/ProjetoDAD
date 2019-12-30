@@ -25,7 +25,8 @@ class MovementsControllerAPI extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Wallet $wallet)
+
+    public function store(Request $request)
     {
         $movement = new Movement;
         $movement->wallet_id = $wallet->id;
@@ -52,43 +53,78 @@ class MovementsControllerAPI extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function registerExpense(Request $request)
     {
-        /*As a platform user I want to be able to register an expense (debit) movement of my
-          virtual wallet. The movement requires the type of movement (payment to external entity
-          or transfer); the value (from 0,01€ up to 5000,00€); the category of expense and a
-          description.
-          If the type of movement is a payment to an external entity, the registration must also
-          include the type of payment (bank transfer or MB payment). When the payment uses a
-          bank transfer the registration also requires the IBAN (2 capital letters followed by 23
-          digits). For MB payments the registration also requires an MB entity code (5 digits) and
-          the MB payment reference (9 digits).
-          If the type of movement is a transfer, the registration must also include the e-mail of the
-          destination wallet and a source description – application must guarantee that the
-          destination e-mail is associated to a valid virtual wallet from another user.*/
         $movement = new Movement;
-        $walletToDeposit = Wallet::where('email', $request->email)->first();
-        $walletToRetract = Wallet::where('id', $request->id)->first();
-        $movement->wallet_id = $walletToDeposit->id;
+        $request->validate([
+            'source_email' => 'email|required',
+            'type' => 'required|in:0,1',
+            'value' => 'required|between:0.01,5000',
+            'category_id' => 'required|integer',
+            //Validation below isn't working properly for whatever reason so we validate if inside an if.
+            //'email_to_transfer' => 'required_if:type,==,1'
+        ]);
+        $walletToRetract = Wallet::where('email', $request->source_email)->first();
+        $movement->wallet_id = $walletToRetract->id;
+        $movement->type = $request->type;
         $movement->category_id = $request->category_id;
         $movement->description = $request->description;
-        $movement->iban = $request->iban;
-        $movement->type_payment = $request->type_payment;
-        $movement->mb_entity_code = $request->mb_entity_code;
-        $movement->mb_payment_reference = $request->mb_payment_reference;
-        $movement->source_description = $request->source_description;
-        $movement->type = $request->type;
-        $movement->transfer = ($request->email == null? 0:1);
+        $movement->type = 'e';
         $movement->date = new \DateTime();
-        $movement->start_balance = $walletToDeposit->balance;
-        $movement->end_balance = $walletToDeposit->balance + $request->balance;
+        $movement->start_balance = $walletToRetract->balance;
         $walletToRetract->balance = $walletToRetract->balance - $request->value;
-        $walletToDeposit->balance += $request->value;
         $walletToRetract->save();
-        $walletToDeposit->save();
+        $movement->end_balance = $walletToRetract->balance;
         $movement->value = $request->value;
+
+        if($request->type == 1){
+            $request->validate([
+                'email_to_transfer' => 'required|email',
+            ]);
+            $movement_mirrored = new Movement;
+            $walletToDeposit = Wallet::where('email', $request->email_to_transfer)->first();
+            if($walletToDeposit == null){
+                return abort(403);
+            }
+            $movement->transfer = 1;
+            $movement->transfer_wallet_id = $walletToDeposit->id;
+            $movement_mirrored->transfer = 1;
+            //TODO bug when submitting multiple expenses
+            $movement_mirrored->wallet_id = $walletToDeposit->id;
+            //Income inserted in the wallet to receive the deposit
+            $movement_mirrored->type = 'i';
+            $movement_mirrored->category_id = $request->category_id;
+            $movement_mirrored->description = $request->description;
+            $movement_mirrored->source_description = $request->source_description;
+            $movement_mirrored->date = new \DateTime();
+            $movement_mirrored->transfer_wallet_id = $walletToRetract->id;
+            $movement->source_description = $request->source_description;
+            $movement_mirrored->source_description = $request->source_description;
+            $movement_mirrored->start_balance = $walletToDeposit->balance;
+            $movement_mirrored->end_balance = $walletToDeposit->balance + $request->value;
+            $walletToDeposit->balance += $request->value;
+            $movement_mirrored->value = $request->value;
+            $walletToDeposit->save();
+            $movement_mirrored->save();
+            $movement->transfer_movement_id = $movement_mirrored->id;
+            $movement->save();
+            $movement_mirrored->transfer_movement_id = $movement->id;
+            $movement_mirrored->save();
+        }else{
+            $movement->transfer = 0;
+            $movement->type_payment = $request->type_payment;
+            if($request->type_payment == 'bt'){
+                $movement->iban = $request->iban;
+            }else{
+                $movement->mb_entity_code = $request->mb_entity_code;
+                $movement->mb_payment_reference = $request->mb_payment_reference;
+            }
+        }
+        $walletToRetract->save();
         $movement->save();
-        return $walletToDeposit;
+
+        return $movement;
     }
 
     /**
@@ -99,7 +135,7 @@ class MovementsControllerAPI extends Controller
      */
     public function show($id)
     {
-        return response()->json(MovementResource::collection(Movement::where('wallet_id',$id)->paginate(10)));
+        return response()->json(MovementResource::collection(Movement::where('wallet_id',$id)->get()));
     }
 
     /**

@@ -19,12 +19,23 @@ class UserControllerAPI extends Controller
 {
     public function index(Request $request)
     {
-
-        if ($request->has('page')) {
+        $users = User::all();
+        foreach($users as $user){
+            $wallet = \App\Wallet::where('email', $user->email)->first();
+            if($wallet != null){
+                if($wallet->balance > 0){
+                    $user->empty_wallet = false;
+                }else{
+                    $user->empty_wallet = true;
+                }
+            }
+        }
+        return $users;
+        /*if ($request->has('page')) {
             return UserResource::collection(User::paginate(5));
         } else {
             return UserResource::collection(User::all());
-        }
+        }*/
     }
 
     public function show($id)
@@ -41,7 +52,6 @@ class UserControllerAPI extends Controller
         else{
             $extension = '.png';
         }
-        //TODO substring 13 characters.
         $string = md5($id);
         $partial_string = $string.substr(0, 12);
         $fileName = $id .'_'.$partial_string.$extension;
@@ -52,49 +62,99 @@ class UserControllerAPI extends Controller
 
     public function store(Request $request)
     {
+        /*As an Administrator of the platform I want to create operator and administration
+          accounts. These accounts will only have a name (only spaces and letters), a photo (upload
+          a JPG file), a password (3 or more characters) and an e-mail, which must be unique
+          among all accounts of the platform (including the platform users).*/
         $walletController = new WalletControllerAPI();
         $userController = new UserControllerAPI();
         $request->validate([
                 'name' => 'required|min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
                 'email' => 'required|email|unique:users,email',
-                'age' => 'integer|between:18,75',
-                'password' => 'min:3'
+                'password' => 'min:3',
+                'nif' => 'integer|nullable',
+                'photo' => 'required_if:type_user,==,a,o'
             ]);
         $user = new User();
-        $user->fill($request->except('photo'));
+        $user->fill($request->except('photo','type_user'));
         $user->password = Hash::make($user->password);
+        $request->type_user == null? $user->type = 'u':$user->type = $request->type_user;
         $user->save();
-        if($user->type == "u"){
+        if($user->type == 'u'){
             $walletController->store($request);
         }
         //\Log::info($request->all());
-        $user->photo = $userController->uploadImage($request, $user->id);
+        if($request->photo != null){
+            $user->photo = $userController->uploadImage($request, $user->id);
+        }else{
+            $user->photo = 'default.png';
+        }
         $user->save();
+        $user->password = '';
         return $user;
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $userController = new UserControllerAPI();
         $request->validate([
-                'name' => 'required|min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
-                'email' => 'required|email|unique:users,email,'.$id,
-                'age' => 'integer|between:18,75'
-            ]);
-        $user = User::findOrFail($id);
-        $user->update($request->all());
-        return new UserResource($user);
+            'name' => 'min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
+            'password' => 'integer|min:3',
+            'nif' => 'nullable|integer',
+            'photo' => 'required_if:type,==,a,o'
+        ]);
+        $user = User::findOrFail($request->id);
+        $wallet = \App\Wallet::where('email', $request->email)->first();
+        if($request->new_password != null) {
+            if(Hash::check($request->password, $user->password)){
+                $user['password'] = Hash::make($request->new_password);
+            }
+            else{
+               abort(403);
+            }
+        }
+        if($request->name != null && $request->name != $user->name){
+            $user->name = $request->name;
+        }
+        if($request->nif != null && $request->nif != $user->nif){
+            $user->nif = $request->nif;
+        }
+        if($request->photo != null && $request->photo != $user->photo){
+            $user->photo = $userController->uploadImage($request, $user->id);
+        }
+        if($request->type_update != null && $request->type_update == "activity"){
+            if($wallet->balance > 0){
+                return abort(403);
+            }else{
+                if($user->active != 1){
+                    $user->active = 1;
+                    $user->save();
+                }else{
+                    $user->active = 0;
+                    $user->save();
+                }
+            }
+        }
+        return response()->json($user->save());
     }
 
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $wallet = new Wallet();
-        $movements = new Movement();
-        $wallet = $wallet->show($id);
-        $wallet->delete();
-        $user->delete();
-        return response()->json(null, 204);
+        if($user->type == 'u'){
+            return abort(403);
+        }{
+            $wallet = new Wallet();
+            $movements = new Movement();
+            $wallet = $wallet->show($id);
+            if($wallet != null){
+                $wallet->delete();
+            }
+            $user->delete();
+            return response()->json(null, 204);
+        }
     }
+
     public function emailAvailable(Request $request)
     {
         $totalEmail = 1;

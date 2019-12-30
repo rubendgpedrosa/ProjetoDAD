@@ -10,7 +10,6 @@
         @yield('extrastyles')
         <!-- Latest compiled and minified CSS & JS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/style.css">
         </head>
 
 <body>
@@ -25,11 +24,12 @@
         <div class="sidebar-sticky">
             <ul class="nav flex-column">
                 <li><router-link to="/expenses">Register Expense</router-link></li>
-                <li><router-link to="/wallets/12">My Wallet</router-link></li>
+                <li><router-link to="/wallet">My Wallet</router-link></li>
+                <li><router-link to="/profile">My Profile</router-link></li>
                 <li><router-link to="/categories">Categories</router-link></li>
                 <li><router-link to="/users">Users</router-link></li>
                 <li><router-link to="/login">Login</router-link> </li>
-                <li><router-link to="/statistic">Statistic</router-link> </li>
+                <li><router-link to="/admin/create">Create Admin Acc</router-link></li>
             </ul>
         </div>
     </nav>

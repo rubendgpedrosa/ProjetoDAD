@@ -33,7 +33,7 @@ Route::get('users', 'UserControllerAPI@index');//->middleware('auth::api')
 Route::get('users/{id}', 'UserControllerAPI@show');
 Route::post('users', 'UserControllerAPI@store');
 Route::put('users/{id}', 'UserControllerAPI@update');
-Route::put('users/{id}', 'UserControllerAPI@uploadImage');
+Route::put('users/toggleActivity', 'UserControllerAPI@toggleActivity');
 Route::delete('users/{id}', 'UserControllerAPI@destroy');
 
 //Movement
@@ -44,8 +44,9 @@ Route::put('movements', 'MovementsControllerAPI@update');
 
 //Wallet
 Route::get('wallets', 'WalletControllerAPI@index');
+Route::get('walletsEmail', 'WalletControllerAPI@walletsEmail');
 Route::post('wallets/create', 'WalletControllerAPI@store');
-Route::get('wallets/{id}', 'WalletControllerAPI@show');
+Route::get('wallet/{id}', 'WalletControllerAPI@show');
 Route::put('wallets', 'WalletControllerAPI@registerIncome');
 
 //Statistics

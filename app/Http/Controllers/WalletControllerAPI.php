@@ -20,6 +20,16 @@ class WalletControllerAPI extends Controller
 
     }
 
+    public function walletsEmail(){
+        $wallets = Wallet::all();
+        foreach($wallets as $wallet){
+            unset($wallet->balance);
+            unset($wallet->created_at);
+            unset($wallet->updated_at);
+        }
+        return $wallets;
+    }
+
     public function edit(){
         //update wallet balance
 

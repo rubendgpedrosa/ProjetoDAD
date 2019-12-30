@@ -1,28 +1,27 @@
 s<template>
     <div>
-        <div class="jumbotron">
-            <h1>{{ title }}</h1>
+        <div>
+            <div class="jumbotron">
+                <h1>{{ title }}</h1>
+                <hr class="my-4">
+                <div class="form-row">
+                    <div class="col">
+                        <label>Wallet Email:</label>
+                        {{ wallet.email }}
+                    </div>
+                    <div class="col">
+                        <label>Current Balance:</label>
+                        {{ wallet.balance }} €
+                    </div>
+                </div>
+            </div>
         </div>
-        <table class="table table-hover table-borderless">
-            <thead>
-            <tr>
-                <th>Wallet Email</th>
-                <th>Current Balance</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td> {{ wallet.email }} </td>
-                <td> {{ wallet.balance }} € </td>
-            </tr>
-            <tr><td></td><td></td></tr>
-            </tbody>
-        </table>
-        <movement-list></movement-list>
+        <movement-list :walletid="walletid"></movement-list>
     </div>
 </template>
 
 <script>
+    //Completed US7
     import MovementList from "../movement/movementList";
 
     export default{
@@ -31,24 +30,17 @@ s<template>
         data: function() {
             return {
                 title: 'My Wallet',
-                wallet: ''
+                wallet: this.$store.state.wallet,
+                hideWallet: false,
+                walletid: this.$store.state.walletID,
             }
         },
         created() {
-            this.$eventHub.$on('logged-in', this.token);
+            //this.$bus.$on('payment-done', (email) => {this.getWallet(email.data)});
         },
         beforeDestroy() {
-            this.$eventHub.$off('logged-in');
+            //this.$eventHub.$off('logged-in');
         },
-        methods:{
-            //TODO get wallet from logged in user
-            getWallet: function() {
-                axios.get(`/api/wallets/${this.$route.params.id}`).then(response => (this.wallet = response.data));
-            }
-        },
-        mounted () {
-            this.getWallet();
-        }
     }
 
 </script>

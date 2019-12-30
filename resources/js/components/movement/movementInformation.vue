@@ -9,16 +9,18 @@
                 <th>Start Balance</th>
                 <th>End Balance</th>
                 <th>Value Transfered</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr v-model="movementInformationClicked" @click="$emit('movement-information-clicked')">
+            <tr v-model="movementInformationClicked">
                 <td>{{movementClicked.date}}</td>
                 <td>{{movementClicked.type_string}}</td>
                 <td>{{movementClicked.category_string}}</td>
                 <td>{{movementClicked.start_balance}}</td>
                 <td>{{movementClicked.end_balance}}</td>
                 <td>{{movementClicked.value}}</td>
+                <td><button class="glyphicon glyphicon-remove" @click="$emit('movement-information-clicked')"></button></td>
             </tr>
             </tbody>
         </table>
@@ -28,21 +30,21 @@
                     <label for="inputDescription" style="float:left;">Description</label>
                     <textarea class="form-control" readonly :value="movementClicked.description === null? 'Not Available':movementClicked.description"/>
                 </div>
-                <div class="form-group">
+                <div v-if="movementClicked.source_description !== null" class="form-group">
                     <label for="inputDescription" style="float:left;">Source Description</label>
-                    <textarea class="form-control" readonly :value="movementClicked.source_description === null? 'Not Available':movementClicked.source_description"/>
+                    <textarea class="form-control" readonly :value="movementClicked.source_description"/>
                 </div>
-                <div class="form-group">
+                <div v-if="movementClicked.iban !== null" class="form-group">
                     <label for="inputDescription" style="float:left;">IBAN</label>
-                    <input type="text" class="form-control" readonly :value="movementClicked.iban === null? 'Not Available':movementClicked.iban">
+                    <input type="text" class="form-control" readonly :value="movementClicked.iban">
                 </div>
-                <div class="form-group">
+                <div v-if="movementClicked.mb_entity_code !== null" class="form-group">
                     <label for="inputDescription" style="float:left;">MB Entity Code</label>
-                    <input type="text" class="form-control" readonly :value="movementClicked.mb_entity_code === null? 'Not Available':movementClicked.mb_entity_code">
+                    <input type="text" class="form-control" readonly :value="movementClicked.mb_entity_code">
                 </div>
-                <div class="form-group">
+                <div v-if="movementClicked.mb_payment_reference !== null" class="form-group">
                     <label for="inputDescription" style="float:left;">MB Payment Reference</label>
-                    <input type="text" class="form-control" readonly :value="movementClicked.mb_payment_reference === null? 'Not Available':movementClicked.mb_payment_reference">
+                    <input type="text" class="form-control" readonly :value="movementClicked.mb_payment_reference">
                 </div>
                 <div class="form-group" v-if="movementClicked.photo">
                     <label for="inputDescription" style="float:left;">Photo</label>
@@ -58,7 +60,7 @@
                 <div class="form-group">
                     <label for="inputCategory">Category</label>
                     <select class="form-control" id="inputCategory" aria-describedby="categoryHelp" required v-model="movementClicked.category_id">
-                        <option v-for="category in categories" :value="category.id">
+                        <option v-for="category in this.$store.state.categories" :value="category.id">
                             {{category.name}}
                         </option>
                     </select>
@@ -76,8 +78,9 @@
 </template>
 
 <script>
+    //Completed US11
     export default{
-        props:['movementClicked','movementInformationClicked', 'categories'],
+        props:['movementClicked','movementInformationClicked'],
         data: function(){
                 return {
                     editMovementClicked: false,
@@ -88,6 +91,7 @@
         methods: {
             toggleEditMovement: function () {
                 this.editMovementClicked = this.editMovementClicked === false;
+                this.$emit('more-information-closed');
             },
             updateMovement: function(){
                 this.newData.category_id = this.movementClicked.category_id;
@@ -97,7 +101,7 @@
                     .then(response=>{
                         if(response.status === 200){
                             this.toggleEditMovement();
-                            this.movementClicked.category_string = this.categories.find(category => category.id === this.movementClicked.category_id).name;
+                            this.movementClicked.category_string = this.$store.state.categories.find(category => category.id === this.movementClicked.category_id).name;
                         }
                     })
                     .catch(error=>{console.log(error.message)});
