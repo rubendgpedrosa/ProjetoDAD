@@ -17,7 +17,11 @@ class CategoryControllerAPI extends Controller
      */
     public function index()
     {
-        return CategoryResource::collection(Category::all());
+        /*if ($request->has('page')) {
+                return CategoryResource::collection(Category::paginate(10));
+        } else {*/
+            return CategoryResource::collection(Category::all());
+        //}
     }
 
     /**

@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="Expense registration with new validation/error treatment">
+    <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;public/js/app.js&#10;#&#9;resources/js/app.js">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/StatisticsControllerAPI.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/statistics/BarChart.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/statistics/ChartContainer.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/statistics/LineChart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/statistics/RandomChart.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/statistics/statistics.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginControllerAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserControllerAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryControllerAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryControllerAPI.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/expense/registerExpense.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/expense/registerExpense.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/homepage/homepage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/homepage/homepage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/profile/userProfile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/profile/userProfile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/registerUser.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/utils/errors.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/utils/errors.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +180,7 @@
       <workItem from="1577562641785" duration="7207000" />
       <workItem from="1577622094988" duration="17095000" />
       <workItem from="1577640381746" duration="12376000" />
-      <workItem from="1577710432960" duration="23376000" />
+      <workItem from="1577710432960" duration="27780000" />
     </task>
     <task id="LOCAL-00001" summary="Category Model, Controller, Route API">
       <created>1573578346429</created>
@@ -445,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577646461266</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Get user from auth. Router navigation guard implemented. Rewrote data load on app launch.">
+      <created>1577739751832</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1577739751832</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,7 +480,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="SHOW_UNVERSIONED_FILES_WHILE_COMMIT" value="false" />
-    <MESSAGE value="Deposit API with wallet update and movement creating. Listing for movements in &quot;My Wallet&quot; missing pagination." />
     <MESSAGE value="User creation and homepage." />
     <MESSAGE value="Display extra information related to movements" />
     <MESSAGE value="Movement category and description edition completed" />
@@ -502,23 +504,24 @@
     <MESSAGE value="Fixed issues with login not working with vuex" />
     <MESSAGE value="Fixxed issues with user listing and creation with Vuex." />
     <MESSAGE value="Admin/operator account creating with error validation. Error component that uses laravel's errors and processes them" />
-    <option name="LAST_COMMIT_MESSAGE" value="Admin/operator account creating with error validation. Error component that uses laravel's errors and processes them" />
+    <MESSAGE value="Get user from auth. Router navigation guard implemented. Rewrote data load on app launch." />
+    <option name="LAST_COMMIT_MESSAGE" value="Get user from auth. Router navigation guard implemented. Rewrote data load on app launch." />
   </component>
   <component name="WindowStateProjectService">
     <state x="696" y="349" width="554" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1575918216925">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="696" y="349" width="554" height="383" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1575918216925" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1577653583682">
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1577743527538">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="393" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1574788333556" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1577653583682" />
-    <state x="184" y="84" width="1228" height="688" key="DiffContextDialog" timestamp="1576596354612">
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1577743527538" />
+    <state x="184" y="84" width="1228" height="688" key="DiffContextDialog" timestamp="1577743518395">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="147" y="64" width="1228" height="688" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1574205928205" />
-    <state x="184" y="84" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1576596354612" />
+    <state x="184" y="84" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577743518395" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1574205870816">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -543,10 +546,19 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="158" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1573606382261" />
-    <state x="481" y="128" key="MultipleFileMergeDialog" timestamp="1573578420425">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="161" y="58" key="MergeDialog" timestamp="1577743259018">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="161" y="58" key="MergeDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577743259018" />
+    <state x="596" y="308" key="MultipleFileMergeDialog" timestamp="1577743262897">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="481" y="128" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1573578420425" />
+    <state x="596" y="308" key="MultipleFileMergeDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577743262897" />
+    <state x="691" y="123" key="RollbackChangesDialog" timestamp="1577743523814">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="691" y="123" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577743523814" />
     <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1577653585955">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -556,10 +568,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="617" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1574862552343" />
-    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575736515321">
+    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577743141171">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1575736515321" />
+    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1577743141171" />
     <state x="569" y="203" key="git4idea.merge.GitMergeDialog" timestamp="1574787680589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -568,14 +580,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="473" y="203" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1574788390105" />
-    <state x="623" y="248" key="run.anything.popup" timestamp="1577730956780">
+    <state x="623" y="248" key="run.anything.popup" timestamp="1577739949334">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577730956780" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1577729300067">
+    <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577739949334" />
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1577740946207">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1573604925537" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577729300067" />
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577740946207" />
   </component>
 </project>

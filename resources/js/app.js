@@ -54,7 +54,7 @@ const routes = [
         component: Homepage
     },
     {
-        path: '/users',
+            path: '/users',
         component:Users,
         meta: { requiresAuth: true }
     },
@@ -66,7 +66,7 @@ const routes = [
     {
         path: '/wallet/',
         component: Wallets,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true, requiresWallet: true }
     },
     {
         path: '/categories',
@@ -76,7 +76,7 @@ const routes = [
     {
         path: '/expenses',
         component: RegisterExpense,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true, requiresWallet: true }
     },
     {
         path: '/profile',
@@ -86,7 +86,7 @@ const routes = [
     {
         path: '/admin/create',
         component: RegisterAdmin,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true, requiresPowers: true }
     }
 ];
 
@@ -111,6 +111,8 @@ const store = new Vuex.Store({
         user: {},
         users: [{}],
         wallet: {},
+        errorNotLogged: false,
+        errorNotAdmin: false,
     },
     mutations: {
         setToken(state, token){
@@ -168,6 +170,12 @@ const store = new Vuex.Store({
             state.categories= '';
             state.users = '';
         },
+        resetErrorLogged(state){
+            state.errorNotLogged = false;
+        },
+        resetErrorNotAdmin(state){
+            state.errorNotAdmin = false;
+        }
     },
     actions:{
         setData(context){
@@ -200,14 +208,34 @@ const store = new Vuex.Store({
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (!store.state.logged_in) {
+            store.state.errorNotLogged = true;
             next('/');
-        } else {
-            next();
+        }
+        else {
+            if (to.matched.some(record => record.meta.requiresPowers)){
+                if(store.state.user.type === 'a'){
+                    next();
+                }else{
+                    store.state.errorNotAdmin = true;
+                    next(false);
+                }
+            }else{
+                if(to.matched.some(record => record.meta.requiresWallet)){
+                    if(store.state.wallet.id !== undefined){
+                        next();
+                    }else{
+                        store.state.errorNoWallet = true;
+                        next(false);
+                    }
+                }else {
+                    next();
+                }
+            }
         }
     } else {
         next();
     }
-})
+});
 
 const app = new Vue({
         el: '#app',
