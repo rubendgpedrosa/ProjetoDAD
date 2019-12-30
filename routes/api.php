@@ -47,3 +47,6 @@ Route::get('wallets', 'WalletControllerAPI@index');
 Route::post('wallets/create', 'WalletControllerAPI@store');
 Route::get('wallets/{id}', 'WalletControllerAPI@show');
 Route::put('wallets', 'WalletControllerAPI@registerIncome');
+
+//Statistics
+Route::get('statistics', 'StatisticsControllerAPI@index');

@@ -29,6 +29,7 @@
                 <li><router-link to="/categories">Categories</router-link></li>
                 <li><router-link to="/users">Users</router-link></li>
                 <li><router-link to="/login">Login</router-link> </li>
+                <li><router-link to="/statistic">Statistic</router-link> </li>
             </ul>
         </div>
     </nav>

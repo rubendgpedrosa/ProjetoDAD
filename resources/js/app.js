@@ -24,6 +24,7 @@ import Wallets from './components/wallets/wallet.vue';
 import Login from './components/auth/login';
 import Users from './components/users/user';
 import Home from './components/home';
+import Chart from './components/statistics/ChartContainer';
 
 Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue').default);
 Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue').default);
@@ -36,6 +37,7 @@ Vue.component('wallets', Wallets);
 Vue.component('login', Login);
 Vue.component('user', Users);
 Vue.component('home', Home);
+Vue.component('ChartContainer', Chart);
 
 Vue.use(VueRouter);
 
@@ -63,6 +65,10 @@ const routes = [
     {
         path: '/expenses',
         component: RegisterExpense
+    },
+    {
+        path: '/statistic',
+        component: Chart
     }
 ];
 
