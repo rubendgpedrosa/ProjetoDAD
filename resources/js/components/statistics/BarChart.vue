@@ -1,8 +1,8 @@
 <script>
-    import { HorizontalBar } from 'vue-chartjs'
+    import { Bar } from 'vue-chartjs'
 
     export default {
-        extends: HorizontalBar,
+        extends: Bar,
         props: {
             chartData: {
                 type: Array | Object,
@@ -18,6 +18,25 @@
                 gradient: null,
                 options: {
                     showScale: true,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: false
+                            },
+                            gridLines: {
+                                display: true,
+                                color: '#EEF0F4',
+                                borderDash: [5, 15]
+                            }
+                        }],
+                        xAxes: [ {
+                            gridLines: {
+                                display: true,
+                                color: '#EEF0F4',
+                                borderDash: [5, 15]
+                            }
+                        }]
+                    },
                     tooltips: {
                         backgroundColor: '#4F5565',
                         titleFontStyle: 'normal',
@@ -30,17 +49,7 @@
                         yPadding: 14,
                         displayColors: false,
                         mode: 'index',
-                        intersect: false,
-                        callbacks: {
-                            title: tooltipItem => {
-                                return `🗓 ${tooltipItem[0].yLabel}`
-                            },
-                            label: (tooltipItem, data) => {
-                                let dataset = data.datasets[tooltipItem.datasetIndex]
-                                let currentValue = dataset.data[tooltipItem.index]
-                                return `📦 ${currentValue.toLocaleString()}`
-                            }
-                        }
+                        intersect: false
                     },
                     legend: {
                         display: false
@@ -67,7 +76,7 @@
                     pointHoverBorderWidth: 1,
                     borderWidth: 1,
                     backgroundColor: this.gradient,
-                    hoverBackgroundColor: this.gradient, data: this.chartdata}]}, this.options)
+                    hoverBackgroundColor: this.gradient, data:  this.chartData}]}, this.options)
         },
         methods: {
         }
