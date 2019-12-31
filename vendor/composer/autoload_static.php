@@ -503,7 +503,6 @@ class ComposerStaticInit14a1a8fad7cb03c748908349693b32a9
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\LoginControllerAPI' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginControllerAPI.php',
-        'App\\Http\\Controllers\\MovementControllerAPI' => __DIR__ . '/../..' . '/app/Http/Controllers/MovementControllerAPI.php',
         'App\\Http\\Controllers\\MovementsControllerAPI' => __DIR__ . '/../..' . '/app/Http/Controllers/MovementsControllerAPI.php',
         'App\\Http\\Controllers\\UserControllerAPI' => __DIR__ . '/../..' . '/app/Http/Controllers/UserControllerAPI.php',
         'App\\Http\\Controllers\\VueController' => __DIR__ . '/../..' . '/app/Http/Controllers/VueController.php',

@@ -19,7 +19,6 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\LoginControllerAPI' => $baseDir . '/app/Http/Controllers/LoginControllerAPI.php',
-    'App\\Http\\Controllers\\MovementControllerAPI' => $baseDir . '/app/Http/Controllers/MovementControllerAPI.php',
     'App\\Http\\Controllers\\MovementsControllerAPI' => $baseDir . '/app/Http/Controllers/MovementsControllerAPI.php',
     'App\\Http\\Controllers\\UserControllerAPI' => $baseDir . '/app/Http/Controllers/UserControllerAPI.php',
     'App\\Http\\Controllers\\VueController' => $baseDir . '/app/Http/Controllers/VueController.php',

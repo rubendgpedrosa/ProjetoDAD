@@ -31,23 +31,33 @@ class StatisticsControllerAPI extends Controller
             $btTransfer = 0;
             $mbTransfer = 0;
 
-            $countIncomes =0;
-            $countExpenses =0;
+            $countIncomeTransfer = 0;
+            $countExpenseTransfer = 0;
             $movements = Movement::all();
 
             $countMovements = 0;
 
             foreach($movements as $movement){
+
+                unset($movement->id);
+                unset($movement->wallet_id);
+                unset($movement->transfer_wallet_id);
+                unset($movement->iban);
+                unset($movement->mb_entity_code);
+                unset($movement->mb_payment_reference);
+                unset($movement->description);
+                unset($movement->source_description);
+
                 if($movement->value>$highestTransferValue){
                     $highestTransferValue=$movement->value;
                 }
                     $countMovements = $countMovements+1;
                 switch($movement->type){
                 case 'e':
-                    $countExpenses = $countExpenses+1;
+                    $countExpenseTransfer = $countExpenseTransfer+1;
                 break;
                 case 'i':
-                    $countIncomes = $countIncomes+1;
+                    $countIncomeTransfer = $countIncomeTransfer+1;
                 break;
                 }
 
@@ -64,6 +74,8 @@ class StatisticsControllerAPI extends Controller
                 }
             }
 
+
+
             return response()->json([
                 'sumWallets' => $sumWallets,
                 'averagePerWallet' => $averagePerWallet,
@@ -73,6 +85,9 @@ class StatisticsControllerAPI extends Controller
                 'cTransfer'=>$cTransfer,
                 'btTransfer'=>$btTransfer,
                 'mbTransfer'=>$mbTransfer,
+                'countIncomeTransfer'=>$countIncomeTransfer,
+                'countExpenseTransfer'=>$countExpenseTransfer,
+                'movements'=>$movements
             ]);
         }
 }
