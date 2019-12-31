@@ -14,10 +14,13 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import expenseRegistrationOperator from "./components/expense/incomeRegistrationOperator";
 import RegisterExpense from './components/expense/registerExpense.vue';
 import RegisterAdmin from './components/users/registerAdmin.vue';
+import ChartContainer from './components/statistics/ChartContainer';
 import RegisterUser from './components/users/registerUser';
 import UserProfile from './components/profile/userProfile';
+import adminNavBar from "./components/utils/adminNavBar";
 import Categories from './components/category/category';
 import VueRouter from 'vue-router';
 import Homepage from './components/homepage/homepage.vue';
@@ -28,22 +31,23 @@ import Users from './components/users/user';
 import Home from './components/home';
 import Vuex from 'vuex';
 import Vue from "vue";
-import Chart from './components/statistics/ChartContainer';
 
 Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue').default);
 Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue').default);
+Vue.component('expenseRegistrationOperator', expenseRegistrationOperator);
 Vue.component('passport-clients', require('./components/passport/Clients.vue').default);
 Vue.component('RegisterExpense', RegisterExpense);
+Vue.component('ChartContainer', ChartContainer);
 Vue.component('RegisterAdmin', RegisterAdmin);
 Vue.component('RegisterUser', RegisterUser);
 Vue.component('UserProfile', UserProfile);
+Vue.component('adminNavBar', adminNavBar);
 Vue.component('category', Categories);
 Vue.component('Homepage', Homepage);
 Vue.component('wallets', Wallets);
 Vue.component('login', Login);
 Vue.component('user', Users);
 Vue.component('home', Home);
-Vue.component('ChartContainer', Chart);
 
 Vue.use(VueRouter);
 
@@ -52,54 +56,62 @@ Vue.use(Vuex);
 
 const routes = [
     {
-        path: '/categories', component:Categories
-    },
-    {
-        path: '/users',component:Users
-    },
-    {
-        path:'/login',component:Login
-    },
-    {
-        path:'/Home',component:Home
-    },
-    {
-        path: '/wallets/:id',
-        component: Wallets
-    },
-    {
         path: '/',
         component: Homepage
     },
     {
-        path: '/expenses',
-        component: RegisterExpense
+        path: '/users',
+        component:Users,
+        meta: { requiresAuth: true, requiresPowers: true}
     },
     {
-        path: '/statistic',
-        component: Chart
+        path:'/Home',
+        component:Home,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/wallet',
+        component: Wallets,
+        meta: { requiresAuth: true, requiresWallet: true }
+    },
+    {
+        path: '/categories',
+        component:Categories,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/expenses',
+        component: RegisterExpense,
+        meta: { requiresAuth: true, requiresWallet: true }
     },
     {
         path: '/profile',
-        component: UserProfile
+        component: UserProfile,
+        meta: { requiresAuth: true }
     },
     {
-        path: '/admin/create',
-        component: RegisterAdmin
+        path: '/deposits',
+        component: expenseRegistrationOperator,
+        meta: { requiresAuth: true, requiresOperatorPowers: true }
+    },
+    {
+        path: '/admin',
+        component: adminNavBar,
+        meta: { requiresAuth: true, requiresPowers: true }
     }
 ];
 
 const router = new VueRouter({routes});
 
-Vue.prototype.$bus = new Vue({})
+Vue.prototype.$bus = new Vue({});
 Vue.prototype.$eventHub = new Vue(); // Global event bus
 
 const store = new Vuex.Store({
     state: {
         walletID: '',
+        token: '',
         email: '',
         logged_in: false,
-        token: {},
         number_wallets: '',
         categories: [{}],
         walletsArray: [{}],
@@ -110,60 +122,152 @@ const store = new Vuex.Store({
         user: {},
         users: [{}],
         wallet: {},
+        errorNotLogged: false,
+        errorNotAdmin: false,
+        errorNotOperator: false,
+        adminStatistics: {}
     },
     mutations: {
+        setToken(state, token){
+                state.token = 'Bearer '+ token;
+        },
         setWalletData(state, { data }){
             state.number_wallets = data;
+        },
+        setWallet(state, { data }){
+            state.wallet = data;
+        },
+        setMovements(state, { data }){
+            state.movements = data;
         },
         tokenAuth(state, {data}){
             state.token = data;
         },
-        setUserData(state, id){
-            state.walletID = id;
-            axios.get(`api/movements/${id}`)
-                .then(response=>{ state.movements = response.data.reverse()});
-            axios.get(`/api/users/${id}`)
-                .then(response => {state.user = response.data.data;});
-            axios.get(`/api/wallet/${(id)}`)
-                .then(response => {state.wallet = response.data;});
-        },
-        setEmail(state, email){
-            state.email = email;
-        },
-        setCategories(state, {data}){
+        setCategories(state, { data }){
             state.categories = data;
         },
-        setWalletsEmail(state, {data}){
+        setUser(state, { data }){
+            state.user = data;
+        },
+        setUsers(state, { data }){
+            state.users = data;
+        },
+        addMovement(state, {data}){
+            let newDate = data.date.date;
+            data.date = newDate.toString().split('.')[0];
+            state.movements.unshift(data);
+        },
+        setWalletsEmail(state, { data }){
             state.walletsEmail = data;
         },
         setWalletsEmailArray(state, email){
             state.walletsEmailArray.push(email);
         },
-        setUsers(state, {data}){
-            state.users = data;
-        },
-        addMovement(state, {data}){
-            let newDate = data.date.date;
-            data.date = newDate;
-            state.movements.unshift(data);
-        },
         addUser(state, {data}){
             state.users.push(data);
+        },
+        changeUser(state, {data}){
+            let userIndex = state.users.findIndex(user => user.id === data.id);
+            state.users[userIndex].name = data.name;
         },
         setLoggedIn(state){
             state.logged_in = true;
         },
-        reset (state) {
+        logout (state) {
             state.logged_in = false;
             state.user = {};
             state.wallet = {};
             state.movements = [{}];
             state.walletID = '';
             state.email = '';
+            state.categories= '';
+            state.users = '';
         },
+        resetErrorLogged(state){
+            state.errorNotLogged = false;
+        },
+        resetErrorNotAdmin(state){
+            state.errorNotAdmin = false;
+        },
+        resetErrorNotOperator(state){
+            state.errorNotOperator = false;
+        }
+    },
+    actions:{
+        setData(context){
+            let headerData = {Accept: 'Application/json',Authorization: store.state.token};
+            axios.get('api/user', { headers: headerData}).then(response => {
+                context.commit('setUser',response.data); store.state.user = response.data;
+                if(response.data.type === 'u'){
+                    axios.get(`api/movements/${response.data.id}`, { headers: headerData})
+                        .then(response=>{ store.state.movements = response.data;})
+                        .catch( error => { console.log(error.message); });
+                    axios.get(`/api/wallet/${response.data.id}`, { headers: headerData})
+                        .then(response => {store.state.wallet = response.data;})
+                        .catch( error => { console.log(error.message); });}
+                if(response.data.type === 'a'){
+                    axios.get('api/statistics', {headers: headerData})
+                        .then(response=>{ store.state.adminStatistics = response.data})
+                        .catch( error => { console.log(error.message); });
+                    axios.get('api/users', { headers: headerData})
+                        .then(response=>{ store.state.users = response.data })
+                        .catch( error => { console.log(error.message); });
+                }
+            })
+                .catch( error => { console.log(error.message); });
+            axios.get('api/categories',{ headers: headerData})
+                .then(response=>{ store.state.categories = response.data.data; })
+                .catch( error => { console.log(error.message); });
+            axios.get('api/walletsEmail', { headers: headerData}).then(response => {
+                store.state.walletsEmail = response.data;
+                response.data.forEach(element => { store.state.walletsEmailArray.push(element.email);});});
+        },
+        isAuthenticated () {
+            return store.state.logged_in;
+        }
     }
-})
+});
 
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (!store.state.logged_in) {
+            store.state.errorNotLogged = true;
+            next('/');
+        }
+        else {
+            if (to.matched.some(record => record.meta.requiresPowers)){
+                if(store.state.user.type === 'a'){
+                    next();
+                }else{
+                    store.state.errorNotAdmin = true;
+                    next(false);
+                }
+            }else{
+                if(to.matched.some(record => record.meta.requiresWallet)){
+                    if(store.state.wallet.id !== undefined){
+                        next();
+                    }else{
+                        store.state.errorNoWallet = true;
+                        next(false);
+                    }
+                }else {
+                    if (to.matched.some(record => record.meta.requiresOperatorPowers)){
+                        if(store.state.user.type === 'o'){
+                            next();
+                        }else{
+                            store.state.errorNotOperator = true;
+                            next(false);
+                        }
+                    }else{
+                        next();
+                    }
+                }
+            }
+        }
+    } else {
+        next();
+    }
+});
 
 const app = new Vue({
         el: '#app',
@@ -177,28 +281,9 @@ const app = new Vue({
                     .then(response => (this.$store.commit('setWalletData', response)))
                     .catch(error=>console.log(error.nessage));
             },
-            getCategories: function () {
-                axios.get('api/categories')
-                    .then(response=>{this.$store.commit('setCategories', response.data)});
-            },
-            getWalletsEmail: function(){
-                axios.get('api/walletsEmail').then(response => {
-                    this.$store.commit('setWalletsEmail', response.data);
-                    response.data.forEach(element => {
-                        this.$store.commit('setWalletsEmailArray', element.email);
-                    });
-                });
-            },
-            getUsers: function () {
-                axios.get('api/users')
-                    .then(response=>{ this.$store.commit('setUsers',response)});
-            }
         },
         created (){
             this.getNumberWallets();
-            this.getCategories();
-            this.getWalletsEmail();
-            this.getUsers();
         }
     }
 );

@@ -14,8 +14,11 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Model' => 'App\Policies\ModelPolicy',
     ];
+
+    //Passport::tokensExpireIn(now()->addDays(1));
+    //Passport::refreshTokensExpireIn(now()->addDays(7));
 
     /**
      * Register any authentication / authorization services.
@@ -26,6 +29,5 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         Passport::routes();
-        //
     }
 }

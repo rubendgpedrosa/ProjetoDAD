@@ -24,7 +24,8 @@ class StatisticsControllerAPI extends Controller
                 $sumWallets = $sumWallets + $wallet->balance;
             }
 
-            $averagePerWallet = $sumWallets/$countWallets;
+            //sanitize the division between these two numbers to only have 2 decimal cases.
+            $averagePerWallet = number_format((float)($sumWallets/$countWallets), 2, '.', '');
 
             $highestTransferValue = 0;
             $cTransfer = 0;
@@ -79,7 +80,6 @@ class StatisticsControllerAPI extends Controller
             return response()->json([
                 'sumWallets' => $sumWallets,
                 'averagePerWallet' => $averagePerWallet,
-                'countWallets'=>$countWallets,
                 'highestTransferValue'=>$highestTransferValue,
                 'countMovements'=>$countMovements,
                 'cTransfer'=>$cTransfer,

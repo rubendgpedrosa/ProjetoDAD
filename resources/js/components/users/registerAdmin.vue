@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="jumbotron">
+        <div>
             <h1 class="display-4">{{ title }}</h1>
             <hr class="my-4">
             <div>

@@ -1,19 +1,37 @@
 <template>
-    <div class="container">
-        <div><p>Total of Wallets: {{totalWallets}}</p></div>
-        <div><p>Sum Wallets: {{sumValue}}</p></div>
-        <div><p>High Transfer: {{highestTransferValue}}</p></div>
-        <!--line-chart
-            v-if="loaded"
-            :chart-data="rawMovementsData" :chart-labels="labelsTransferTypes"
-            :options="options"/-->
-        <div class="small">
-        <bar-chart
-            v-if="loaded" chart-id="bar-wallet"
-            :chart-data="transferTypes" :chart-labels="labelsTransferTypes" :options="options"/>
-        </div><bar-chart
-            v-if="loaded" chart-id="bar-wallet"
-            :chart-data="types" :chart-labels="labelsTypes" :options="options"/>
+    <div>
+        <div>
+            <h1 class="display-4">{{ title }}</h1>
+            <hr class="my-4">
+            <div class="form-row jumbotron" style="padding-top:0px; padding-left: 0px;padding-right: 0px;">
+                <div class="col" >
+                    <label>Amount on Platform:</label>
+                    <input class="col" disabled v-model="this.$store.state.adminStatistics.sumWallets">
+                </div>
+                <div class="col">
+                    <label>Number of Wallets:</label>
+                    <input class="col" disabled v-model="this.$store.state.number_wallets">
+                </div>
+                <div class="col">
+                    <label>Average Amount per Wallet:</label>
+                    <input class="col" disabled v-model="this.$store.state.adminStatistics.averagePerWallet">
+                </div>
+                <div class="col">
+                    <label>Highest Transfer Amount:</label>
+                    <input class="col" disabled v-model="this.$store.state.adminStatistics.highestTransferValue">
+                </div>
+                <div class="col">
+                    <label>Number of Movements:</label>
+                    <input class="col" disabled v-model="this.$store.state.adminStatistics.countMovements">
+                </div>
+            </div>
+            <bar-chart
+                chart-id="bar-wallet"
+                :chart-data="transferTypes" :chart-labels="labelsTransferTypes" :options="options"/>
+            <bar-chart
+                v-if="loaded" chart-id="bar-wallet"
+                :chart-data="types" :chart-labels="labelsTypes" :options="options"/>
+        </div>
     </div>
 </template>
 
@@ -24,44 +42,23 @@
 
     export default {
         name: 'BarChartContainer',
-        components: { BarChart, LineChart },
-        data: () => ({
-            rawMovementsData: '',
-            datacollection: null,
-            loaded: false,
-            chartdata: null,
-            totalWallets: null,
-            transferTypes: [],
-            labelsTransferTypes: ['Cash','Bank Transfer','MB'],
-            types:[],
-            labelsTypes: ['Incomes','Expenses'],
-            labelsMonth: [],
-            movementsMonth: [],
-            sumValue: '',
-            highestTransferValue:'',
-            options: {
-                responsive: true,
-                maintainAspectRatio: false
-            }
-        }),
-        mounted () {
-            this.requestData()
-        }, methods:{
-            requestData() {
-                axios.get('api/statistics')
-                    .then(response=>{this.rawMovementsData = response.data.movements
-                        this.transferTypes = [response.data.cTransfer, response.data.btTransfer, response.data.mbTransfer]
-                        this.totalWallets = response.data.countWallets
-                        this.sumValue = response.data.sumWallets
-                        this.highestTransferValue = response.data.highestTransferValue
-                        this.types = [response.data.countIncomeTransfer,response.data.countExpenseTransfer]
-                        this.loaded = true})
-                    .catch( err => {
-                        this.loaded = false
-                    })
-            },
-            groupDateByDate(){
-                //this.fromatMonth()
+        components: { BarChart },
+        data: function() {
+            return{
+                title: 'E-Wallet Statistics',
+                rawData: this.$store.state.adminStatistics,
+                datacollection: null,
+                loaded: false,
+                chartdata: null,
+                totalWallets: null,
+                transferTypes: [this.$store.state.adminStatistics.cTransfer, this.$store.state.adminStatistics.btTransfer, this.$store.state.adminStatistics.mbTransfer],
+                labelsTransferTypes: ['Cash','Bank Transfer','MB'],
+                types:[this.$store.state.adminStatistics.countIncomeTransfer,this.$store.state.adminStatistics.countExpenseTransfer],
+                labelsTypes: ['Incomes','Expenses'],
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
             }
         }
     }

@@ -58,7 +58,6 @@
                             <button type="button" class="close" aria-label="Close" v-on:click="clickPhotograph">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <div></div>
                         </div>
                         <small id="imageHelp" class="form-text text-muted">Upload an optional photograph.</small>
                     </div>
@@ -102,10 +101,11 @@
                 });
             },
             submitChanges: function(){
+                let self = this;
                 this.alteredUser.new_password = this.new_password;
                 this.photo = this.alteredUser.photo;
                 axios.put(`/api/users/${this.alteredUser.id}`, this.alteredUser)
-                    .then(response => {this.formSubmitted = true})
+                    .then(response => {self.formSubmitted = true; self.$store.commit('changeUser', response);})
                     .catch(error => {console.log(error.message); this.invalid_password = true});
             },
             clickPhotograph:function(){
