@@ -17,7 +17,7 @@
                 <button v-if="not_logged === false && clickedButton === false && formSubmitted === false"
                         @click="clickRegister" class="btn btn-primary" href="#/register" role="button">Register Now</button>
                 <button v-if="not_logged === false && clickedButton === false && formSubmitted === false"
-                        @click="clickLogin" class="btn btn-primary" href="#/register" role="button">Already a User?</button>
+                        @click="clickLogin" class="btn btn-primary" href="#/register" role="button">Already an User?</button>
             </div>
             <register-user v-if="clickedButton && formSubmitted === false" v-on:cancel-registration="cancelRegistration" v-on:form-submitted="formSubmittion"></register-user>
             <login v-if="not_logged === true" v-on:cancel-login="not_logged = false"></login>

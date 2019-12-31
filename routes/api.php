@@ -43,3 +43,6 @@ Route::middleware('auth:api')->get('walletsEmail', 'WalletControllerAPI@walletsE
 Route::post('wallets/create', 'WalletControllerAPI@store');
 Route::middleware('auth:api')->get('wallet/{id}', 'WalletControllerAPI@show');
 Route::put('wallets', 'WalletControllerAPI@registerIncome');
+
+//Statistics
+Route::middleware('auth:api')->get('statistics', 'StatisticsControllerAPI@index');

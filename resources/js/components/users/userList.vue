@@ -127,7 +127,7 @@
                 let self = this;
                 let stuff = this.users;
                 if(this.searchObject.name !== '')
-                    stuff = stuff.filter(user => user.name.includes(self.searchObject.name));
+                    stuff = stuff.filter(user => user.name.toLowerCase().includes(self.searchObject.name.toLowerCase()));
                 if(this.searchObject.type !== '')
                     stuff = stuff.filter(user => user.type === self.searchObject.type);
                 if(this.searchObject.status !== '')

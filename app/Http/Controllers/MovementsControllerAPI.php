@@ -29,22 +29,18 @@ class MovementsControllerAPI extends Controller
     public function store(Request $request)
     {
         $movement = new Movement;
+        $wallet = Wallet::where('email', $request->email_income)->first();
         $movement->wallet_id = $wallet->id;
-        $movement->type = $request->type;
-        $movement->transfer = $request->transfer;
-        $movement->transfer_movement_id = $request->transfer_movement_id;
-        $movement->type_payment = $request->type_payment;
-        $movement->category_id = $request->category_id;
-        $movement->iban = $request->iban;
-        $movement->mb_entity_code = $request->mb_entity_code;
-        $movement->mb_payment_reference = $request->mb_payment_reference;
-        $movement->description = $request->description;
-        $movement->source_description = $request->source_description;
+        $movement->type_payment = $request->type_payment_income;
+        $movement->iban = $request->IBAN_income;
+        $movement->transfer = 0;
+        $movement->source_description = $request->source_description_income;
         $movement->date = new \DateTime();
         $movement->start_balance = $wallet->balance;
-        $movement->end_balance = $wallet->balance + $request->balance;
-        $movement->value = $request->balance;
-        return response()->json($movement->save());
+        $movement->end_balance = $wallet->balance + $request->value_income;
+        $movement->value = $request->value_income;
+        $movement->save();
+        return $movement;
     }
 
     /**
@@ -135,7 +131,15 @@ class MovementsControllerAPI extends Controller
      */
     public function show($id)
     {
-        return response()->json(MovementResource::collection(Movement::where('wallet_id',$id)->get()));
+        $movementToReturn = new Movement();
+        $movements = Movement::where('wallet_id',$id)->get();
+        foreach($movements as $movement){
+            $user = \App\user::where('id', $movement->transfer_wallet_id)->first();
+            if($user != null){
+                $movement->photo = $user->photo;
+            }
+        }
+        return $movements;
     }
 
     /**

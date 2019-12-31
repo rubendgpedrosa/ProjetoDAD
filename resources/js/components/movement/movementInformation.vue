@@ -26,9 +26,19 @@
         </table>
         <div style="position: relative;">
             <div class="card-body card-block" v-if="editMovementClicked === false">
-                <div class="form-group">
-                    <label for="inputDescription" style="float:left;">Description</label>
-                    <textarea class="form-control" readonly :value="movementClicked.description === null? 'Not Available':movementClicked.description"/>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="inputDescription" style="float:left;">Description</label>
+                        <textarea class="form-control" readonly :value="movementClicked.description === null? 'Not Available':movementClicked.description"/>
+                    </div>
+                    <div class="col-2" style="padding-left:20px;">
+                        <div class="form-row">
+                            <label for="inputDescription" style="float:left;"></label>
+                        </div>
+                        <div class="form-row">
+                            <img :src="`./storage/fotos/${movementClicked.photo}`" class="rounded" style="max-width:65px;"/>
+                        </div>
+                    </div>
                 </div>
                 <div v-if="movementClicked.source_description !== null" class="form-group">
                     <label for="inputDescription" style="float:left;">Source Description</label>
@@ -45,10 +55,6 @@
                 <div v-if="movementClicked.mb_payment_reference !== null" class="form-group">
                     <label for="inputDescription" style="float:left;">MB Payment Reference</label>
                     <input type="text" class="form-control" readonly :value="movementClicked.mb_payment_reference">
-                </div>
-                <div class="form-group" v-if="movementClicked.photo">
-                    <label for="inputDescription" style="float:left;">Photo</label>
-                    <img src="movementClicked.photo"/>
                 </div>
             </div>
             <div class="card-body card-block" v-else>

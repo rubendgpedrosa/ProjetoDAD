@@ -163,9 +163,6 @@
         },
         components: {
             VueBootstrapTypeahead, errors
-        },
-        computed:{
-
         }
     }
 </script>

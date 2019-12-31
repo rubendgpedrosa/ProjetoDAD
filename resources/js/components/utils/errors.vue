@@ -8,7 +8,7 @@
                 <div v-show="errors.type_user !== undefined">
                     <li>Must select a type of account!</li>
                 </div>
-                <div v-show="errors.email !== undefined">
+                <div v-show="errors.email !== undefined || errors.email_income !== undefined">
                     <li>Email address already in use!</li>
                 </div>
                 <div v-show="errors.password !== undefined">
@@ -16,9 +16,6 @@
                 </div>
                 <div v-show="errors.photo !== undefined">
                     <li>An administrator/operator must have a photo!</li>
-                </div>
-                <div v-show="errors.nif !== undefined">
-                    <li>NIF must have 9 numbers!</li>
                 </div>
                 <div v-show="errors.nif !== undefined">
                     <li>NIF must have 9 numbers!</li>
@@ -32,11 +29,14 @@
                 <div v-show="errors.category_id !== undefined">
                     <li>Must select a category for this registration!</li>
                 </div>
-                <div v-show="errors.value !== undefined">
+                <div v-show="errors.value !== undefined || errors.value_income !== undefined">
                     <li>Amount transfered can't be lower than 0.01 and higher than 5000!</li>
                 </div>
-                <div v-show="errors.type_payment !== undefined">
+                <div v-show="errors.type_payment !== undefined || errors.type_payment_income !== undefined">
                     <li>Must select a type of payment for this registration!</li>
+                </div>
+                <div v-show="errors.source_description_income !== undefined">
+                    <li>A source description can't be empty!</li>
                 </div>
                 <div v-show="ibanValidated !== undefined & ibanValidated === false">
                     <li>IBAN must have 2 capital letter followed by 23 Numbers!</li>

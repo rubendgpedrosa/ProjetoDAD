@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="jumbotron">
+    <div class="jumbotron">
+        <div>
             <h1>{{ title }}</h1>
         </div>
         <div><button class="btn btn-primary" @click="addCategory">Add</button></div>

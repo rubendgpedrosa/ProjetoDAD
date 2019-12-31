@@ -14,10 +14,13 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import expenseRegistrationOperator from "./components/expense/incomeRegistrationOperator";
 import RegisterExpense from './components/expense/registerExpense.vue';
 import RegisterAdmin from './components/users/registerAdmin.vue';
+import ChartContainer from './components/statistics/ChartContainer';
 import RegisterUser from './components/users/registerUser';
 import UserProfile from './components/profile/userProfile';
+import adminNavBar from "./components/utils/adminNavBar";
 import Categories from './components/category/category';
 import VueRouter from 'vue-router';
 import Homepage from './components/homepage/homepage.vue';
@@ -31,11 +34,14 @@ import Vue from "vue";
 
 Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue').default);
 Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue').default);
+Vue.component('expenseRegistrationOperator', expenseRegistrationOperator);
 Vue.component('passport-clients', require('./components/passport/Clients.vue').default);
 Vue.component('RegisterExpense', RegisterExpense);
+Vue.component('ChartContainer', ChartContainer);
 Vue.component('RegisterAdmin', RegisterAdmin);
 Vue.component('RegisterUser', RegisterUser);
 Vue.component('UserProfile', UserProfile);
+Vue.component('adminNavBar', adminNavBar);
 Vue.component('category', Categories);
 Vue.component('Homepage', Homepage);
 Vue.component('wallets', Wallets);
@@ -54,9 +60,9 @@ const routes = [
         component: Homepage
     },
     {
-            path: '/users',
+        path: '/users',
         component:Users,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true, requiresPowers: true}
     },
     {
         path:'/Home',
@@ -64,7 +70,7 @@ const routes = [
         meta: { requiresAuth: true }
     },
     {
-        path: '/wallet/',
+        path: '/wallet',
         component: Wallets,
         meta: { requiresAuth: true, requiresWallet: true }
     },
@@ -84,8 +90,13 @@ const routes = [
         meta: { requiresAuth: true }
     },
     {
-        path: '/admin/create',
-        component: RegisterAdmin,
+        path: '/deposits',
+        component: expenseRegistrationOperator,
+        meta: { requiresAuth: true, requiresOperatorPowers: true }
+    },
+    {
+        path: '/admin',
+        component: adminNavBar,
         meta: { requiresAuth: true, requiresPowers: true }
     }
 ];
@@ -113,6 +124,8 @@ const store = new Vuex.Store({
         wallet: {},
         errorNotLogged: false,
         errorNotAdmin: false,
+        errorNotOperator: false,
+        adminStatistics: {}
     },
     mutations: {
         setToken(state, token){
@@ -175,6 +188,9 @@ const store = new Vuex.Store({
         },
         resetErrorNotAdmin(state){
             state.errorNotAdmin = false;
+        },
+        resetErrorNotOperator(state){
+            state.errorNotOperator = false;
         }
     },
     actions:{
@@ -182,22 +198,29 @@ const store = new Vuex.Store({
             let headerData = {Accept: 'Application/json',Authorization: store.state.token};
             axios.get('api/user', { headers: headerData}).then(response => {
                 context.commit('setUser',response.data); store.state.user = response.data;
-                axios.get(`api/movements/${response.data.id}`, { headers: headerData})
-                    .then(response=>{ store.state.movements = response.data;});
-                axios.get(`/api/wallet/${response.data.id}`, { headers: headerData})
-                    .then(response => {store.state.wallet = response.data;});
-            });
+                if(response.data.type === 'u'){
+                    axios.get(`api/movements/${response.data.id}`, { headers: headerData})
+                        .then(response=>{ store.state.movements = response.data;})
+                        .catch( error => { console.log(error.message); });
+                    axios.get(`/api/wallet/${response.data.id}`, { headers: headerData})
+                        .then(response => {store.state.wallet = response.data;})
+                        .catch( error => { console.log(error.message); });}
+                if(response.data.type === 'a'){
+                    axios.get('api/statistics', {headers: headerData})
+                        .then(response=>{ store.state.adminStatistics = response.data})
+                        .catch( error => { console.log(error.message); });
+                    axios.get('api/users', { headers: headerData})
+                        .then(response=>{ store.state.users = response.data })
+                        .catch( error => { console.log(error.message); });
+                }
+            })
+                .catch( error => { console.log(error.message); });
             axios.get('api/categories',{ headers: headerData})
-                .then(response=>{ store.state.categories = response.data.data; });
-
+                .then(response=>{ store.state.categories = response.data.data; })
+                .catch( error => { console.log(error.message); });
             axios.get('api/walletsEmail', { headers: headerData}).then(response => {
                 store.state.walletsEmail = response.data;
-                response.data.forEach(element => {
-                    store.state.walletsEmailArray.push(element.email);
-                });
-            });
-            axios.get('api/users', { headers: headerData})
-                .then(response=>{ store.state.users = response.data });
+                response.data.forEach(element => { store.state.walletsEmailArray.push(element.email);});});
         },
         isAuthenticated () {
             return store.state.logged_in;
@@ -228,7 +251,16 @@ router.beforeEach((to, from, next) => {
                         next(false);
                     }
                 }else {
-                    next();
+                    if (to.matched.some(record => record.meta.requiresOperatorPowers)){
+                        if(store.state.user.type === 'o'){
+                            next();
+                        }else{
+                            store.state.errorNotOperator = true;
+                            next(false);
+                        }
+                    }else{
+                        next();
+                    }
                 }
             }
         }

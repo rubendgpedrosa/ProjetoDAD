@@ -27,7 +27,8 @@
                 <li><router-link to="/wallet">My Wallet</router-link></li>
                 <li><router-link to="/profile">My Profile</router-link></li>
                 <li><router-link to="/categories">Categories</router-link></li>
-                <li><router-link to="/admin/create">Administration</router-link></li>
+                <li><router-link to="/deposits">Incomes</router-link></li>
+                <li><router-link to="/admin">Administration</router-link></li>
                 <li><router-link to="/users">Users</router-link></li>
             </ul>
         </div>

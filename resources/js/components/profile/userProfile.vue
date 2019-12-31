@@ -58,7 +58,6 @@
                             <button type="button" class="close" aria-label="Close" v-on:click="clickPhotograph">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <div></div>
                         </div>
                         <small id="imageHelp" class="form-text text-muted">Upload an optional photograph.</small>
                     </div>

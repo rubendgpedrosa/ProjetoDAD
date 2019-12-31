@@ -39,17 +39,16 @@ class WalletControllerAPI extends Controller
     public function registerIncome(Request $request){
         //validate sent data
         $validatedData = $request->validate([
-            'email' => 'required|email',
-            'balance' => 'required|Integer|min:0.01|max:5000',
-            //'type' => 'required|in:c,bt,mb',
-            //'source_description' => 'required|String',
-            'source' => 'in:cash,bank transfer'
-            //'IBAN' => 'required|'
+            'email_income' => 'required|email',
+            'value_income' => 'required|Integer|min:0.01|max:5000',
+            'type_payment_income' => 'required|in:bt,mb',
+            'source_description_income' => 'required|String',
+            'IBAN_income' => 'required_if:type_payment_income,==,bt|size:25'
         ]);
-        $wallet = Wallet::find($validatedData['email']);
         $movement = new Movement();
-        $movement = app('App\Http\Controllers\MovementsControllerAPI')->store($request, $wallet);
-        $wallet->balance += $validatedData['balance'];
+        $movement = app('App\Http\Controllers\MovementsControllerAPI')->store($request);
+        $wallet = Wallet::where('email', $request->email_income)->first();
+        $wallet->balance += $validatedData['value_income'];
         $wallet->save();
         return $movement;
     }
