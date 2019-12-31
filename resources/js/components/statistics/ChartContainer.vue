@@ -25,11 +25,12 @@
                     <input class="col" disabled v-model="this.$store.state.adminStatistics.countMovements">
                 </div>
             </div>
+            <h3>Transfer Types</h3>
             <bar-chart
                 chart-id="bar-wallet"
                 :chart-data="transferTypes" :chart-labels="labelsTransferTypes" :options="options"/>
-            <bar-chart
-                v-if="loaded" chart-id="bar-wallet"
+            <h3>Types</h3>
+            <bar-chart chart-id="bar-types"
                 :chart-data="types" :chart-labels="labelsTypes" :options="options"/>
         </div>
     </div>
