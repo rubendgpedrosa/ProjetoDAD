@@ -71,7 +71,8 @@
                 </tbody>
             </table>
             <movement-information v-if="movementInformationClicked" :categories="this.$store.state.categories" :movementClicked="movementClicked" v-on:movement-information-clicked="changeInformationClicked"></movement-information>
-            <jw-pagination class="d-flex justify-content-center" v-show="getFilteredMovements.length > 12 && !movementInformationClicked" :pageSize="12" :items="getFilteredMovements" @changePage="onChangePage"></jw-pagination>
+            <jw-pagination class="d-flex justify-content-center" v-show="getFilteredMovements.length > 12 && !movementInformationClicked"
+                           :pageSize="12" :items="getFilteredMovements" @changePage="onChangePage"></jw-pagination>
         </div>
         <h3 class="text-center" v-if="movements.length === 0">No Records Found!</h3>
     </div>
@@ -176,6 +177,15 @@
                     });
                 }
                 return stuff;
+            }
+        },
+        sockets:{
+            transfer_executed_server: function(){
+                let headerData = {Accept: 'Application/json',Authorization: this.$store.state.token};
+                axios.get(`api/movements/${this.$store.state.user.id}`, { headers: headerData})
+                    .then(response=>{ this.$store.commit('setMovements', response.data.reverse());
+                    this.movements = response.data.reverse()})
+                    .catch( error => { console.log(error.message); });
             }
         }
     }

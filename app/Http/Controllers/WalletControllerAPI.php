@@ -40,10 +40,10 @@ class WalletControllerAPI extends Controller
         //validate sent data
         $validatedData = $request->validate([
             'email_income' => 'required|email',
-            'value_income' => 'required|Integer|min:0.01|max:5000',
+            'value_income' => 'required|min:0.01|max:5000',
             'type_payment_income' => 'required|in:bt,mb',
             'source_description_income' => 'required|String',
-            'IBAN_income' => 'required_if:type_payment_income,==,bt|size:25'
+            'IBAN_income' => 'required_if:type_payment_income,==,bt'
         ]);
         $movement = new Movement();
         $movement = app('App\Http\Controllers\MovementsControllerAPI')->store($request);

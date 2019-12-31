@@ -143,7 +143,7 @@
                 axios.post('/api/movements', this.newExpense)
                     .then(function(response){ if(  response.status === 201) {
                         self.registeredExpense();
-                        self.$store.commit('addMovement', response);
+                        self.$store.dispatch('setData');
                     }
                 })
                     .catch(error => {
@@ -156,9 +156,9 @@
                     (this.newExpense.type === 1? this.newExpense.email_to_transfer === "":(this.newExpense.type_payment === "bt"? this.newExpense.iban === "":
                         (this.newExpense.mb_entity_code === "" || this.newExpense.mb_payment_reference === ""))));
             },
-            registeredExpense: function(){
+            registeredExpense: function(movement){
                 this.expenseSubmitted = true;
-                this.$eventHub.$emit('registered-expense');
+                this.$socket.emit('transfer_executed', this.newExpense.email_to_transfer);
             },
         },
         components: {

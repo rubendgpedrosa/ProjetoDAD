@@ -23,12 +23,18 @@
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
             <ul class="nav flex-column">
-                <li><router-link to="/expenses">Register Expense</router-link></li>
+                <li><router-link to="/expenses">Register Expenses</router-link></li>
+                <hr class="my-4">
                 <li><router-link to="/wallet">My Wallet</router-link></li>
+                <hr class="my-4">
                 <li><router-link to="/profile">My Profile</router-link></li>
+                <hr class="my-4">
                 <li><router-link to="/categories">Categories</router-link></li>
-                <li><router-link to="/deposits">Incomes</router-link></li>
+                <hr class="my-4">
+                <li><router-link to="/deposits">Register Incomes</router-link></li>
+                <hr class="my-4">
                 <li><router-link to="/admin">Administration</router-link></li>
+                <hr class="my-4">
                 <li><router-link to="/users">Users</router-link></li>
             </ul>
         </div>

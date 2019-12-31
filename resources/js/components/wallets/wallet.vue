@@ -41,6 +41,14 @@ s<template>
         beforeDestroy() {
             //this.$eventHub.$off('logged-in');
         },
+        sockets:{
+            transfer_executed_server: function(){
+                let headerData = {Accept: 'Application/json',Authorization: this.$store.state.token};
+                axios.get(`/api/wallet/${this.$store.state.user.id}`, { headers: headerData})
+                    .then(response => {this.$store.commit('setWallet', response.data); console.log(this.$store.state.wallet)})
+                    .catch( error => { console.log(error.message);});
+            }
+        }
     }
 
 </script>

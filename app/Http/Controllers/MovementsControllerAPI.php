@@ -6,6 +6,7 @@ use App\Movement;
 use App\Wallet;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use App\Http\Resources\Movement as MovementResource;
 
 class MovementsControllerAPI extends Controller
@@ -131,7 +132,6 @@ class MovementsControllerAPI extends Controller
      */
     public function show($id)
     {
-        $movementToReturn = new Movement();
         $movements = Movement::where('wallet_id',$id)->get();
         foreach($movements as $movement){
             $user = \App\user::where('id', $movement->transfer_wallet_id)->first();

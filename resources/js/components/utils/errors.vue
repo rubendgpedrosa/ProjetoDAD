@@ -8,8 +8,11 @@
                 <div v-show="errors.type_user !== undefined">
                     <li>Must select a type of account!</li>
                 </div>
-                <div v-show="errors.email !== undefined || errors.email_income !== undefined">
+                <div v-show="errors.email !== undefined">
                     <li>Email address already in use!</li>
+                </div>
+                <div v-show="errors.email_income !== undefined">
+                    <li>Invalidmail address!</li>
                 </div>
                 <div v-show="errors.password !== undefined">
                     <li>Passwords must match!</li>
@@ -42,7 +45,7 @@
                     <li>IBAN must have 2 capital letter followed by 23 Numbers!</li>
                 </div>
                 <div v-show="errors.email_to_transfer !== undefined">
-                    <li>Insert the destination email for the expense!</li>
+                    <li>Invalid email address!</li>
                 </div>
                 <div v-show="errors.mb_entity_code !== undefined">
                     <li>MB entity code must have 5 numbers!</li>

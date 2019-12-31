@@ -59,7 +59,8 @@
                     axios.defaults.headers.common.Authorization = "Bearer " + Object.values(response.data)[2].toString();
                     this.$store.commit('setToken', Object.values(response.data)[2].toString());
                     this.$store.commit('setLoggedIn');
-                    this.$store.dispatch('setData');
+                    this.$store.dispatch('setData')
+                    this.$socket.emit('login', this.email_login);
                     this.logSuccessfull = true;
                 }).catch(error => {
                     if (error.response.status === 422){
@@ -71,6 +72,7 @@
                 this.$emit('cancel-login');
             },
             logout: function(){
+                this.$socket.emit('logout', this.$store.state.user.email);
                 this.logSuccessfull = false;
                 axios.post('/api/logout').then(response => response.data).catch(error => error.message);
                 this.$store.commit('logout');

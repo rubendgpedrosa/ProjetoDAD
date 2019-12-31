@@ -21,6 +21,7 @@ import ChartContainer from './components/statistics/ChartContainer';
 import RegisterUser from './components/users/registerUser';
 import UserProfile from './components/profile/userProfile';
 import adminNavBar from "./components/utils/adminNavBar";
+import VueSocketIO from "vue-socket.io";
 import Categories from './components/category/category';
 import VueRouter from 'vue-router';
 import Homepage from './components/homepage/homepage.vue';
@@ -30,6 +31,7 @@ import Login from './components/auth/login';
 import Users from './components/users/user';
 import Home from './components/home';
 import Vuex from 'vuex';
+
 import Vue from "vue";
 
 Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue').default);
@@ -47,12 +49,16 @@ Vue.component('Homepage', Homepage);
 Vue.component('wallets', Wallets);
 Vue.component('login', Login);
 Vue.component('user', Users);
+
 Vue.component('home', Home);
-
 Vue.use(VueRouter);
-
 Vue.use(Vuex);
 
+const socket = new VueSocketIO({
+    debug: true,
+    connection: 'http://127.0.0.1:8080'
+});
+Vue.use(socket);
 
 const routes = [
     {
@@ -197,10 +203,11 @@ const store = new Vuex.Store({
         setData(context){
             let headerData = {Accept: 'Application/json',Authorization: store.state.token};
             axios.get('api/user', { headers: headerData}).then(response => {
-                context.commit('setUser',response.data); store.state.user = response.data;
+                context.commit('setUser',response.data);
+                store.state.user = response.data;
                 if(response.data.type === 'u'){
                     axios.get(`api/movements/${response.data.id}`, { headers: headerData})
-                        .then(response=>{ store.state.movements = response.data;})
+                        .then(response=>{ store.state.movements = response.data.reverse();})
                         .catch( error => { console.log(error.message); });
                     axios.get(`/api/wallet/${response.data.id}`, { headers: headerData})
                         .then(response => {store.state.wallet = response.data;})
@@ -215,12 +222,23 @@ const store = new Vuex.Store({
                 }
             })
                 .catch( error => { console.log(error.message); });
-            axios.get('api/categories',{ headers: headerData})
-                .then(response=>{ store.state.categories = response.data.data; })
-                .catch( error => { console.log(error.message); });
-            axios.get('api/walletsEmail', { headers: headerData}).then(response => {
-                store.state.walletsEmail = response.data;
-                response.data.forEach(element => { store.state.walletsEmailArray.push(element.email);});});
+            if(store.state.walletsEmailArray.length === 0) {
+                axios.get('api/walletsEmail', {headers: headerData}).then(response => {
+                    store.state.walletsEmail = response.data;
+                    response.data.forEach(element => {
+                        store.state.walletsEmailArray.push(element.email);
+                    });
+                });
+            }
+            if(store.state.categories.length === 1) {
+                axios.get('api/categories', {headers: headerData})
+                    .then(response => {
+                        store.state.categories = response.data.data;
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                    });
+            }
         },
         isAuthenticated () {
             return store.state.logged_in;

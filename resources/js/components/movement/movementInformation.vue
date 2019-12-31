@@ -33,10 +33,10 @@
                     </div>
                     <div class="col-2" style="padding-left:20px;">
                         <div class="form-row">
-                            <label for="inputDescription" style="float:left;"></label>
+                            <label for="inputDescription" style="float:left;">Photo</label>
                         </div>
                         <div class="form-row">
-                            <img :src="`./storage/fotos/${movementClicked.photo}`" class="rounded" style="max-width:65px;"/>
+                            <img :src="`./storage/fotos/${movementClicked.photo === undefined? 'default.png':movementClicked.photo}`" class="rounded" style="max-width:65px;"/>
                         </div>
                     </div>
                 </div>
