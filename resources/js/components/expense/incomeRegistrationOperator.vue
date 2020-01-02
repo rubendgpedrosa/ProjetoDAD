@@ -95,10 +95,12 @@
                 axios.put('api/wallets', this.newIncome,{headers: {Accept: 'Application/json', Authorization: this.$store.state.token}})
                 .then(function(response){ if(  response.status === 201) {
                         self.registeredIncome();
+                        self.$toasted.show('Income successfully submitted!', { type: 'success' });
                         self.$socket.emit('wallet_movements', self.newIncome.email_income);
                     }
                 }).catch(error => {
                 if (error.response.status === 422){
+                    this.$toasted.show('Error occurred submitting expense!', { type: 'error' });
                     this.validationErrors = error.response.data.errors;
                 }});
             },

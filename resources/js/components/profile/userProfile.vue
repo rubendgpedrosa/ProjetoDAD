@@ -104,8 +104,12 @@
                 this.alteredUser.new_password = this.new_password;
                 this.photo = this.alteredUser.photo;
                 axios.put(`/api/users/${this.alteredUser.id}`, this.alteredUser)
-                    .then(response => {self.formSubmitted = true; self.$store.commit('changeUser', response);})
-                    .catch(error => {console.log(error.message); this.invalid_password = true});
+                    .then(response => {
+                        self.$toasted.show('User profile updated!', { type: 'success' });
+                        self.formSubmitted = true;
+                    })
+                    .catch(error => {console.log(error.message); this.invalid_password = true;
+                        this.$toasted.show('Error updating profile!', { type: 'error' });});
             },
             clickPhotograph:function(){
                 this.photoURL = '';

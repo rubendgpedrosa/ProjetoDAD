@@ -47,6 +47,7 @@ class WalletControllerAPI extends Controller
         ]);
         $movement = new Movement();
         $movement = app('App\Http\Controllers\MovementsControllerAPI')->store($request);
+
         $wallet = Wallet::where('email', $request->email_income)->first();
         $wallet->balance += $validatedData['value_income'];
         $wallet->save();

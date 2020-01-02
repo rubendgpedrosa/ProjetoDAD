@@ -12,7 +12,7 @@ class LoggedUsers {
     userInfoBySocketID(socketID) {
         for (var [userID, userInfo] of this.users) {
             if (userInfo.socketID == socketID)  {
-                return userInfo;                
+                return userInfo;
             }
         }
         return null;
@@ -42,16 +42,6 @@ class LoggedUsers {
         let cloneUserInfo = Object.assign({}, userInfo);
         this.users.delete(userInfo.user.id);
         return cloneUserInfo;
-    }
-
-    getUsersInfoOfDepartment(departmentID) {
-        let usersInfo= [];
-        for (var [userID, userInfo] of this.users) {
-            if (userInfo.user.department_id == departmentID)  {
-                usersInfo.push(userInfo);   
-            }
-        }
-        return usersInfo;
     }
 }
 

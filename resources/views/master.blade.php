@@ -29,8 +29,6 @@
                 <hr class="my-4">
                 <li><router-link to="/profile">My Profile</router-link></li>
                 <hr class="my-4">
-                <li><router-link to="/categories">Categories</router-link></li>
-                <hr class="my-4">
                 <li><router-link to="/deposits">Register Incomes</router-link></li>
                 <hr class="my-4">
                 <li><router-link to="/admin">Administration</router-link></li>

@@ -102,10 +102,11 @@
                     .catch(error => console.log(error.message));
             },
             clearFilter: function(){
-              this.searchObject.type = '';
-              this.searchObject.name = '';
-              this.searchObject.status = '';
-              this.searchObject.email = '';
+                this.searchObject.type = '';
+                this.searchObject.name = '';
+                this.searchObject.status = '';
+                this.searchObject.email = '';
+                this.$toasted.show('Filtered cleared!', { type: 'info' });
             },
             onChangePage: function(pagedUsers){
                 this.pagedUsers = pagedUsers;

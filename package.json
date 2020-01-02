@@ -30,6 +30,7 @@
         "iban": "0.0.12",
         "jquery": "^3.4.1",
         "jw-vue-pagination": "^1.0.3",
+        "mailgun-js": "^0.22.0",
         "passport.socketio": "^3.7.0",
         "popper.js": "^1.16.0",
         "socket.io": "^2.3.0",

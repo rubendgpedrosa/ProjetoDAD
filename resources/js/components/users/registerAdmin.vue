@@ -100,6 +100,7 @@
                     this.$store.state.number_wallets++;this.validationErrors = 'tou';})
                     .catch(error => {
                         if (error.response.status === 422){
+                            this.$toasted.show('Error occurred creating new User!', { type: 'error' });
                             this.validationErrors = error.response.data.errors;
                         }});
             },

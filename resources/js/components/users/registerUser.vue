@@ -78,9 +78,13 @@
             },
             async submitUser(){
                 axios.post("api/users", this.newUser)
-                    .then(response => {this.$store.commit('addUser', response); this.$emit('form-submitted'); this.$store.state.number_wallets++; })
+                    .then(response => {this.$emit('form-submitted');
+                        this.$store.state.number_wallets++;
+                        this.$toasted.show('Account sucessfully created', { type: 'success' });
+                        this.$store.commit('addUser', response);})
                     .catch(error => { console.log(error.message);
                         if (error.response.status === 400){
+                            this.$toasted.show('Error occurred creating new User!', { type: 'error' });
                             this.validationErrors = error.response.data.errors;
                         }});
             },

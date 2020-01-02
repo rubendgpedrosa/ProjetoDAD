@@ -146,6 +146,7 @@
                 this.searchObject.email = '';
                 this.searchObject.timeInterval = '';
                 this.searchObject.walletsEmail = '';
+                this.$toasted.show('Filtered cleared!', { type: 'info' });
             }
         },
         computed: {

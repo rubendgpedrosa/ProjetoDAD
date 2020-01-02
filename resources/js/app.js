@@ -86,11 +86,6 @@ const routes = [
         meta: { requiresAuth: true }
     },
     {
-        path: '/expenses',
-        component: RegisterExpense,
-        meta: { requiresAuth: true, requiresWallet: true }
-    },
-    {
         path: '/profile',
         component: UserProfile,
         meta: { requiresAuth: true }
@@ -117,7 +112,6 @@ import Toasted from "vue-toasted";
 Vue.use(Toasted, {
     position: "bottom-right",
     duration: 5000,
-    type: "success"
 });
 
 const store = new Vuex.Store({
@@ -136,20 +130,16 @@ const store = new Vuex.Store({
         user: {},
         users: [{}],
         wallet: {},
-        errorNotLogged: false,
-        errorNotAdmin: false,
-        errorNotOperator: false,
-        adminStatistics: {}
+        adminStatistics: {},
     },
     mutations: {
         setToken(state, token){
-                state.token = 'Bearer '+ token;
+            state.token = 'Bearer '+ token;
         },
         setWalletData(state, { data }){
             state.number_wallets = data;
         },
         setWallet(state, { data }){
-            console.log(data);
             state.wallet = data;
         },
         setMovements(state, { data }){
@@ -216,7 +206,8 @@ const store = new Vuex.Store({
                 store.state.user = response.data;
                 if(response.data.type === 'u'){
                     axios.get(`api/movements/${response.data.id}`, { headers: headerData})
-                        .then(response=>{ store.state.movements = response.data.reverse();})
+                        .then(response=>{ store.state.movements = response.data.reverse();
+                        store.state.movements.push(...{id:'', type:'N/A', name: 'Not Available'});})
                         .catch( error => { console.log(error.message); });
                     axios.get(`/api/wallet/${response.data.id}`, { headers: headerData})
                         .then(response => {store.state.wallet = response.data;})
@@ -258,7 +249,7 @@ const store = new Vuex.Store({
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (!store.state.logged_in) {
-            store.state.errorNotLogged = true;
+            Vue.toasted.show('You must be logged in to access that!', { type: 'error' });
             next('/');
         }
         else {
@@ -266,7 +257,7 @@ router.beforeEach((to, from, next) => {
                 if(store.state.user.type === 'a'){
                     next();
                 }else{
-                    store.state.errorNotAdmin = true;
+                    Vue.toasted.show('You must be an Administrator to access that!', { type: 'error' });
                     next(false);
                 }
             }else{
@@ -274,7 +265,7 @@ router.beforeEach((to, from, next) => {
                     if(store.state.wallet.id !== undefined){
                         next();
                     }else{
-                        store.state.errorNoWallet = true;
+                        Vue.toasted.show('You must be a platform user with a wallet to acess that!', { type: 'error' });
                         next(false);
                     }
                 }else {
@@ -282,7 +273,7 @@ router.beforeEach((to, from, next) => {
                         if(store.state.user.type === 'o'){
                             next();
                         }else{
-                            store.state.errorNotOperator = true;
+                            Vue.toasted.show('You must be an Operator to access that!', { type: 'error' });
                             next(false);
                         }
                     }else{
@@ -315,7 +306,7 @@ const app = new Vue({
         sockets: {
             wallet_movements_response: function(){
                 this.$store.dispatch('setData');
-                this.$toasted.show('A transfer has been made!');
+                this.$toasted.show('Deposit made to your account!', { type: 'success' });
             }
         }
     }

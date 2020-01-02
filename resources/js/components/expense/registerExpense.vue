@@ -143,12 +143,14 @@
                 axios.post('/api/movements', this.newExpense)
                     .then(function(response){ if(  response.status === 201) {
                         self.registeredExpense();
+                        self.$toasted.show('Expense successfully submitted!', { type: 'success' });
                         self.$store.dispatch('setData');
                         self.$socket.emit('wallet_movements', self.newExpense.email_to_transfer);
                     }
                 })
                     .catch(error => {
                     if (error.response.status === 422){
+                        this.$toasted.show('Error occurred submitting expense!', { type: 'error' });
                         this.validationErrors = error.response.data.errors;
                     }});
             },

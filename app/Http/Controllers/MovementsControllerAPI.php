@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Movement;
 use App\Wallet;
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -104,6 +105,7 @@ class MovementsControllerAPI extends Controller
             $movement_mirrored->value = $request->value;
             $walletToDeposit->save();
             $movement_mirrored->save();
+
             $movement->transfer_movement_id = $movement_mirrored->id;
             $movement->save();
             $movement_mirrored->transfer_movement_id = $movement->id;

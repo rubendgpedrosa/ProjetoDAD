@@ -27,8 +27,6 @@ var app = require('http').createServer();
 
 var io = require('socket.io')(app);
 
-var LoggedUsers = require('./loggedusers.js');
-
 app.listen(8080, function(){
     console.log('listening on *:8080');
 });
@@ -41,38 +39,65 @@ app.listen(8080, function(){
 // Each list element has the information about the user and the socket id
 // Check loggedusers.js file
 
-let loggedUsers = new LoggedUsers();
+let loggedUsers = [];
+
+//TODO set new api key with costum domain that sends to others besides myself.
+let api_key = '6480b8e06723bc87a167267d7a48b198-6f4beb0a-c3d66e63';
+let domain = 'sandbox0d01094581344fb3a256cd4f0585c880.mailgun.org';
+let mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 io.on('connection', function (socket) {
-    //console.log('Unauthenticated user has connected (socket ID = '+socket.id+')' );
-    // Emit message to the same cliente
-    //socket.emit('my_active_games_changed');
-
-    // Handle message sent from the client to the server
-    // socket.on('messageType_from_client_to_server', function (data){
-
-    // });
-    /*socket.on('login', (data)=>{
-        console.log('User logged in with', data);
-        //socket.broadcast.emit('chat_from_server', data);
-    })
-    socket.on('chat_from_client_to_department', (msg, user)=>{
-        if(user.department_id){
-            socket.to(`department_${user.department_id}`).emit('chat_from_server_to_department', msg);
-        }
-    })*/
+    console.log('Unauthenticated user has connected (socket ID = '+socket.id+')' );
 
     socket.on('login', (email)=>{
         let room = email;
         socket.join(room);
+        if(!loggedUsers.filter(user => user.email === email).length > 0){
+            loggedUsers.push({email: email, socketid: socket.id});
+        }else{
+            loggedUsers = loggedUsers.filter(user => user.email !== email);
+            loggedUsers.push({email: email, socketid: socket.id});
+        }
     });
     socket.on('logout', (email)=>{
-        let room = email;
-        socket.leave(room);
+        socket.leave(email);
+        loggedUsers = loggedUsers.filter(user => user.email !== email);
     });
-    socket.on('wallet_movements', email_income=>{
+    socket.on('create_user', (newUser)=>{
+        let data = {
+            from: 'E-Wallet <e_wallet@projetodad.com>',
+            to: newUser.email,
+            subject: 'Confirm account',
+            html:'<div><h2 class="display-4">New Account Created</h2><p class="lead">Your new account is ready to be used!</p></div>',
+        };
+        mailgun.messages().send(data, function (error, body) {
+            console.log(body);
+        });
+    });
+    socket.on('wallet_movements', (email_income)=>{
         let email = email_income;
-        console.log('money sent to', email_income);
-        socket.to(email).emit('wallet_movements_response');
+        let filteredUser = loggedUsers.find(user => user.email === email);
+        let data = {
+            from: 'E-Wallet <e_wallet@projetodad.com>',
+            to: email_income,
+            subject: 'Wallet Deposit',
+            html:'<div><h2 class="display-4">Deposit Transfer received</h2><p class="lead">A deposit has been made to your account!</p></div>',
+        };
+        if(filteredUser !== undefined){
+            if(io.sockets.sockets[filteredUser.socketid] !== undefined){
+                socket.to(email).emit('wallet_movements_response');
+            }else{
+                console.log('User was logged but not anymore');
+                loggedUsers = loggedUsers.filter(user => user.email !== email);
+                mailgun.messages().send(data, function (error, body) {
+                    console.log(body);
+                });
+            }
+        }else{
+            console.log("User connected and logged off correctly");
+            mailgun.messages().send(data, function (error, body) {
+                console.log(body);
+            });
+        }
     });
 });

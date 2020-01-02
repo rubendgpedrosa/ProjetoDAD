@@ -108,9 +108,10 @@
                         if(response.status === 200){
                             this.toggleEditMovement();
                             this.movementClicked.category_string = this.$store.state.categories.find(category => category.id === this.movementClicked.category_id).name;
+                            this.$toasted.show('Movement successfully edited!', { type: 'success' });
                         }
                     })
-                    .catch(error=>{console.log(error.message)});
+                    .catch(error=>{this.$toasted.show('Error updating the movement!', { type: 'error' }); console.log(error.message)});
             }
         }
     }

@@ -2,13 +2,8 @@
     <div>
         <div>
             <errors :errors="validationErrors"></errors>
-            <div v-if="logSuccessfull === true">
-                <div class="alert alert-success" role="alert">
-                    Successfully logged in!
-                </div>
-            </div>
             <div v-if="this.$store.state.logged_in === true && logSuccessfull === false">
-                <p class="lead">Currently logged in as {{ this.$store.state.user.name }}</p>
+                <p class="lead">Currently logged in as {{ user.name }}</p>
             </div>
             <button v-if="this.$store.state.logged_in === true" @click="logout" class="btn btn-danger">Log Out</button>
             <div v-if="this.$store.state.logged_in === false">
@@ -60,10 +55,11 @@
                     this.$store.commit('setToken', Object.values(response.data)[2].toString());
                     this.$store.commit('setLoggedIn');
                     this.$store.dispatch('setData')
+                    this.$toasted.show('Successfully logged in!', { type: 'success' });
                     this.$socket.emit('login', this.email_login);
-                    this.logSuccessfull = true;
                 }).catch(error => {
                     if (error.response.status === 422){
+                        this.$toasted.show('Error logging in!', { type: 'error' });
                         this.validationErrors = error.response.data.errors;
                     }
                 });
@@ -72,10 +68,18 @@
                 this.$emit('cancel-login');
             },
             logout: function(){
-                this.$socket.emit('logout', this.$store.state.user.email);
+                this.$socket.emit('logout', this.user.email);
                 this.logSuccessfull = false;
-                axios.post('/api/logout').then(response => response.data).catch(error => error.message);
+                this.cancelLogin();
+                axios.post('/api/logout')
+                    .then(response => {this.$toasted.show('Successfully logged out!', { type: 'success' });})
+                    .catch(error => {this.$toasted.show('Error logging out!', { type: 'error' }); error.message});
                 this.$store.commit('logout');
+            }
+        },
+        computed:{
+            user: function(){
+                return this.$store.state.user;
             }
         }
     }
