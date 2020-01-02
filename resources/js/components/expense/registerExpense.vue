@@ -144,6 +144,7 @@
                     .then(function(response){ if(  response.status === 201) {
                         self.registeredExpense();
                         self.$store.dispatch('setData');
+                        self.$socket.emit('wallet_movements', self.newExpense.email_to_transfer);
                     }
                 })
                     .catch(error => {
@@ -158,7 +159,6 @@
             },
             registeredExpense: function(movement){
                 this.expenseSubmitted = true;
-                this.$socket.emit('transfer_executed', this.newExpense.email_to_transfer);
             },
         },
         components: {

@@ -112,6 +112,14 @@ const router = new VueRouter({routes});
 Vue.prototype.$bus = new Vue({});
 Vue.prototype.$eventHub = new Vue(); // Global event bus
 
+import Toasted from "vue-toasted";
+
+Vue.use(Toasted, {
+    position: "bottom-right",
+    duration: 5000,
+    type: "success"
+});
+
 const store = new Vuex.Store({
     state: {
         walletID: '',
@@ -141,6 +149,7 @@ const store = new Vuex.Store({
             state.number_wallets = data;
         },
         setWallet(state, { data }){
+            console.log(data);
             state.wallet = data;
         },
         setMovements(state, { data }){
@@ -302,6 +311,12 @@ const app = new Vue({
         },
         created (){
             this.getNumberWallets();
+        },
+        sockets: {
+            wallet_movements_response: function(){
+                this.$store.dispatch('setData');
+                this.$toasted.show('A transfer has been made!');
+            }
         }
     }
 );

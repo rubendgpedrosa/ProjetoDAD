@@ -61,8 +61,6 @@
     import VueBootstrapTypeahead from 'vue-bootstrap-typeahead';
     import errors from '../utils/errors.vue';
 
-    //TODO send socket event to user
-
     export default{
         data: function(){
             return{
@@ -97,8 +95,7 @@
                 axios.put('api/wallets', this.newIncome,{headers: {Accept: 'Application/json', Authorization: this.$store.state.token}})
                 .then(function(response){ if(  response.status === 201) {
                         self.registeredIncome();
-                        self.$store.commit('addMovement', response);
-                        self.$socket.emit('transfer_executed', self.newIncome.email_income);
+                        self.$socket.emit('wallet_movements', self.newIncome.email_income);
                     }
                 }).catch(error => {
                 if (error.response.status === 422){

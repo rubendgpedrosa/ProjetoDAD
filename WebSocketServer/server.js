@@ -64,17 +64,15 @@ io.on('connection', function (socket) {
 
     socket.on('login', (email)=>{
         let room = email;
-        console.log(room, 'connected!');
         socket.join(room);
     });
     socket.on('logout', (email)=>{
         let room = email;
-        console.log(email, 'disconnected!');
         socket.leave(room);
     });
-    socket.on('transfer_executed', (email)=>{
-        let room = email;
-        console.log('Wallet changes to', email);
-        socket.to(room).emit('transfer_executed_server');
+    socket.on('wallet_movements', email_income=>{
+        let email = email_income;
+        console.log('money sent to', email_income);
+        socket.to(email).emit('wallet_movements_response');
     });
 });

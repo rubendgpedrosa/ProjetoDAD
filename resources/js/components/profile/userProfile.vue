@@ -77,7 +77,6 @@
         data: function(){
             return{
                 title: 'My Profile',
-                alteredUser: this.$store.state.user,
                 photo: '',
                 new_password: '',
                 confirmed_password: '',
@@ -115,6 +114,11 @@
                 return (this.alteredUser.name === "" || this.new_password !== this.confirmed_password ||
                     (this.alteredUser.password === "" && this.new_password !== "") || (this.alteredUser.password === "" && this.confirmed_password !== ""));
             },
+        },
+        computed:{
+            alteredUser: function(){
+                return this.$store.state.user;
+            }
         },
         mounted() {
             this.photo = this.alteredUser.photo;
