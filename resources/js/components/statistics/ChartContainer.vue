@@ -25,24 +25,21 @@
                     <input class="col" disabled v-model="this.$store.state.adminStatistics.countMovements">
                 </div>
             </div>
+            <h3>Transfer Types</h3>
             <bar-chart
                 chart-id="bar-wallet"
                 :chart-data="transferTypes" :chart-labels="labelsTransferTypes" :options="options"/>
+            <h3>Types</h3>
+            <bar-chart chart-id="bar-types"
+                :chart-data="types" :chart-labels="labelsTypes" :options="options"/>
         </div>
     </div>
 </template>
 
 <script>
-    import BarChart from './BarChart.vue';
-
-    /*
-    this.rawData = response.data
-    this.transferTypes = [response.data.cTransfer, response.data.btTransfer, response.data.mbTransfer]
-    this.totalWallets = response.data.countWallets
-    this.sumValue = response.data.sumWallets
-    this.highestTransferValue = response.data.highestTransferValue
-    this.loaded = true
-    */
+    import moment from 'moment'
+    import BarChart from './BarChart.vue'
+    import LineChart from './LineChart.vue'
 
     export default {
         name: 'BarChartContainer',
@@ -55,8 +52,10 @@
                 loaded: false,
                 chartdata: null,
                 totalWallets: null,
-                transferTypes: [],
-                labelsTransferTypes: ['c','bt','mb'],
+                transferTypes: [this.$store.state.adminStatistics.cTransfer, this.$store.state.adminStatistics.btTransfer, this.$store.state.adminStatistics.mbTransfer],
+                labelsTransferTypes: ['Cash','Bank Transfer','MB'],
+                types:[this.$store.state.adminStatistics.countIncomeTransfer,this.$store.state.adminStatistics.countExpenseTransfer],
+                labelsTypes: ['Incomes','Expenses'],
                 options: {
                     responsive: true,
                     maintainAspectRatio: false
