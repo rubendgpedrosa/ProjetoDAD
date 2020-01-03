@@ -80,7 +80,7 @@
         computed:{
             user: function(){
                 return this.$store.state.user;
-            }
+            },
         }
     }
 </script>

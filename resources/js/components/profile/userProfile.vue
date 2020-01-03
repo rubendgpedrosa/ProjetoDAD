@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="jumbotron">
+        <div>
             <div class="form-row">
                 <div class="col">
                     <h1>{{ title }}</h1>
@@ -74,6 +74,7 @@
 <script>
     //Completed US5
     export default {
+        props: ['alteredUser'],
         data: function(){
             return{
                 title: 'My Profile',
@@ -118,11 +119,6 @@
                 return (this.alteredUser.name === "" || this.new_password !== this.confirmed_password ||
                     (this.alteredUser.password === "" && this.new_password !== "") || (this.alteredUser.password === "" && this.confirmed_password !== ""));
             },
-        },
-        computed:{
-            alteredUser: function(){
-                return this.$store.state.user;
-            }
         },
         mounted() {
             this.photo = this.alteredUser.photo;

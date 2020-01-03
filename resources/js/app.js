@@ -19,10 +19,10 @@ import RegisterExpense from './components/expense/registerExpense.vue';
 import RegisterAdmin from './components/users/registerAdmin.vue';
 import ChartContainer from './components/statistics/ChartContainer';
 import RegisterUser from './components/users/registerUser';
-import UserProfile from './components/profile/userProfile';
 import adminNavBar from "./components/utils/adminNavBar";
 import VueSocketIO from "vue-socket.io";
 import Categories from './components/category/category';
+import userNavBar from './components/utils/userNavBar.vue';
 import VueRouter from 'vue-router';
 import Homepage from './components/homepage/homepage.vue';
 import vuetify from "../plugins/vuetify";
@@ -42,7 +42,7 @@ Vue.component('RegisterExpense', RegisterExpense);
 Vue.component('ChartContainer', ChartContainer);
 Vue.component('RegisterAdmin', RegisterAdmin);
 Vue.component('RegisterUser', RegisterUser);
-Vue.component('UserProfile', UserProfile);
+Vue.component('userNavBar', userNavBar);
 Vue.component('adminNavBar', adminNavBar);
 Vue.component('category', Categories);
 Vue.component('Homepage', Homepage);
@@ -87,7 +87,7 @@ const routes = [
     },
     {
         path: '/profile',
-        component: UserProfile,
+        component: userNavBar,
         meta: { requiresAuth: true }
     },
     {
@@ -130,6 +130,7 @@ const store = new Vuex.Store({
         user: {},
         users: [{}],
         wallet: {},
+        userStatistics: {},
         adminStatistics: {},
     },
     mutations: {
@@ -206,12 +207,15 @@ const store = new Vuex.Store({
                 store.state.user = response.data;
                 if(response.data.type === 'u'){
                     axios.get(`api/movements/${response.data.id}`, { headers: headerData})
-                        .then(response=>{ store.state.movements = response.data.reverse();
-                        store.state.movements.push(...{id:'', type:'N/A', name: 'Not Available'});})
+                        .then(response=>{ store.state.movements = response.data.reverse();})
                         .catch( error => { console.log(error.message); });
                     axios.get(`/api/wallet/${response.data.id}`, { headers: headerData})
                         .then(response => {store.state.wallet = response.data;})
-                        .catch( error => { console.log(error.message); });}
+                        .catch( error => { console.log(error.message); });
+                    axios.get(`api/userStatistics/${response.data.id}`, {headers: headerData})
+                        .then(response => {store.state.userStatistics = response.data})
+                        .catch( error => { console.log(error.message); });
+                }
                 if(response.data.type === 'a'){
                     axios.get('api/statistics', {headers: headerData})
                         .then(response=>{ store.state.adminStatistics = response.data})

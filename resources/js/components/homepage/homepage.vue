@@ -21,9 +21,6 @@
 </template>
 
 <script>
-    //TODO (US14) - Statistic for the user about whatever information we find necessary. What we choose affects grading.
-    //TODO (US17) - Statistics for the admins about whatever information we find necessary. What we choose affects grading.
-
     import Login from '../auth/login.vue';
 
     export default{

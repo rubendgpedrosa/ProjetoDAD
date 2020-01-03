@@ -46,3 +46,4 @@ Route::put('wallets', 'WalletControllerAPI@registerIncome');
 
 //Statistics
 Route::middleware('auth:api')->get('statistics', 'StatisticsControllerAPI@index');
+Route::middleware('auth:api')->get('userStatistics/{id}', 'StatisticsControllerAPI@userStatistics');

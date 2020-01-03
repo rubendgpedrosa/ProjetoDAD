@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
                 <register-admin v-if="createAccounts === true && statistics === false"></register-admin>
-                <chart-container v-if="statistics === true && createAccounts === false"></chart-container>
+                <chart-container v-bind:raw-data="rawData" v-bind:types="types" v-bind:transfer-types="transferTypes" v-if="statistics === true && createAccounts === false"></chart-container>
             </div>
         </div>
 
@@ -40,6 +40,17 @@
             statisticsClicked: function(){
                 this.createAccounts = false;
                 this.statistics = true;
+            }
+        },
+        computed: {
+            rawData: function(){
+                return this.$store.state.adminStatistics;
+            },
+            transferTypes: function(){
+                return [this.$store.state.adminStatistics.cTransfer, this.$store.state.adminStatistics.btTransfer, this.$store.state.adminStatistics.mbTransfer];
+            },
+            types: function(){
+                return [this.$store.state.adminStatistics.countIncomeTransfer,this.$store.state.adminStatistics.countExpenseTransfer];
             }
         }
     }

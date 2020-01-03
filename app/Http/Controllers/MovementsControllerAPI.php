@@ -88,9 +88,7 @@ class MovementsControllerAPI extends Controller
             $movement->transfer = 1;
             $movement->transfer_wallet_id = $walletToDeposit->id;
             $movement_mirrored->transfer = 1;
-            //TODO bug when submitting multiple expenses
             $movement_mirrored->wallet_id = $walletToDeposit->id;
-            //Income inserted in the wallet to receive the deposit
             $movement_mirrored->type = 'i';
             $movement_mirrored->category_id = $request->category_id;
             $movement_mirrored->description = $request->description;
@@ -105,7 +103,6 @@ class MovementsControllerAPI extends Controller
             $movement_mirrored->value = $request->value;
             $walletToDeposit->save();
             $movement_mirrored->save();
-
             $movement->transfer_movement_id = $movement_mirrored->id;
             $movement->save();
             $movement_mirrored->transfer_movement_id = $movement->id;

@@ -25,15 +25,15 @@
             <ul class="nav flex-column">
                 <li><router-link to="/expenses">Register Expenses</router-link></li>
                 <hr class="my-4">
-                <li><router-link to="/wallet">My Wallet</router-link></li>
+                <li><router-link to="/profile">My Information</router-link></li>
                 <hr class="my-4">
-                <li><router-link to="/profile">My Profile</router-link></li>
+                <li><router-link to="/wallet">My Wallet</router-link></li>
                 <hr class="my-4">
                 <li><router-link to="/deposits">Register Incomes</router-link></li>
                 <hr class="my-4">
                 <li><router-link to="/admin">Administration</router-link></li>
                 <hr class="my-4">
-                <li><router-link to="/users">Users</router-link></li>
+                <li><router-link to="/users">Users List</router-link></li>
             </ul>
         </div>
     </nav>
