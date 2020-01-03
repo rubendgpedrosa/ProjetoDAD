@@ -14,7 +14,7 @@
                 </div>
             </div>
             <hr class="my-4">
-            <form v-if="formSubmitted === false">
+            <form>
                 <div class="form-group">
                     <label for="inputFullName">Full Name</label>
                     <input type="text" class="form-control" id="inputFullName" placeholder="Enter Full Name" v-model="alteredUser.name">
@@ -64,9 +64,6 @@
                 </div>
                 <button :disabled="disableButtonSubmit() === true" v-on:click.prevent="submitChanges()" type="submit" class="btn btn-primary">Submit Changes</button>
             </form>
-            <div v-if="formSubmitted === true">
-                User profile updated!
-            </div>
         </div>
     </div>
 </template>
@@ -83,7 +80,6 @@
                 confirmed_password: '',
                 photoURL: '',
                 invalid_password: false,
-                formSubmitted: false,
             }
         },
         methods:{
@@ -107,7 +103,6 @@
                 axios.put(`/api/users/${this.alteredUser.id}`, this.alteredUser)
                     .then(response => {
                         self.$toasted.show('User profile updated!', { type: 'success' });
-                        self.formSubmitted = true;
                     })
                     .catch(error => {console.log(error.message); this.invalid_password = true;
                         this.$toasted.show('Error updating profile!', { type: 'error' });});

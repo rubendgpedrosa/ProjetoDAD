@@ -18,32 +18,33 @@ Route::middleware('auth:api')->post('logout','LoginControllerAPI@logout');
 
 //Category
 Route::middleware('auth:api')->get('categories', 'CategoryControllerAPI@index');
-Route::get('categories/{id}', 'CategoryControllerAPI@show');
-Route::post('categories', 'CategoryControllerAPI@store');
-Route::put('categories', 'CategoryControllerAPI@update');
-Route::delete('categories', 'CategoryControllerAPI@destroy');
+Route::middleware('auth:api')->get('categories/{id}', 'CategoryControllerAPI@show');
+//Route::post('categories', 'CategoryControllerAPI@store');
+//Route::put('categories', 'CategoryControllerAPI@update');
+//Route::delete('categories', 'CategoryControllerAPI@destroy');
 
 //Users
-Route::middleware('auth:api')->get('users', 'UserControllerAPI@index');
+Route::middleware('auth:api', 'CheckAdmin')->get('users', 'UserControllerAPI@index');
 Route::middleware('auth:api')->get('/user', function (Request $request) {return $request->user();});
-Route::post('users', 'UserControllerAPI@store');
-Route::put('users/{id}', 'UserControllerAPI@update');
-Route::put('users/toggleActivity', 'UserControllerAPI@toggleActivity');
-Route::delete('users/{id}', 'UserControllerAPI@destroy');
+Route::post('registration', 'UserControllerAPI@storeNormalUser');
+Route::middleware('auth:api', 'CheckAdmin')->post('users', 'UserControllerAPI@store');
+Route::middleware('auth:api', 'CheckID')->put('users/{id}', 'UserControllerAPI@update');
+Route::middleware('auth:api', 'CheckAdmin')->put('users/toggleActivity', 'UserControllerAPI@toggleActivity');
+Route::middleware('auth:api', 'CheckAdmin')->delete('users/{id}', 'UserControllerAPI@destroy');
 
 //Movement
-Route::middleware('auth:api')->get('movements', 'MovementsControllerAPI@index');
-Route::middleware('auth:api')->get('movements/{id}', 'MovementsControllerAPI@show');
-Route::post('movements', 'MovementsControllerAPI@registerExpense');
-Route::put('movements', 'MovementsControllerAPI@update');
+Route::middleware('auth:api', 'CheckAdmin')->get('movements', 'MovementsControllerAPI@index');
+Route::middleware('auth:api', 'CheckUser', 'CheckID')->get('movements/{id}', 'MovementsControllerAPI@show');
+Route::middleware('auth:api', 'CheckUser', 'CheckID')->post('movements', 'MovementsControllerAPI@registerExpense');
+Route::middleware('auth:api', 'CheckUser', 'CheckID')->put('movements', 'MovementsControllerAPI@update');
 
 //Wallet
 Route::get('wallets', 'WalletControllerAPI@index'); //This should not be protected by auth.
 Route::middleware('auth:api')->get('walletsEmail', 'WalletControllerAPI@walletsEmail');
-Route::post('wallets/create', 'WalletControllerAPI@store');
-Route::middleware('auth:api')->get('wallet/{id}', 'WalletControllerAPI@show');
-Route::put('wallets', 'WalletControllerAPI@registerIncome');
+//Route::post('wallets/create', 'WalletControllerAPI@store');
+Route::middleware('auth:api', 'CheckUser', 'CheckID')->get('wallet/{id}', 'WalletControllerAPI@show');
+Route::middleware('auth:api', 'CheckOperator')->put('wallets', 'WalletControllerAPI@registerIncome');
 
 //Statistics
-Route::middleware('auth:api')->get('statistics', 'StatisticsControllerAPI@index');
-Route::middleware('auth:api')->get('userStatistics/{id}', 'StatisticsControllerAPI@userStatistics');
+Route::middleware('auth:api', 'CheckAdmin')->get('statistics', 'StatisticsControllerAPI@index');
+Route::middleware('auth:api', 'CheckUser', 'CheckID')->get('userStatistics/{id}', 'StatisticsControllerAPI@userStatistics');

@@ -97,7 +97,9 @@
                 axios.post("api/users", this.newAdmin)
                     .then(response => {this.$store.commit('addUser', response);
                     this.userSubmitted = true;this.$emit('form-submitted');
-                    this.$store.state.number_wallets++;this.validationErrors = 'tou';})
+                    this.$store.state.number_wallets++;this.validationErrors = 'tou';
+                    this.$socket.emit('user_created', this.newAdmin.email);
+                    })
                     .catch(error => {
                         if (error.response.status === 422){
                             this.$toasted.show('Error occurred creating new User!', { type: 'error' });

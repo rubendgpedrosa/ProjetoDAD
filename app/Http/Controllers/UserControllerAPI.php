@@ -60,12 +60,8 @@ class UserControllerAPI extends Controller
         return $fileName;
     }
 
-    public function store(Request $request)
+    public function storeNormalUser(Request $request)
     {
-        /*As an Administrator of the platform I want to create operator and administration
-          accounts. These accounts will only have a name (only spaces and letters), a photo (upload
-          a JPG file), a password (3 or more characters) and an e-mail, which must be unique
-          among all accounts of the platform (including the platform users).*/
         $walletController = new WalletControllerAPI();
         $userController = new UserControllerAPI();
         $request->validate([
@@ -73,17 +69,37 @@ class UserControllerAPI extends Controller
                 'email' => 'required|email|unique:users,email',
                 'password' => 'min:3',
                 'nif' => 'integer|nullable',
-                'photo' => 'required_if:type_user,==,a,o'
             ]);
         $user = new User();
         $user->fill($request->except('photo','type_user'));
         $user->password = Hash::make($user->password);
-        $request->type_user == null? $user->type = 'u':$user->type = $request->type_user;
+        $user->type = 'u';
         $user->save();
-        if($user->type == 'u'){
-            $walletController->store($request);
+        $walletController->store($request);
+        if($request->photo != null){
+            $user->photo = $userController->uploadImage($request, $user->id);
+        }else{
+            $user->photo = 'default.png';
         }
-        //\Log::info($request->all());
+        $user->save();
+        $user->password = '';
+        return $user;
+    }
+
+    public function store(Request $request){
+        $userController = new UserControllerAPI();
+        $request->validate([
+                'name' => 'required|min:3|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'min:3',
+                'nif' => 'integer|nullable',
+                'photo' => 'required'
+            ]);
+        $user = new User();
+        $user->fill($request->except('photo','type_user'));
+        $user->password = Hash::make($user->password);
+        $user->type = $request->type_user;
+        $user->save();
         if($request->photo != null){
             $user->photo = $userController->uploadImage($request, $user->id);
         }else{

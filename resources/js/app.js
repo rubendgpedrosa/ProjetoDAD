@@ -81,9 +81,9 @@ const routes = [
         meta: { requiresAuth: true, requiresWallet: true }
     },
     {
-        path: '/categories',
-        component:Categories,
-        meta: { requiresAuth: true }
+        path: '/expenses',
+        component: RegisterExpense,
+        meta: { requiresAuth: true, requiresWallet: true }
     },
     {
         path: '/profile',

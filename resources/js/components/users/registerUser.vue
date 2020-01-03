@@ -77,7 +77,7 @@
                 this.$emit('cancel-registration');
             },
             async submitUser(){
-                axios.post("api/users", this.newUser)
+                axios.post("api/registration", this.newUser)
                     .then(response => {this.$emit('form-submitted');
                         this.$store.state.number_wallets++;
                         this.$toasted.show('Account sucessfully created', { type: 'success' });
@@ -86,6 +86,7 @@
                         if (error.response.status === 400){
                             this.$toasted.show('Error occurred creating new User!', { type: 'error' });
                             this.validationErrors = error.response.data.errors;
+                            this.$socket.emit('user_created', this.newUser.email);
                         }});
             },
             imageUpload:function(event){

@@ -63,11 +63,11 @@ io.on('connection', function (socket) {
         socket.leave(email);
         loggedUsers = loggedUsers.filter(user => user.email !== email);
     });
-    socket.on('create_user', (newUser)=>{
+    socket.on('user_created', (email)=>{
         let data = {
             from: 'E-Wallet <e_wallet@projetodad.com>',
-            to: newUser.email,
-            subject: 'Confirm account',
+            to: email,
+            subject: 'Account created!',
             html:'<div><h2 class="display-4">New Account Created</h2><p class="lead">Your new account is ready to be used!</p></div>',
         };
         mailgun.messages().send(data, function (error, body) {
