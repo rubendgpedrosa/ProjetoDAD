@@ -1,14 +1,25 @@
 @extends('master')
 
-@section('title', 'Wallet')
+@section('title', 'E-Wallet')
 
 @section('content')
-
+<div style="padding-top: 60px;" id="app">
+    <main>
+        <nav class="text-center navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+            <router-link class="nav-link" to="/">Homepage</router-link>
+            <router-link v-show="this.$store.state.user.type === 'u'" class="nav-link" to="/expenses">Register Expenses</router-link>
+            <router-link v-show="this.$store.state.user.type === 'u'" class="nav-link" to="/wallet">My Wallet</router-link>
+            <router-link v-show="this.$store.state.logged_in" class="nav-link" to="/profile">My Profile</router-link>
+            <router-link v-show="this.$store.state.user.type === 'o'" class="nav-link" to="/deposits">Register Incomes</router-link>
+            <router-link v-show="this.$store.state.user.type === 'a'" class="nav-link" to="/admin">Administration</router-link>
+            <router-link v-show="this.$store.state.user.type === 'a'" class="nav-link" to="/users">Users List</router-link>
+        </nav>
+        <router-view></router-view>
+    </main>
+</div>
 @endsection
+
 @section('pagescript')
 <script src="js/app.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/style.css">
- @stop
+@stop
+

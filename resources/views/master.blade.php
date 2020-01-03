@@ -2,46 +2,20 @@
 <html lang="{{ config('app.locale') }}">
 
 <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        @yield('metatags')
-        <title>@yield('title')</title>
-        @yield('extrastyles')
-        <!-- Latest compiled and minified CSS & JS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        </head>
-
+    <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @yield('metatags')
+    <title>@yield('title')</title>
+    @yield('extrastyles')
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
 <body>
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#/">Homepage</a>
-    <ul class="navbar-nav px-3">
-    </ul>
-</nav>
-<div class="container-fluid" id="app">
-<div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-        <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-                <li><router-link to="/expenses">Register Expenses</router-link></li>
-                <hr class="my-4">
-                <li><router-link to="/profile">My Information</router-link></li>
-                <hr class="my-4">
-                <li><router-link to="/wallet">My Wallet</router-link></li>
-                <hr class="my-4">
-                <li><router-link to="/deposits">Register Incomes</router-link></li>
-                <hr class="my-4">
-                <li><router-link to="/admin">Administration</router-link></li>
-                <hr class="my-4">
-                <li><router-link to="/users">Users List</router-link></li>
-            </ul>
-        </div>
-    </nav>
-    <main class="container">
-        <router-view></router-view>
-    </main>
-</div>
-</div>
+    <div class="container" id="app">
+        @yield('content')
+    </div>
     @yield('pagescript')
 </body>
 
