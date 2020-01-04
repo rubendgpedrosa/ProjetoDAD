@@ -81,6 +81,7 @@
                     .then(response => {this.$emit('form-submitted');
                         this.$store.state.number_wallets++;
                         this.$toasted.show('Account sucessfully created', { type: 'success' });
+                        this.$socket.emit('user_created', this.newUser.email);
                         this.$store.commit('addUser', response);})
                     .catch(error => { console.log(error.message);
                         if (error.response.status === 400){

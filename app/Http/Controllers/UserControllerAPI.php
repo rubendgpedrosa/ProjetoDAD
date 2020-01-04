@@ -158,18 +158,12 @@ class UserControllerAPI extends Controller
         return $userToReturn;
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        if($user->type == 'u'){
+        if($request->user()->type != 'a' || $request->user()->id == $id){
             return abort(403);
         }{
-            $wallet = new Wallet();
-            $movements = new Movement();
-            $wallet = $wallet->show($id);
-            if($wallet != null){
-                $wallet->delete();
-            }
+            $user = User::findOrFail($id);
             $user->delete();
             return response()->json(null, 204);
         }

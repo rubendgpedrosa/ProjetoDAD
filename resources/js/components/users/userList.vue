@@ -54,7 +54,7 @@
                 <a v-if="user.empty_wallet !== undefined" class="btn btn-sm" :disabled="user.empty_wallet !== true"
                    v-bind:class="{'btn-outline-success': user.active === 0, 'btn-outline-danger': user.active === 1}"
                    v-on:click.prevent="toggleUserActivation(user)">{{buttonText(user)}}</a>
-                <a v-if="user.type !== 'u'" class="btn btn-sm btn--sm btn-outline-danger" v-on:click.prevent="deleteAccount(user)">Delete</a>
+                <a v-if="user.type !== 'u' && currentUser.id !== user.id" class="btn btn-sm btn--sm btn-outline-danger" v-on:click.prevent="deleteAccount(user)">Delete</a>
             </td>
         </tr>
         </tbody>
@@ -76,7 +76,6 @@
         props:['users'],
         data: function (){
             return{
-                currentUser: {},
                 pagedUsers: [{}],
                 walletsArray: [{}],
                 searchObject:
@@ -137,6 +136,9 @@
                     stuff = stuff.filter(user => user.email.includes(self.searchObject.email));
                 }
                 return stuff;
+            },
+            currentUser:function(){
+                return this.$store.state.user;
             }
         },
         mounted(){

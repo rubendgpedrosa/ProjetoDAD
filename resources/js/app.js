@@ -186,7 +186,6 @@ const store = new Vuex.Store({
             state.movements = [{}];
             state.walletID = '';
             state.email = '';
-            state.categories= '';
             state.users = '';
         },
         resetErrorLogged(state){
@@ -200,6 +199,15 @@ const store = new Vuex.Store({
         }
     },
     actions:{
+        updateData(){
+            let headerData = {Accept: 'Application/json',Authorization: store.state.token};
+            axios.get(`api/movements/${store.state.user.id}`, { headers: headerData})
+                .then(response=>{ store.state.movements = response.data.reverse();})
+                .catch( error => { console.log(error.message); });
+            axios.get(`/api/wallet/${store.state.user.id}`, { headers: headerData})
+                .then(response => {store.state.wallet = response.data;})
+                .catch( error => { console.log(error.message);});
+        },
         setData(context){
             let headerData = {Accept: 'Application/json',Authorization: store.state.token};
             axios.get('api/user', { headers: headerData}).then(response => {
@@ -234,19 +242,17 @@ const store = new Vuex.Store({
                     });
                 });
             }
-            if(store.state.categories.length === 1) {
-                axios.get('api/categories', {headers: headerData})
-                    .then(response => {
-                        store.state.categories = response.data.data;
-                    })
-                    .catch(error => {
-                        console.log(error.message);
-                    });
-            }
+            axios.get('api/categories', {headers: headerData})
+                .then(response => {
+                    store.state.categories = response.data.data;
+                })
+                .catch(error => {
+                    console.log(error.message);
+                });
         },
         isAuthenticated () {
             return store.state.logged_in;
-        }
+        },
     }
 });
 
@@ -293,7 +299,6 @@ router.beforeEach((to, from, next) => {
 
 const app = new Vue({
         el: '#app',
-        //mode: 'history',
         router,
         vuetify,
         store,
@@ -303,13 +308,22 @@ const app = new Vue({
                     .then(response => (this.$store.commit('setWalletData', response)))
                     .catch(error=>console.log(error.nessage));
             },
+            logout(){
+                this.$socket.emit('logout', this.$store.state.user.email);
+                axios.post('/api/logout')
+                    .then(response => {this.$toasted.show('Successfully logged out!', { type: 'success' });
+                        this.$router.push('/');
+                        this.$store.commit('logout');
+                    })
+                    .catch(error => {this.$toasted.show('Error logging out!', { type: 'error' }); console.log(error.response.data)});
+            }
         },
         created (){
             this.getNumberWallets();
         },
         sockets: {
             wallet_movements_response: function(){
-                this.$store.dispatch('setData');
+                this.$store.dispatch('updateData');
                 this.$toasted.show('Deposit made to your account!', { type: 'success' });
             }
         }

@@ -3,16 +3,15 @@
         <div>
             <errors :errors="validationErrors"></errors>
             <div v-if="this.$store.state.logged_in === true && logSuccessfull === false">
-                <p class="lead">Currently logged in as {{ user.name }}</p>
+                <p style="font-size:1.5rem">Logged in with {{ user.email }}</p>
             </div>
-            <button v-if="this.$store.state.logged_in === true" @click="logout" class="btn btn-danger">Log Out</button>
             <div v-if="this.$store.state.logged_in === false">
                 <div class="form-row">
-                    <div class="col-auto">
+                    <div class="col">
                         <label>Email</label>
                         <input type="email" class="form-control" placeholder="Email" v-model="email_login">
                     </div>
-                    <div class="col-auto">
+                    <div class="col">
                         <label>Password</label>
                         <input type="password" class="form-control" placeholder="Password" v-model="password_login">
                     </div>
@@ -24,8 +23,6 @@
                     <button type="submit" class="btn btn-danger" v-on:click="cancelLogin">
                         Cancel
                     </button>
-                    <a class="btn btn-link" href="">Forgot Your Password?
-                    </a>
                 </div>
             </div>
         </div>
@@ -54,7 +51,7 @@
                     axios.defaults.headers.common.Authorization = "Bearer " + Object.values(response.data)[2].toString();
                     this.$store.commit('setToken', Object.values(response.data)[2].toString());
                     this.$store.commit('setLoggedIn');
-                    this.$store.dispatch('setData')
+                    this.$store.dispatch('setData');
                     this.$toasted.show('Successfully logged in!', { type: 'success' });
                     this.$socket.emit('login', this.email_login);
                 }).catch(error => {
@@ -67,7 +64,7 @@
             cancelLogin: function(){
                 this.$emit('cancel-login');
             },
-            logout: function(){
+            /*logout: function(){
                 this.$socket.emit('logout', this.user.email);
                 this.logSuccessfull = false;
                 this.cancelLogin();
@@ -75,7 +72,7 @@
                     .then(response => {this.$toasted.show('Successfully logged out!', { type: 'success' });})
                     .catch(error => {this.$toasted.show('Error logging out!', { type: 'error' }); console.log(error.response.data)});
                 this.$store.commit('logout');
-            }
+            }*/
         },
         computed:{
             user: function(){

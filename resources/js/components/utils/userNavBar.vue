@@ -4,10 +4,10 @@
             <div v-if="user.type === 'u'">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link" v-bind:class="{'active': updateProfile === true}" @click="editProfileClicked">Create Privileged Accounts</a>
+                        <a class="nav-link" v-bind:class="{'active': updateProfile === true}" @click="editProfileClicked">My Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" v-bind:class="{'active': statistics === true}" @click="statisticsClicked">Statistics</a>
+                        <a class="nav-link" v-bind:class="{'active': statistics === true}" @click="statisticsClicked">My Statistics</a>
                     </li>
                 </ul>
             </div>

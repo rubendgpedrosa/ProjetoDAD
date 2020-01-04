@@ -2,13 +2,12 @@
     <div>
         <div class="jumbotron">
             <h1 class="display-4">{{ title }}</h1>
-            <p class="lead">{{ welcome_message }}</p>
+            <p class="lead">Number of Wallets on our Platform: {{ number_wallets }}</p>
             <hr class="my-4">
             <div v-if="clickedButton && formSubmitted && not_logged === false">
                 <button @click="clickLogin" class="btn btn-primary" href="#/register" role="button">Login Now!</button>
             </div>
             <div>
-                <p v-if="not_logged === false && clickedButton === false && formSubmitted === false">Current number of wallets: {{ number_wallets }}</p>
                 <button v-if="not_logged === false && clickedButton === false && formSubmitted === false"
                         @click="clickRegister" class="btn btn-primary" href="#/register" role="button">Register Now</button>
                 <button v-if="not_logged === false && clickedButton === false && formSubmitted === false"
@@ -28,7 +27,6 @@
         data: function() {
             return{
                 title: 'Homepage',
-                welcome_message: 'Welcome to our simple, yet elegant E-Wallet App',
                 clickedButton: false,
                 formSubmitted: false,
                 not_logged: this.$store.state.logged_in,

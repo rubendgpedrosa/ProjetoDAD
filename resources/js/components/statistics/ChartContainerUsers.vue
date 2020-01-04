@@ -22,7 +22,7 @@
                 </div>
                 <div class="col">
                     <label>Wallet Most Interacted:</label>
-                    <input disabled v-model="userStatistics.walletMostInteractedWith === null? 'None':userStatistics.walletMostInteractedWith.email">
+                    <input disabled v-model="userStatistics.walletMostInteractedWith === null? 'None':userStatistics.walletMostInteractedWith">
                 </div>
             </div>
             <h3 style="padding-bottom: 20px;">Transfer Types</h3>
