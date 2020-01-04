@@ -59,6 +59,9 @@
                 <div v-show="errors.password_login !== undefined">
                     <li>A password with at least 3 digits is required to login!</li>
                 </div>
+                <div v-show="errors.msg">
+                    <li>Invalid login credentials!</li>
+                </div>
             </ul>
         </div>
     </div>

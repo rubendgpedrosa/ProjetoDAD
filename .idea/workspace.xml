@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5ce3de6c-f04c-4b97-a980-be6af4bb4a02" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckID.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckID.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vue/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vue/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/utils/errors.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/utils/errors.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,12 +73,7 @@
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="DockerDAD" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -177,7 +173,8 @@
       <workItem from="1577970300773" duration="36285000" />
       <workItem from="1578058331596" duration="6996000" />
       <workItem from="1578082421011" duration="1902000" />
-      <workItem from="1578085797712" duration="5084000" />
+      <workItem from="1578085797712" duration="8857000" />
+      <workItem from="1578099149039" duration="844000" />
     </task>
     <task id="LOCAL-00001" summary="Category Model, Controller, Route API">
       <created>1573578346429</created>
@@ -494,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578066166319</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="View changes">
+      <created>1578092966309</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1578092966309</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -529,7 +533,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="SHOW_UNVERSIONED_FILES_WHILE_COMMIT" value="false" />
-    <MESSAGE value="Email already taken validation and button disabling/data treatment." />
     <MESSAGE value="Rewritten expense and income registration" />
     <MESSAGE value="Rewritten some of the code regarding the expense registration." />
     <MESSAGE value="Fixed issues with movement id association.&#10;Added movement filtering." />
@@ -554,18 +557,19 @@
     <MESSAGE value="Aplicattion success/error notifications and email notification if user is offline." />
     <MESSAGE value="User statistics finished, mailgun api is the last thing that we need to change." />
     <MESSAGE value="API security checks. TODO change mailgun API" />
-    <option name="LAST_COMMIT_MESSAGE" value="API security checks. TODO change mailgun API" />
+    <MESSAGE value="View changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="View changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="696" y="349" width="686" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577752256355">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="696" y="349" width="686" height="383" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1577752256355" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1578066165664">
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2" timestamp="1578092965345">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="393" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1574788333556" />
-    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1578066165664" />
+    <state x="491" y="8" width="818" height="798" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1578092965345" />
     <state x="184" y="84" width="1228" height="688" key="DiffContextDialog" timestamp="1577744141526">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -612,19 +616,19 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="691" y="123" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577744185591" />
-    <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1578066168530">
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2" timestamp="1578092970260">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1574788336284" />
-    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1578066168530" />
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1578092970260" />
     <state x="617" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1574862552343">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="617" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1574862552343" />
-    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577744502640">
+    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578097714711">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1577744502640" />
+    <state x="740" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1578097714711" />
     <state x="569" y="203" key="git4idea.merge.GitMergeDialog" timestamp="1574787680589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -637,10 +641,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577984062626" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1578058576051">
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup" timestamp="1578093652898">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1573604925537" />
-    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1578058576051" />
+    <state x="539" y="190" width="840" height="889" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1578093652898" />
   </component>
 </project>

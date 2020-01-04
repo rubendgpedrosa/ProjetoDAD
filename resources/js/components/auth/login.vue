@@ -60,7 +60,7 @@
                 }).catch(error => {
                     if (error.response.status === 422){
                         this.$toasted.show('Error logging in!', { type: 'error' });
-                        this.validationErrors = error.response.data.errors;
+                        this.validationErrors = error.response.data;
                     }
                 });
             },
@@ -73,7 +73,7 @@
                 this.cancelLogin();
                 axios.post('/api/logout')
                     .then(response => {this.$toasted.show('Successfully logged out!', { type: 'success' });})
-                    .catch(error => {this.$toasted.show('Error logging out!', { type: 'error' }); error.message});
+                    .catch(error => {this.$toasted.show('Error logging out!', { type: 'error' }); console.log(error.response.data)});
                 this.$store.commit('logout');
             }
         },
