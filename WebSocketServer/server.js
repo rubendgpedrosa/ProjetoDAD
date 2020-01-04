@@ -40,11 +40,15 @@ app.listen(8080, function(){
 // Check loggedusers.js file
 
 let loggedUsers = [];
+let nodemailer = require('nodemailer');
 
-//TODO set new api key with costum domain that sends to others besides myself.
-let api_key = '6480b8e06723bc87a167267d7a48b198-6f4beb0a-c3d66e63';
-let domain = 'sandbox0d01094581344fb3a256cd4f0585c880.mailgun.org';
-let mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'ewallet.dad@gmail.com',
+        pass: 'P@sswordDAD2019'
+    }
+});
 
 io.on('connection', function (socket) {
     console.log('Unauthenticated user has connected (socket ID = '+socket.id+')' );
@@ -64,39 +68,50 @@ io.on('connection', function (socket) {
         loggedUsers = loggedUsers.filter(user => user.email !== email);
     });
     socket.on('user_created', (email)=>{
-        let data = {
-            from: 'E-Wallet <e_wallet@projetodad.com>',
+        var mailOptions = {
+            from: 'E-Wallet <ewallet.dad@gmail.com>',
             to: email,
             subject: 'Account created!',
-            html:'<div><h2 class="display-4">New Account Created</h2><p class="lead">Your new account is ready to be used!</p></div>',
+            html:'<div><h2 class="display-4">New Account Created</h2><p class="lead">Your new account is ready to be used!</p><a href="http://178.62.92.102">Click here</a> to go to the website</div>',
         };
-        mailgun.messages().send(data, function (error, body) {
-            console.log(body);
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
         });
     });
     socket.on('wallet_movements', (email_income)=>{
         let email = email_income;
         let filteredUser = loggedUsers.find(user => user.email === email);
-        let data = {
+        var mailOptions = {
             from: 'E-Wallet <e_wallet@projetodad.com>',
             to: email_income,
             subject: 'Wallet Deposit',
-            html:'<div><h2 class="display-4">Deposit Transfer received</h2><p class="lead">A deposit has been made to your account!</p></div>',
+            html:'<div><h2 class="display-4">Deposit Transfer received</h2><p class="lead">A deposit has been made to your account!</p><a href="http://178.62.92.102">Click here</a> to go to the website</div>',
         };
+
         if(filteredUser !== undefined){
             if(io.sockets.sockets[filteredUser.socketid] !== undefined){
                 socket.to(email).emit('wallet_movements_response');
             }else{
-                console.log('User was logged but not anymore');
-                loggedUsers = loggedUsers.filter(user => user.email !== email);
-                mailgun.messages().send(data, function (error, body) {
-                    console.log(body);
+                transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
                 });
             }
         }else{
-            console.log("User connected and logged off correctly");
-            mailgun.messages().send(data, function (error, body) {
-                console.log(body);
+            transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
             });
         }
     });
