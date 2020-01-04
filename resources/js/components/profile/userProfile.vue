@@ -8,7 +8,7 @@
                 <div>
                     <div class="col">
                         <div>
-                            <img :src="`./storage/fotos/${photo}`" class="img-circle" style="max-width:100px;">
+                            <img :src="`./storage/fotos/${photo}`" class="rounded-circle" style="max-width:100px;">
                         </div>
                     </div>
                 </div>

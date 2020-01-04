@@ -13,10 +13,17 @@ class CheckID
      * @param  \Closure  $next
      * @return mixed
      */
-        public function handle($request, Closure $next)
+    public function handle($request, Closure $next)
     {
-        if($request->user()->email == $request->json('source_email')){
-            return $next($request);
+        if($request->route('id') != null){
+            if($request->user()->id == $request->route('id')){
+                return $next($request);
+            }
+        }
+        else{
+            if($request->user()->email == $request->json('source_email')){
+                return $next($request);
+            }
         }
     }
 }
