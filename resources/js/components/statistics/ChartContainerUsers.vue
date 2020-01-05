@@ -6,7 +6,7 @@
             <div class="form-row jumbotron" style="padding-top:0px; padding-left: 0px;padding-right: 0px;">
                 <div class="col" >
                     <label>Highest Held Amount:</label>
-                    <input disabled v-model="userStatistics.highestHeldAmount">
+                    <input disabled v-model="userStatistics.highestHeldAmount"> &euro;
                 </div>
                 <div class="col">
                     <label>Number of Transactions:</label>
@@ -14,11 +14,11 @@
                 </div>
                 <div class="col">
                     <label>Highest Transaction:</label>
-                    <input disabled v-model="userStatistics.highestTransactionAmount">
+                    <input disabled v-model="userStatistics.highestTransactionAmount"> &euro;
                 </div>
                 <div class="col">
                     <label>Nº Wallets Interacted:</label>
-                    <input disabled v-model="userStatistics.numberWalletsInteractedWith">
+                    <input disabled v-model="userStatistics.numberWalletsInteractedWith"> &euro;
                 </div>
                 <div class="col">
                     <label>Wallet Most Interacted:</label>
