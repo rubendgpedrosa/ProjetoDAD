@@ -16,6 +16,7 @@
             <router-link v-show="this.$store.state.user.type === 'a'" class="nav-link" to="/users"><a style="color: white;">Users List</a></router-link>
             <div class="ml-auto" style="float-left align-right">
                 <button v-if="this.$store.state.logged_in === true" @click="logout" class="btn btn-small "><a style="color: white;text-decoration: underline;">Sign Out</a></button>
+                <img :src="`./storage/fotos/${this.$store.state.user.photo}`" class="rounded-circle" style="max-width:30px;">
             </div>
         </nav>
         <router-view></router-view>

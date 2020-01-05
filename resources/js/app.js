@@ -310,9 +310,12 @@ const app = new Vue({
             },
             logout(){
                 this.$socket.emit('logout', this.$store.state.user.email);
+                console.log(this.$route.path);
                 axios.post('/api/logout')
                     .then(response => {this.$toasted.show('Successfully logged out!', { type: 'success' });
-                        this.$router.push('/');
+                        if(this.$route.path !== '/'){
+                            this.$router.push('/');
+                        }
                         this.$store.commit('logout');
                     })
                     .catch(error => {this.$toasted.show('Error logging out!', { type: 'error' }); console.log(error.response.data)});

@@ -5,13 +5,6 @@
                 <div class="col">
                     <h1>{{ title }}</h1>
                 </div>
-                <div>
-                    <div class="col">
-                        <div>
-                            <img :src="`./storage/fotos/${photo}`" class="rounded-circle" style="max-width:100px;">
-                        </div>
-                    </div>
-                </div>
             </div>
             <hr class="my-4">
             <form>
@@ -84,6 +77,7 @@
         },
         methods:{
             imageUpload: function(event){
+                this.photo = this.alteredUser.photo;
                 this.alteredUser.photo = event.target.files[0];
                 this.photoURL = URL.createObjectURL(this.alteredUser.photo);
                 this.readFileAsDataURL(this.alteredUser.photo).then(response => {this.alteredUser.photo = response;});
@@ -99,7 +93,7 @@
             submitChanges: function(){
                 let self = this;
                 this.alteredUser.new_password = this.new_password;
-                this.photo = this.alteredUser.photo;
+                //this.photo = this.alteredUser.photo;
                 axios.put(`/api/users/${this.alteredUser.id}`, this.alteredUser)
                     .then(response => {
                         self.$toasted.show('User profile updated!', { type: 'success' });
@@ -115,7 +109,7 @@
                     (this.alteredUser.password === "" && this.new_password !== "") || (this.alteredUser.password === "" && this.confirmed_password !== ""));
             },
         },
-        mounted() {
+        mounted(){
             this.photo = this.alteredUser.photo;
         }
     }
