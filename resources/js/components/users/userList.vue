@@ -44,7 +44,7 @@
         </thead>
         <tbody>
         <tr v-for="user in pagedUsers" :key="user.id">
-          <td ><img :src="`./storage/fotos/${user.photo}`" class="rounded-circle" style="max-width:50px;"> </td>
+          <td ><img :src="`./storage/fotos/${user.photo === null? 'default.png':user.photo}`" class="rounded-circle" style="max-width:50px;"> </td>
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>{{user.type ==='o'? 'Operator':(user.type==='a'?'Administrator':'Platform User')}}</td>

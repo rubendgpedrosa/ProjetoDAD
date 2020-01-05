@@ -36,7 +36,7 @@
                             <label for="inputDescription" style="float:left;">Photo</label>
                         </div>
                         <div class="form-row">
-                            <img :src="`./storage/fotos/${movementClicked.photo === undefined? 'default.png':movementClicked.photo}`" class="rounded-circle" style="max-width:65px;"/>
+                            <img :src="`./storage/fotos/${movementClicked.photo === null? 'default.png':movementClicked.photo}`" class="rounded-circle" style="max-width:65px;"/>
                         </div>
                     </div>
                 </div>

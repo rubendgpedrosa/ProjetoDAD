@@ -103,7 +103,7 @@ class UserControllerAPI extends Controller
         if($request->photo != null){
             $user->photo = $userController->uploadImage($request, $user->id);
         }else{
-            $user->photo = 'default.png';
+            //$user->photo = 'default.png';
         }
         $user->save();
         $user->password = '';

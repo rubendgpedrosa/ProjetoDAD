@@ -31,12 +31,25 @@ class StatisticsControllerAPI extends Controller
         $countWallets = Wallet::all()->count();
         $averagePerWallet = number_format((float)(Wallet::all()->avg('balance')), 2, '.', '');
         $highestTransferValue = number_format((float)(Movement::all()->max('value')), 2, '.', '');
-        $countMovements = Movement::all()->count();
-        $countExpenseTransfer = Movement::where('type', 'e')->count();
-        $countIncomeTransfer = Movement::where('type', 'i')->count();
-        $cTransfer = Movement::where('type_payment', 'c')->count();
-        $btTransfer = Movement::where('type_payment', 'bt')->count();
-        $mbTransfer = Movement::where('type_payment', 'mb')->count();
+        $countMovements = 0;
+        Movement::chunk(500, function($movements) use (&$countMovements){
+            $countMovements = $countMovements + count($movements);
+        });
+        Movement::where('type', 'e')->chunk(500, function($movements) use (&$countExpenseTransfer){
+            $countExpenseTransfer = $countExpenseTransfer + count($movements);
+        });
+        Movement::where('type', 'i')->chunk(500, function($movements) use (&$countIncomeTransfer){
+            $countIncomeTransfer = $countIncomeTransfer + count($movements);
+        });
+        Movement::where('type_payment', 'c')->chunk(500, function($movements) use (&$cTransfer){
+            $cTransfer = $cTransfer + count($movements);
+        });
+        Movement::where('type_payment', 'bt')->chunk(500, function($movements) use (&$btTransfer){
+            $btTransfer = $btTransfer + count($movements);
+        });
+        Movement::where('type_payment', 'mb')->chunk(500, function($movements) use (&$mbTransfer){
+            $mbTransfer = $mbTransfer + count($movements);
+        });
 
         return response()->json([
             'sumWallets' => $sumWallets,
