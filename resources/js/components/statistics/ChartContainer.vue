@@ -6,7 +6,7 @@
             <div class="form-row jumbotron" style="padding-top:0px; padding-left: 0px;padding-right: 0px;">
                 <div class="col" >
                     <label>Amount on Platform:</label>
-                    <input disabled v-model="sumWallets">
+                    <input disabled v-model="sumWallets"> &euro;
                 </div>
                 <div class="col">
                     <label>Number of Wallets:</label>
@@ -14,11 +14,11 @@
                 </div>
                 <div class="col">
                     <label>Average Amount per Wallet:</label>
-                    <input disabled v-model="averagePerWallet">
+                    <input disabled v-model="averagePerWallet"> &euro;
                 </div>
                 <div class="col">
                     <label>Highest Transfer Amount:</label>
-                    <input disabled v-model="highestTransferValue">
+                    <input disabled v-model="highestTransferValue"> &euro;
                 </div>
                 <div class="col">
                     <label>Number of Movements:</label>
