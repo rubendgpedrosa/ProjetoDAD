@@ -28,7 +28,7 @@
         "form-data": "^3.0.0",
         "fs": "0.0.1-security",
         "iban": "0.0.12",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "jw-vue-pagination": "^1.0.3",
         "mailgun-js": "^0.22.0",
         "passport.socketio": "^3.7.0",
